@@ -1,0 +1,59 @@
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select {
+  font-family: "Futura PT", sans-serif;
+  padding: 10px 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  width: 100%;
+  padding-top: 25px;
+  cursor: pointer;
+  color: #000;
+  background-color: $primary-transperant;
+  border: none;
+  transition: 0.2s ease-in-out;
+  &:focus{
+      transition: 0.2s ease-in-out;
+      background-color: $primary;
+  }
+// &:focus{
+//     outline: none;
+// }
+}
+
+.unselected{
+  color: gray;
+}
+
+
+
+.floating-label-group {
+  position: relative;
+  width: 100%;
+  .currency{
+    position: absolute;
+    right: 10px;
+    top: 20px;
+  }
+
+  .floating-label {
+    font-size: 17px;
+    color: #fff;
+    position: absolute;
+    pointer-events: none;
+    top: 9px;
+    left: 12px;
+    transition: all 0.1s ease;
+  }
+}
+
+input.donate{
+  margin-top: 20px;
+  height: 40px;
+  padding: 4px 10px;
+  cursor: inherit;
+  outline: 1px solid rgb(165, 164, 164);
+  border: 1px solid rgb(165, 164, 164);
+}

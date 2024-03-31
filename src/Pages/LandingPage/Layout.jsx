@@ -55,8 +55,6 @@ function Layout() {
   const bgContainer = useRef()
   useEffect(
     _ => {
-      console.log(Math.floor((window.innerWidth - 378) / 30))
-      console.log(window.innerWidth)
       for (let i = 0; i < gridSize; i++) {
         const square = document.createElement(`div`)
         square.className = `square`

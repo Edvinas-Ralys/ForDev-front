@@ -1,0 +1,147 @@
+.sign-up-page {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  .right-content {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    // background-color: #833535;
+    .right-top {
+      text-align: end;
+      span {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+    .signup-form {
+      width: 100%;
+
+      .form-title {
+        font-size: 2rem;
+        padding-bottom: 10px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .double {
+          display: flex;
+          gap: 2rem;
+          justify-content: space-around;
+        }
+
+        .password-req {
+          background-color: $background-dark;
+          padding: 15px 45px;
+          border-radius: 12px;
+          .pass-req-title {
+            font-size: 1.3rem;
+            user-select: none;
+          }
+          ul {
+            user-select: none;
+            li {
+              list-style: circle;
+            }
+          }
+        }
+        .sign-up-confirm {
+          user-select: none;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-end;
+          span {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes validationFade {
+  from {
+    background-color: green;
+    color: #fff;
+  }
+  to {
+    background-color: inherit;
+    color: darkgreen;
+  }
+}
+
+.validated {
+  animation-name: validationFade;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+//   @media only screen and (max-width: $tablet-width) {
+//     .sign-up-page {
+//       height: 100vh;
+//       display: flex;
+//       .left-back {
+//         position: relative;
+//         z-index: 100;
+//         width: 100vw;
+//         height: 5vh;
+//         background-color: inherit;
+//         display: flex;
+//         justify-content: center;
+//         text-align: center;
+//         margin-top: 45px;
+//         .left-content {
+//           margin-top: 0;
+//           gap: 0;
+//           width: max-content;
+//           .logo {
+//             font-size: 1.2rem;
+//             padding: 0;
+//           }
+//           .left-text {
+//             gap: 0;
+//             .left-text-small {
+//               font-size: 1rem;
+//             }
+//             .left-text-big {
+//               font-size: 1.7rem;
+//             }
+//           }
+//         }
+//       }
+//       .right-front {
+//         width: 100vw;
+//         height: fit-content;
+//         padding-bottom: 20px;
+//         border-radius: 0;
+//         box-shadow: none;
+//         .right-content {
+//           width: 80vw;
+//           padding-top: 1vh;
+//           gap: 6rem;
+//           .signup-form {
+//             width: 100%;
+//             .form {
+//               gap: 1rem;
+//               .form-element input {
+//                 font-size: 1.2rem;
+//               }
+//               .double {
+//                 gap: 0.8rem;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }

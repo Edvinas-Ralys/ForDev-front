@@ -1,0 +1,221 @@
+.navigation {
+  position: fixed;
+  // top: 20px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  transition: 0.2s ease-in-out;
+  z-index: 100;
+  font-family: nunito;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10%;
+  user-select: none;
+  backdrop-filter: blur(5px);
+  width: 100%;
+  gap: 5rem;
+  align-items: center;
+  transition: 0.2s ease-in-out;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.61);
+  background-color: $background-transperent;
+  color: $text;
+  font-size: 1.4rem;
+
+  .center {
+    height: 20px;
+    .logo {
+      height: 20px;
+      width: auto;
+      cursor: pointer;
+      fill: #fff;
+    }
+  }
+
+  .left > ul,
+  .right > ul {
+    display: flex;
+  }
+  .left > ul {
+    gap: 1rem;
+    justify-content: flex-start;
+    .double {
+      .magnify,
+      .chevron {
+        fill: #fff;
+      }
+    }
+  }
+  .right > ul {
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  li {
+    cursor: pointer;
+    padding: 20px;
+    &:not(li:has(button)) {
+      // padding: 2px 4px;
+      border-radius: 4px;
+      transition: 0.2s ease-in-out background-color;
+    }
+    &:not(li:has(button)):hover {
+      background-color: $background-dark;
+      transition: 0.2s ease-in-out background-color;
+    }
+  }
+  .right {
+    width: fit-content;
+    .nav-profile-card {
+      // padding: 0;
+      height: 100%;
+      width: fit-content !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100px;
+      z-index: 1;
+      .profile-icon {
+        height: 45px;
+        width: 50px;
+        // padding: 0;
+        fill: $text;
+      }
+      .chevron {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
+  li {
+    text-align: center;
+    &.double {
+      display: flex;
+      align-items: center;
+      .magnify,
+      .chevron {
+        height: 24px;
+        transition: 0.4s transform;
+      }
+    }
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown:hover .for-individuals-dropdown {
+    height: fit-content;
+    opacity: 1;
+    transition: 0.2s ease-in-out opacity;
+  }
+  .dropdown:hover .chevron {
+    transform: rotate(180deg);
+    transition: 0.4s transform;
+  }
+  .dropdown:hover .profile-dropdown {
+    height: fit-content;
+    opacity: 1;
+    transition: 0.2s ease-in-out opacity;
+  }
+
+  .hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    // z-index: 2;
+    cursor: pointer;
+    position: relative;
+  }
+  .hamburger-menu::before,
+  .hamburger-menu::after,
+  .hamburger-menu input {
+    content: "";
+    width: 30px;
+    height: 5px;
+    background-color: rgb(128, 128, 128);
+  }
+
+  .hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+    justify-self: center;
+  }
+}
+
+// @media only screen and (max-width: 1200px) {
+//   .view-fundraiser {
+//     .navigation {
+//       position: relative;
+//       top: 0;
+//       width: 100vw;
+//       nav {
+//         border-radius: 0;
+//         width: 100vw;
+//       }
+//     }
+//   }
+//   nav {
+//     width: 950px;
+//   }
+// }
+
+// @media only screen and (max-width: $tablet-small-width) {
+//   .view-fundraiser {
+//     .navigation {
+//       position: relative;
+//       top: 0;
+//       width: 100vw;
+//       nav {
+//         border-radius: 0;
+//         width: 100vw;
+//         margin: 0;
+//       }
+//     }
+//   }
+//   nav {
+//     padding-left: 5%;
+//     padding-right: 5%;
+//     &.scrolled {
+//       padding-left: 20px;
+//       padding-right: 20px;
+//       padding: 1rem 0.5rem;
+//     }
+//     li {
+//       display: none;
+//       &.double {
+//         display: none;
+//       }
+//     }
+
+//     .hamburger-menu {
+//       display: flex;
+//     }
+
+//     .search-icon {
+//       display: block;
+//       height: 40px;
+//       width: 40px;
+//       fill: $text;
+//     }
+//   }
+// }
+
+// @media only screen and (max-width: $phone-width) {
+//   .navigation {
+//     top: 0;
+//   }
+//   nav {
+//     border-radius: 0;
+//     margin: 0;
+//   }
+// }

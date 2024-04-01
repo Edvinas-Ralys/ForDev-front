@@ -29,9 +29,9 @@
   align-items: center;
   overflow: hidden;
   background: linear-gradient($background, $background-dark);
-  // z-index: -1;
+  // z-index: 10;
   .square {
-    border: 1px solid rgba(128, 128, 128, 0.027);
+    border: 1px solid rgba(128, 128, 128, 0.123);
     border-radius: 2px;
     opacity: 0.5;
     transition: 0.05s ease-in-out;

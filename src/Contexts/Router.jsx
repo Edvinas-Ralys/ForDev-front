@@ -40,11 +40,13 @@ export const RouterProvider = ({ children }) => {
   const currentComponent = possibleRoutes.find(r => r.path === route)?.component || `Error page`
 //   const errorComponent = errorPages.find(e => e.type === errorPageType)?.component || null
 
-
+const windowWidth = 1920;
 const squareSize = 40
 const [gridSize, setGrindSize] = useState(_ => {
-  return ( Math.floor(window.innerWidth / squareSize) * Math.floor((window.innerHeight - 250) / squareSize))
+  return ( Math.floor(windowWidth / squareSize) * Math.floor((window.innerHeight - 250) / squareSize))
 })
+
+
 
 const bgContainer = useRef()
 useEffect(
@@ -52,8 +54,8 @@ useEffect(
     for (let i = 0; i < gridSize; i++) {
       const square = document.createElement(`div`)
       square.className = `square`
-      square.style.width = `${window.innerWidth / squareSize}px`
-      square.style.height = `${window.innerWidth / squareSize}px`
+      square.style.width = `${windowWidth / squareSize}px`
+      square.style.height = `${windowWidth / squareSize}px`
       bgContainer?.current.appendChild(square)
     }
   },

@@ -12,9 +12,7 @@ function Layout() {
   const second = useRef()
   const third = useRef()
   const squareSize = 40
-  const [gridSize, setGrindSize] = useState(_ => {
-    return ( Math.floor(window.innerWidth / squareSize) * Math.floor((window.innerHeight - 250) / squareSize))
-  })
+
 
   const changeLetter = useCallback(text => {
     let iterations = 0
@@ -52,27 +50,16 @@ function Layout() {
     //   [iterationsCount]
     // )
 
-  const bgContainer = useRef()
-  useEffect(
-    _ => {
-      for (let i = 0; i < gridSize; i++) {
-        const square = document.createElement(`div`)
-        square.className = `square`
-        square.style.width = `${window.innerWidth / squareSize}px`
-        square.style.height = `${window.innerWidth / squareSize}px`
-        bgContainer?.current.appendChild(square)
-      }
-    },
-    [bgContainer, window]
-  )
+
+
+
+
 
   return (
     <>
       <Navigation />
       <div className="landing-page">
         <NewUserCard />
-        <div ref={bgContainer} className="background">
-        </div>
         <div style={{top:`${4*(squareSize+7)}px`, left:`${4*(squareSize+12)}px`}} className="landing-page-text">
           <div className="static-text">
             <div className="text">

@@ -14,14 +14,11 @@ function Navigation() {
         <div className="center"><Logo /></div>
         <div className="right">
           <ul>
-            <li>Sign up</li>
+            <li><a href="#signup">Sign up</a></li>
             <li>
               <a href="#login">Log in</a>
             </li>
             <li>
-              {/* <a href="#sign-up">
-                <button>Start a GoFundMe</button>
-              </a> */}
             </li>
             <label htmlFor="hamburger-menu" className="hamburger-menu">
               <input type="checkbox" name="" id="hamburger-menu" />

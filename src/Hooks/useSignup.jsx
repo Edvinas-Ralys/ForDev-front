@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import axios from "axios"
-import { SERVER_URL } from "../Components/Constants/main"
+import { SERVER_URL } from "../Data/main"
 import { Router } from "../Contexts/Router"
 import { Messages } from "../Contexts/Messages"
 
@@ -14,12 +14,12 @@ function useSignup() {
       if (signUpInfo === null) {
         return
       }
-      setLoading(true)
+      // setLoading(true)
       axios
-        .post(`${SERVER_URL}/users`, {...signUpInfo, roles:[`user`]} , { withCredentials: true })
+        .post(`${SERVER_URL}/users`, { ...signUpInfo, roles: [`user`] }, { withCredentials: true })
         .then(res => {
           console.log(res.data)
-          window.location.href = `#login`
+          // window.location.href = `#login`
         })
         .catch(err => {
           console.log(err)
@@ -29,11 +29,20 @@ function useSignup() {
             addMessage(`Validation error`)
           } else if (err?.response?.status === 500 && err?.response?.data.type === `databse`) {
             addMessage(`Database error`)
-          } else if (err?.response?.status === 409){
-            addMessage({text:`Email is already used`, type:`error`, location:`sign-up`, cause:`email`})
-          } else if (err?.response?.status === 400){
-            addMessage({text:`All fields are required`, type:`error`, location:`sign-up`, cause:`fields`})
-
+          } else if (err?.response?.status === 409) {
+            addMessage({
+              text: `Email is already used`,
+              type: `error`,
+              location: `sign-up`,
+              cause: `email`,
+            })
+          } else if (err?.response?.status === 400) {
+            addMessage({
+              text: `All fields are required`,
+              type: `error`,
+              location: `sign-up`,
+              cause: `fields`,
+            })
           }
         })
         .finally(_ => {

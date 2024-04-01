@@ -2,21 +2,24 @@ import { useContext, useEffect, useState } from "react"
 import {
   handleInputValidation,
   original,
-  handleEmailValidation,
-  handleEmailValidationConfirm,
+  handlePasswordConfirm,
   validatePassword,
   validatedStyle,
   notValidatedStyle,
 } from "../../Functions/signupFormValidation"
 import { Messages } from "../../Contexts/Messages"
+import useSignup from "../../Hooks/useSignup"
 
 function Index() {
-  const [firstName, setFistName] = useState({ value: ``, style: original, validated: false })
-  const [lastName, setLastName] = useState({ value: ``, style: original, validated: false })
-  const [email, setEmail] = useState({ value: ``, style: original, validated: false })
-  const [confirmEmail, setConfirmEmail] = useState({ value: ``, style: original, validated: false })
+  const [username, setUsername] = useState({ value: ``, style: original, validated: false })
+  const {setSignUpInfo} = useSignup()
   const { messages } = useContext(Messages)
   const [passwordValidated, setPasswordValidated] = useState(null)
+  const [passwordConfirm, setPasswordConfirm] = useState({
+    value: ``,
+    style: original,
+    validated: false,
+  })
   const [password, setPassword] = useState({
     value: ``,
     style: original,
@@ -31,14 +34,12 @@ function Index() {
   })
 
   const handleSignup = _ => {
-    // setSignUpInfo({
-    //   firstName: firstName.value,
-    //   lastName: lastName.value,
-    //   email: email.value,
-    //   password: password.value,
-    // })
+    setSignUpInfo({
+      username: username.value,
+      password: password.value,
+      passwordValidated: passwordValidated.value,
+    })
   }
-
 
   useEffect(
     _ => {
@@ -74,34 +75,13 @@ function Index() {
                 <label className="floating-label">Username</label>
                 <input
                   type="text"
-                  value={firstName.value}
-                  onChange={e => handleInputValidation(e, setFistName)}
-                  style={firstName.style}
+                  value={username.value}
+                  onChange={e => handleInputValidation(e, setUsername)}
+                  style={username.style}
                 />
               </div>
             </div>
-            <div className="form-element">
-              <div className="floating-label-group">
-                <label className="floating-label">Email</label>
-                <input
-                  type="email"
-                  value={email.value}
-                  onChange={e => handleEmailValidation(e, setEmail)}
-                  style={email.style}
-                />
-              </div>
-            </div>
-            <div className="form-element">
-              <div className="floating-label-group">
-                <label className="floating-label">Confirm Email</label>
-                <input
-                  type="email"
-                  value={confirmEmail.value}
-                  onChange={e => handleEmailValidationConfirm(e, email.value, setConfirmEmail)}
-                  style={confirmEmail.style}
-                />
-              </div>
-            </div>
+
             <div className="form-element">
               <div className="floating-label-group">
                 <label className="floating-label">Password</label>
@@ -116,6 +96,17 @@ function Index() {
                       ? validatedStyle
                       : notValidatedStyle
                   }
+                />
+              </div>
+            </div>
+            <div className="form-element">
+              <div className="floating-label-group">
+                <label className="floating-label">Confirm Password</label>
+                <input
+                  type="password"
+                  value={passwordConfirm.value}
+                  onChange={e => handlePasswordConfirm(e, password.value, setPasswordConfirm)}
+                  style={passwordConfirm.style}
                 />
               </div>
             </div>

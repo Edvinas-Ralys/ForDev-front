@@ -38,6 +38,9 @@ function Index() {
   })
 
   const handleSignup = _ => {
+    if(!username.validated || !email.validated || !confirmEmail.validated || !confirmPassword.validated || !password.validated){
+      return
+    }
     setSignUpInfo({
       username: username?.value,
       password: password?.value,

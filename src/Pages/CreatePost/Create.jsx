@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react"
 import { Post } from "../../Contexts/Post"
 import { postCategories } from "../../Data/postCategories"
 import { CameraIcon } from "../../Icons/Icons"
+import { RichTextarea } from "rich-textarea"
 
-function Create({setPreview}) {
+function Create({ setPreview }) {
   const {
     setStorePost,
     image,
@@ -18,7 +19,6 @@ function Create({setPreview}) {
     postImage,
     setPostImage,
   } = useContext(Post)
-
 
   const selectCategory = category => {
     if (categories.includes(category)) {
@@ -65,6 +65,15 @@ function Create({setPreview}) {
                   <div className="floating-label-group">
                     <label className="floating-label">Content</label>
                     <textarea value={content} onChange={e => setContent(e.target.value)} />
+                    <RichTextarea value={content} onChange={e => setContent(e.target.value)}>
+                      {v => {
+                        return v.split("").map((t, i) => (
+                          <span key={i} style={{ color: i % 2 === 0 ? "red" : undefined }}>
+                            {t}
+                          </span>
+                        ))
+                      }}
+                    </RichTextarea>
                   </div>
                 </div>
               </div>
@@ -104,7 +113,9 @@ function Create({setPreview}) {
           </div>
         </div>
         <div className="create-post">
-          <button onClick={previewPost}><a href="#create-post/preview">Preview post</a></button>
+          <button onClick={previewPost}>
+            <a href="#create-post/preview">Preview post</a>
+          </button>
           <a href="#home">Home</a>
         </div>
       </div>

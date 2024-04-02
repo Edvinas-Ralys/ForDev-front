@@ -32,7 +32,10 @@ function PostBody({ preview }) {
         <Tag />
         <span>{currFundrasier.type}</span> */}
       </div>
+      <div className="story-container">
       <div className="story">{preview.text}</div>
+      </div>
+
     </>
   )
 }

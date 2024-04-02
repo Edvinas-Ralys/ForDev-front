@@ -1,30 +1,75 @@
+// .navigation {
+//   position: fixed;
+//   font-size: 1.3rem;
+//   font-weight: 400;
+//   width: 100vw;
+
+//   display: flex;
+//   justify-content: center;
+//   transition: 0.2s ease-in-out;
+//   z-index: 100;
+//   font-family: nunito;
+// }
+
 .navigation {
   position: fixed;
+  top: 20px;
   font-size: 1.3rem;
   font-weight: 400;
-  width: 100vw;
-
+  width: 100%;
   display: flex;
   justify-content: center;
   transition: 0.2s ease-in-out;
   z-index: 100;
   font-family: nunito;
+  &.scrolled {
+    transition:  0.2s ease-in-out;
+    top: 0;
+  }
+}
+
+ul{
+  li{
+    font-size: 1rem;
+  }
 }
 
 nav {
+  // display: flex;
+  // justify-content: space-between;
+  // padding: 20px 3%;
+  // user-select: none;
+  // backdrop-filter: blur(5px);
+  // width: 100%;
+  // gap: 5rem;
+  // align-items: center;
+  // transition: 0.2s ease-in-out;
+  // box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.61);
+  // // background-color: $background-transperent;
+  // font-size: 1.4rem;
+  // font-weight: 600;
+  // background-color: rgba(0, 0, 0, 0.301);
+
   display: flex;
   justify-content: space-between;
-  // padding: 20px 10%;
+  padding: 0.6rem 1.2rem;
   user-select: none;
-  // backdrop-filter: blur(5px);
-  width: 100%;
+  backdrop-filter: blur(5px);
+  border-radius: 10rem;
+  width: 1300px;
   gap: 5rem;
   align-items: center;
   transition: 0.2s ease-in-out;
-  // box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.61);
-  // background-color: $background-transperent;
-  font-size: 1.4rem;
-  font-weight: 600;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.61);
+  background-color: #00000071;
+  color: $text;
+  &.scrolled {
+    width: 100%;
+    transition: border-radius padding 0.2s ease-in-out;
+    border-radius: 0;
+    padding: 15px 20px;
+  }
+
 
   .left,
   .right > ul {
@@ -144,22 +189,22 @@ nav {
   }
 }
 
-// @media only screen and (max-width: 1200px) {
-//   .view-fundraiser {
-//     .navigation {
-//       position: relative;
-//       top: 0;
-//       width: 100vw;
-//       nav {
-//         border-radius: 0;
-//         width: 100vw;
-//       }
-//     }
-//   }
-//   nav {
-//     width: 950px;
-//   }
-// }
+@media only screen and (max-width: 1200px) {
+  .view-fundraiser {
+    .navigation {
+      position: relative;
+      top: 0;
+      width: 100vw;
+      nav {
+        border-radius: 0;
+        width: 100vw;
+      }
+    }
+  }
+  nav {
+    width: 950px;
+  }
+}
 
 // @media only screen and (max-width: $tablet-small-width) {
 //   .view-fundraiser {

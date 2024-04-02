@@ -1,6 +1,7 @@
 .preview-page{
-    height: 100vh;
-    width: 100vw;
+    // height: 100vh;
+    width: 100svw;
+
     background-color: $background;
     display: flex;
     justify-content: center;
@@ -11,6 +12,7 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        overflow-x: hidden;
         .post-title{
             font-size: 3rem;
             font-weight: 600;
@@ -28,6 +30,21 @@
         }
         .creator{
             font-size: 1.5rem;
+            font-style: italic;
+            border-bottom: 1px solid $primary;
+            padding-bottom: 10px;
         }
+        .story-container{
+            display: flex;
+            justify-content: center;
+            .story{
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+                width: 70%;
+                // border: 1px solid white;
+                line-height: 2rem;
+            }
+        }
+
     }
 }

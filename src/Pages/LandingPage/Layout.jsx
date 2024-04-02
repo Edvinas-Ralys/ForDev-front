@@ -3,6 +3,7 @@ import Navigation from "../Components/Navigation"
 import NewUserCard from "./Explore"
 import { Authorization } from "../../Contexts/Authorization"
 import NavigationUser from "../Components/NavigationUser"
+import { SERVER_URL } from "../../Data/main"
 
 function Layout() {
   const { user } = useContext(Authorization)
@@ -16,6 +17,18 @@ function Layout() {
   const third = useRef()
   const squareSize = 40
   const [totalIterations, setTotalIterations] = useState(0)
+  const [offset, setOffset] = useState(false)
+
+  useEffect(_ => {
+    window.onscroll = _ => {
+
+      if (window.scrollY > 0) {
+        setOffset(true)
+      } else {
+        setOffset(false)
+      }
+    }
+  }, [])
 
   const changeLetter = useCallback(text => {
     let iterations = 0
@@ -54,12 +67,16 @@ function Layout() {
 
   return (
     <>
-      {!user ? <Navigation /> : <NavigationUser />}
+      {user ? <NavigationUser offset={offset} /> : <Navigation offset={offset} />}
       <div className="landing-page">
+      <div className="background">
+          <img src={`${SERVER_URL}/front-images/nebula.jpg`} alt="" />
+        </div>
         <div
-          style={{ top: `${4 * (squareSize + 7)}px`, left: `${4 * (squareSize + 12)}px` }}
+          // style={{ top: `${4 * (squareSize + 7)}px`, left: `${4 * (squareSize + 12)}px` }}
           className="landing-page-text"
         >
+
           <div className="static-text">
             <div className="text">Welcome to our Web Dev Community</div>
             <div className="sub-text">

@@ -20,6 +20,13 @@
   color: $text;
 }
 
+body{
+  overflow-x: hidden;
+}
+.item-trigger{
+  background-color: black;
+}
+
 .background {
   position: absolute;
   height: 100%;

@@ -1,9 +1,9 @@
 import { Logo } from "../../Icons/Icons"
 
-function Navigation() {
+function Navigation({offset}) {
   return (
-    <div className="navigation">
-      <nav>
+    <div className={`navigation ${offset ? `scrolled` : ``}`}>
+      <nav className={`${offset ? `scrolled` : ``}`}>
         <div className="left">
           <Logo />
         </div>

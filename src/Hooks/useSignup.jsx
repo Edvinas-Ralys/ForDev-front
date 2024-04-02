@@ -18,11 +18,12 @@ function useSignup() {
       axios
         .post(`${SERVER_URL}/users`, { ...signUpInfo, roles: [`user`] }, { withCredentials: true })
         .then(res => {
+          console.log(res)
           window.location.href = `#login`
           addMessage(res.data.message)
         })
         .catch(err => {
-          // console.log(err)
+          console.log(err)
           if (err.code === `ERR_NETWORK`) {
             setErrorPageType(`network_err`)
           } else if (err?.response?.status === 403 && err?.response?.data.type === `validation`) {

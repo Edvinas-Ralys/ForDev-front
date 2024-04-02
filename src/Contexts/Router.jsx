@@ -2,6 +2,7 @@ import { createContext, useEffect, useState, useRef } from "react"
 import HomeIndex from "../Pages/LandingPage/Index"
 import LoginIndex from "../Pages/Login/Index"
 import SignupIndex from "../Pages/Signup/Index"
+import CreatePostIndex from "../Pages/CreatePost/Index"
 
 
 export const Router = createContext()
@@ -21,6 +22,7 @@ export const RouterProvider = ({ children }) => {
     { path: `#home`, component: <HomeIndex /> },
     { path: `#login`, component: <LoginIndex /> },
     { path: `#signup`, component: <SignupIndex /> },
+    {path: `#create-post`, component: <CreatePostIndex />}
   ]
 
   const [errorPageType, setErrorPageType] = useState(null)

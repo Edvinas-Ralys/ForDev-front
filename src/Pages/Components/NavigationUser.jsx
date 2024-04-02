@@ -1,21 +1,29 @@
+import { useContext } from "react"
 import { Logo } from "../../Icons/Icons"
+import { Authorization } from "../../Contexts/Authorization"
+import useLogin from "../../Hooks/useLogin"
 
-function Navigation() {
+function NavigationUser() {
+
+    const {logout} = useLogin()
+
   return (
     <div className="navigation">
       <nav>
         <div className="left">
           <ul>
             <div className="search-icon"></div>
-            <li className="double">How it works</li>
+            <li className="double">Search</li>
+            <li className="double">My feed</li>
           </ul>
         </div>
         <div className="center"><Logo /></div>
         <div className="right">
           <ul>
-            <li><a href="#signup">Sign up</a></li>
-            <li>
-              <a href="#login">Log in</a>
+            <li><a href="#signup">Profile</a></li>
+
+            <li onClick={logout}>
+              Log out
             </li>
             <li>
             </li>
@@ -29,4 +37,4 @@ function Navigation() {
   )
 }
 
-export default Navigation
+export default NavigationUser

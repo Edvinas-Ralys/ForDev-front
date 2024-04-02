@@ -6,15 +6,13 @@ export const Authorization = createContext()
 export const AuthorizationProvider = ({ children }) => {
   //*User state from local storage. If there is no token and user then null
   const [user, setUser] = useState(_ => {
-    const firstName = window.localStorage.getItem(`firstName`)
-    const lastName = window.localStorage.getItem(`lastName`)
+    const username = window.localStorage.getItem(`username`)
     const role = window.localStorage.getItem(`role`)
     const id = window.localStorage.getItem(`id`)
     const token = window.localStorage.getItem(`token`)
-    return firstName
+    return username
       ? {
-        firstName,
-        lastName,
+        username,
           role,
           id,
           token
@@ -25,13 +23,12 @@ export const AuthorizationProvider = ({ children }) => {
   const [doLogout, setDoLogout] = useState(false)
 
   //*Sets user and token to lacal storage
-  const login = (firstName, lastName, role, id, token) => {
-    window.localStorage.setItem(`firstName`, firstName)
-    window.localStorage.setItem(`lastName`, lastName)
+  const login = (username, role, id, token) => {
+    window.localStorage.setItem(`username`, username)
     window.localStorage.setItem(`role`, role)
     window.localStorage.setItem(`id`, id)
     window.localStorage.setItem(`token`, token)
-    setUser({ firstName, lastName,  role, id, token })
+    setUser({ username,  role, id, token })
   }
 
   return (

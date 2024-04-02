@@ -11,10 +11,12 @@ import {
 } from "../../Functions/signupFormValidation"
 import { Messages } from "../../Contexts/Messages"
 import useSignup from "../../Hooks/useSignup"
+import { Authorization } from "../../Contexts/Authorization"
 
 function Index() {
+  const { user } = useContext(Authorization)
   const [username, setUsername] = useState({ value: ``, style: original, validated: false })
-  const {setSignUpInfo} = useSignup()
+  const { setSignUpInfo } = useSignup()
   const { messages } = useContext(Messages)
   const [email, setEmail] = useState({ value: ``, style: original, validated: false })
   const [confirmEmail, setConfirmEmail] = useState({ value: ``, style: original, validated: false })
@@ -38,15 +40,12 @@ function Index() {
   })
 
   const handleSignup = _ => {
-    if(!username.validated || !email.validated || !confirmEmail.validated || !confirmPassword.validated || !password.validated){
-      return
-    }
     setSignUpInfo({
       username: username?.value,
       password: password?.value,
       confirmPassword: confirmPassword?.value,
-      email:email?.value,
-      confirmEmail:confirmEmail?.value
+      email: email?.value,
+      confirmEmail: confirmEmail?.value,
     })
   }
 
@@ -54,7 +53,7 @@ function Index() {
     _ => {
       if (messages.length === 0 || messages[0].location !== `sign-up`) {
         return
-      } else if (messages[0].cause === `email` || messages[0].cause === `email-match` ) {
+      } else if (messages[0].cause === `email` || messages[0].cause === `email-match`) {
         setEmail(prev => ({ ...prev, value: ``, style: notValidatedStyle, validated: false }))
         setConfirmEmail(prev => ({
           ...prev,
@@ -62,23 +61,20 @@ function Index() {
           style: notValidatedStyle,
           validated: false,
         }))
-      } else if (messages[0].cause === `password-match`){
+      } else if (messages[0].cause === `password-match`) {
         setPasswordValidated(false)
-        setPassword(prev => ({...prev, value:``, }))
-        setConfrimPassword(prev => ({...prev, value:``, validated:false}))
-      }
-       else if (messages[0].cause === `username`){
+        setPassword(prev => ({ ...prev, value: `` }))
+        setConfrimPassword(prev => ({ ...prev, value: ``, validated: false }))
+      } else if (messages[0].cause === `username`) {
         setUsername(prev => ({ ...prev, value: ``, style: notValidatedStyle, validated: false }))
-      }
-      else if (messages[0].cause === `fields`) {
+      } else if (messages[0].cause === `fields`) {
         username.value === `` &&
           setUsername(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
         email.value === `` &&
           setEmail(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
         confirmEmail.value === `` &&
           setConfirmEmail(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
-        password.value === `` &&
-        setPasswordValidated(false)
+        password.value === `` && setPasswordValidated(false)
         confirmPassword.value === `` &&
           setConfrimPassword(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
       }
@@ -99,6 +95,10 @@ function Index() {
     },
     [password]
   )
+
+  if (user) {
+    return (window.location.href = `#home`)
+  }
 
   return (
     <div className="sign-up-page">
@@ -127,27 +127,27 @@ function Index() {
               </div>
             </div>
             <div className="form-element">
-                  <div className="floating-label-group">
-                    <label className="floating-label">Email</label>
-                    <input
-                      type="email"
-                      value={email.value}
-                      onChange={e => handleEmailValidation(e, setEmail)}
-                      style={email.style}
-                    />
-                  </div>
-                </div>
-                <div className="form-element">
-                  <div className="floating-label-group">
-                    <label className="floating-label">Confirm Email</label>
-                    <input
-                      type="email"
-                      value={confirmEmail.value}
-                      onChange={e => handleEmailValidationConfirm(e, email.value, setConfirmEmail)}
-                      style={confirmEmail.style}
-                    />
-                  </div>
-                </div>
+              <div className="floating-label-group">
+                <label className="floating-label">Email</label>
+                <input
+                  type="email"
+                  value={email.value}
+                  onChange={e => handleEmailValidation(e, setEmail)}
+                  style={email.style}
+                />
+              </div>
+            </div>
+            <div className="form-element">
+              <div className="floating-label-group">
+                <label className="floating-label">Confirm Email</label>
+                <input
+                  type="email"
+                  value={confirmEmail.value}
+                  onChange={e => handleEmailValidationConfirm(e, email.value, setConfirmEmail)}
+                  style={confirmEmail.style}
+                />
+              </div>
+            </div>
 
             <div className="form-element">
               <div className="floating-label-group">

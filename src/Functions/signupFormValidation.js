@@ -101,7 +101,6 @@ export const validatePassword = (e, inputSetter, input) => {
   }
   inputSetter(prev => ({ ...prev, value: e.target.value }))
 
-
 }
 
 

@@ -56,33 +56,37 @@ function Layout() {
     <>
       {!user ? <Navigation /> : <NavigationUser />}
       <div className="landing-page">
-        {!user && <NewUserCard />}
         <div
           style={{ top: `${4 * (squareSize + 7)}px`, left: `${4 * (squareSize + 12)}px` }}
           className="landing-page-text"
         >
           <div className="static-text">
-            <div className="text">Welcome to our</div>
-            <div className="text">Web Dev Community</div>
+            <div className="text">Welcome to our Web Dev Community</div>
+            <div className="sub-text">
+              Connect with web developers from all around the world
+            </div>
+          </div>
+          <div className="changing-letters">
+
           </div>
           <div className="changing-letters">
             <div
               data-value={`${firstWord[iterationsCount]}`}
-              className="unite"
+              className="changing-text"
               ref={first}
               value={firstWord[iterationsCount]}
             >
               {firstWord[iterationsCount]}
             </div>
-            <div ref={second} data-value={`${secondWord[iterationsCount]}`} className="code">
+            <div ref={second} data-value={`${secondWord[iterationsCount]}`} className="changing-text">
               {secondWord[iterationsCount]}
             </div>
-            <div ref={third} data-value={`${thirdWord[iterationsCount]}`} className="inspire">
+            <div ref={third} data-value={`${thirdWord[iterationsCount]}`} className="changing-text">
               {thirdWord[iterationsCount]}
             </div>
           </div>
         </div>
-        {user && <button className="create-post"><a href="#create-post">Create a Post</a></button>}
+
 
       </div>
     </>

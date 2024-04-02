@@ -11,9 +11,11 @@ textarea {
   width: 100%;
   padding-top: 35px;
   cursor: pointer;
-  color: #000;
+  color: $text;
   background-color: $primary-transperant;
-  border: none;
+  // background: linear-gradient($primary-transperant, $background-dark);
+  border: 2px solid $accent;
+  // border: none;
   transition: 0.2s ease-in-out;
   color: $text;
   &:focus{
@@ -21,6 +23,7 @@ textarea {
       background-color: $background-dark;
       color: #fff;
       outline: none;
+      outline: 2px solid $primary;
   }
 
 }
@@ -48,6 +51,8 @@ textarea {
     top: 4px;
     left: 12px;
     transition: all 0.1s ease;
+    color: $text;
+    font-weight: 500;
   }
 }
 

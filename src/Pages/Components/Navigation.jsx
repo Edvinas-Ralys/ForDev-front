@@ -5,23 +5,22 @@ function Navigation() {
     <div className="navigation">
       <nav>
         <div className="left">
-          <ul>
-            <div className="search-icon"></div>
-            <li className="double">How it works</li>
-          </ul>
+          <Logo />
         </div>
-        <div className="center"><Logo /></div>
+
         <div className="right">
+
           <ul>
-            <li><a href="#signup">Sign up</a></li>
+          <li className="double">How it works</li>
+            <li>
+              <a href="#signup">Sign up</a>
+            </li>
             <li>
               <a href="#login">Log in</a>
             </li>
-            <li>
-            </li>
-            <label htmlFor="hamburger-menu" className="hamburger-menu">
+            {/* <label htmlFor="hamburger-menu" className="hamburger-menu">
               <input type="checkbox" name="" id="hamburger-menu" />
-            </label>
+            </label> */}
           </ul>
         </div>
       </nav>

@@ -4,6 +4,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
+  background-color: $background;
   .create-post{
     width: 100%;
     display: flex;
@@ -19,10 +20,10 @@
 
 .create-content {
   margin-top: 1.5rem;
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   .title {
     text-align: start;
     font-size: 3rem;
@@ -86,7 +87,7 @@
               }
               img {
                 width: 100%;
-                max-height: 500px;
+                max-height: 350px;
                 object-fit: contain;
               }
             }
@@ -104,11 +105,12 @@
           gap: 0.7rem;
           justify-content: center;
           .tag {
-            border: 1px solid #fff;
+            border: 1px solid $accent;
             padding: 5px 14px;
             border-radius: 10rem;
-            background-color: $primary;
-            color: $text-dark;
+            background-color: $primary-transperant;
+            // background: linear-gradient(toLeft,$background-dark, $primary-transperant) ;
+            color: $text;
             cursor: pointer;
             user-select: none;
             transition: 0.2s ease-in-out;

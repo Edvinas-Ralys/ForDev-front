@@ -50,19 +50,19 @@ const [gridSize, setGrindSize] = useState(_ => {
 
 
 
-const bgContainer = useRef()
-useEffect(
-  _ => {
-    for (let i = 0; i < gridSize; i++) {
-      const square = document.createElement(`div`)
-      square.className = `square`
-      square.style.width = `${windowWidth / squareSize}px`
-      square.style.height = `${windowWidth / squareSize}px`
-      bgContainer?.current.appendChild(square)
-    }
-  },
-  [bgContainer, window]
-)
+// const bgContainer = useRef()
+// useEffect(
+//   _ => {
+//     for (let i = 0; i < gridSize; i++) {
+//       const square = document.createElement(`div`)
+//       square.className = `square`
+//       square.style.width = `${windowWidth / squareSize}px`
+//       square.style.height = `${windowWidth / squareSize}px`
+//       bgContainer?.current.appendChild(square)
+//     }
+//   },
+//   [bgContainer, window]
+// )
 
 
   return (
@@ -70,7 +70,6 @@ useEffect(
       value={{ params, route, setErrorPageType, setLoading, loading, setParams, setRoute }}
     >
       <>
-      <div ref={bgContainer} className="background"></div>
       {currentComponent}
       </>
 

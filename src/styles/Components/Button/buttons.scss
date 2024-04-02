@@ -7,8 +7,8 @@ button{
     cursor: pointer;
     transition: 0.2s ease-in-out;
     &:hover{
-        scale: 1.1;
-        transform: translateY(-2px);
+        scale: 1.05;
+        transform: translateY(-1px);
         transition: 0.2s ease-in-out;
         background-color: $primary;
         color: $text-dark;

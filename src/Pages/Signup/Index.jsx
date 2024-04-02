@@ -3,6 +3,8 @@ import {
   handleInputValidation,
   original,
   handlePasswordConfirm,
+  handleEmailValidationConfirm,
+  handleEmailValidation,
   validatePassword,
   validatedStyle,
   notValidatedStyle,
@@ -14,8 +16,10 @@ function Index() {
   const [username, setUsername] = useState({ value: ``, style: original, validated: false })
   const {setSignUpInfo} = useSignup()
   const { messages } = useContext(Messages)
+  const [email, setEmail] = useState({ value: ``, style: original, validated: false })
+  const [confirmEmail, setConfirmEmail] = useState({ value: ``, style: original, validated: false })
   const [passwordValidated, setPasswordValidated] = useState(null)
-  const [passwordConfirm, setPasswordConfirm] = useState({
+  const [confirmPassword, setConfrimPassword] = useState({
     value: ``,
     style: original,
     validated: false,
@@ -35,11 +39,49 @@ function Index() {
 
   const handleSignup = _ => {
     setSignUpInfo({
-      username: username.value,
-      password: password.value,
-      passwordValidated: passwordValidated.value,
+      username: username?.value,
+      password: password?.value,
+      confirmPassword: confirmPassword?.value,
+      email:email?.value,
+      confirmEmail:confirmEmail?.value
     })
   }
+
+  useEffect(
+    _ => {
+      if (messages.length === 0 || messages[0].location !== `sign-up`) {
+        return
+      } else if (messages[0].cause === `email` || messages[0].cause === `email-match` ) {
+        setEmail(prev => ({ ...prev, value: ``, style: notValidatedStyle, validated: false }))
+        setConfirmEmail(prev => ({
+          ...prev,
+          value: ``,
+          style: notValidatedStyle,
+          validated: false,
+        }))
+      } else if (messages[0].cause === `password-match`){
+        setPasswordValidated(false)
+        setPassword(prev => ({...prev, value:``, }))
+        setConfrimPassword(prev => ({...prev, value:``, validated:false}))
+      }
+       else if (messages[0].cause === `username`){
+        setUsername(prev => ({ ...prev, value: ``, style: notValidatedStyle, validated: false }))
+      }
+      else if (messages[0].cause === `fields`) {
+        username.value === `` &&
+          setUsername(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
+        email.value === `` &&
+          setEmail(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
+        confirmEmail.value === `` &&
+          setConfirmEmail(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
+        password.value === `` &&
+        setPasswordValidated(false)
+        confirmPassword.value === `` &&
+          setConfrimPassword(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
+      }
+    },
+    [messages, setUsername, setEmail, setConfirmEmail, setPassword, setConfrimPassword]
+  )
 
   useEffect(
     _ => {
@@ -81,6 +123,28 @@ function Index() {
                 />
               </div>
             </div>
+            <div className="form-element">
+                  <div className="floating-label-group">
+                    <label className="floating-label">Email</label>
+                    <input
+                      type="email"
+                      value={email.value}
+                      onChange={e => handleEmailValidation(e, setEmail)}
+                      style={email.style}
+                    />
+                  </div>
+                </div>
+                <div className="form-element">
+                  <div className="floating-label-group">
+                    <label className="floating-label">Confirm Email</label>
+                    <input
+                      type="email"
+                      value={confirmEmail.value}
+                      onChange={e => handleEmailValidationConfirm(e, email.value, setConfirmEmail)}
+                      style={confirmEmail.style}
+                    />
+                  </div>
+                </div>
 
             <div className="form-element">
               <div className="floating-label-group">
@@ -104,9 +168,9 @@ function Index() {
                 <label className="floating-label">Confirm Password</label>
                 <input
                   type="password"
-                  value={passwordConfirm.value}
-                  onChange={e => handlePasswordConfirm(e, password.value, setPasswordConfirm)}
-                  style={passwordConfirm.style}
+                  value={confirmPassword.value}
+                  onChange={e => handlePasswordConfirm(e, password.value, setConfrimPassword)}
+                  style={confirmPassword.style}
                 />
               </div>
             </div>

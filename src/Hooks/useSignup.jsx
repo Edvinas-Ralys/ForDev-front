@@ -18,31 +18,21 @@ function useSignup() {
       axios
         .post(`${SERVER_URL}/users`, { ...signUpInfo, roles: [`user`] }, { withCredentials: true })
         .then(res => {
-          console.log(res.data)
-          // window.location.href = `#login`
+          window.location.href = `#login`
+          addMessage(res.data.message)
         })
         .catch(err => {
-          console.log(err)
+          // console.log(err)
           if (err.code === `ERR_NETWORK`) {
             setErrorPageType(`network_err`)
           } else if (err?.response?.status === 403 && err?.response?.data.type === `validation`) {
             addMessage(`Validation error`)
           } else if (err?.response?.status === 500 && err?.response?.data.type === `databse`) {
-            addMessage(`Database error`)
+            addMessage({text:`Database error`, type:`error`, location:`sign-up`, cause:`db`})
           } else if (err?.response?.status === 409) {
-            addMessage({
-              text: `Email is already used`,
-              type: `error`,
-              location: `sign-up`,
-              cause: `email`,
-            })
-          } else if (err?.response?.status === 400) {
-            addMessage({
-              text: `All fields are required`,
-              type: `error`,
-              location: `sign-up`,
-              cause: `fields`,
-            })
+            addMessage(err.response.data.message)
+          } else if (err?.response?.status === 400){
+            addMessage(err.response.data.message)
           }
         })
         .finally(_ => {

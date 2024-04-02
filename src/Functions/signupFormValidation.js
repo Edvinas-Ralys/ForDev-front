@@ -37,6 +37,15 @@ export const handleEmailValidation = (e, inputSetter) => {
   inputSetter(prev => ({ ...prev, value: e.target.value }))
 }
 
+export const handleEmailValidationConfirm = (e, valueToMatch, inputSetter) => {
+  if (v.val([e.target.value, valueToMatch], [v.isSame]) === true) {
+    inputSetter(prev => ({ ...prev, style: validatedStyle, validated: true }))
+  } else {
+    inputSetter(prev => ({ ...prev, style: notValidatedStyle, validated: false }))
+  }
+  inputSetter(prev => ({ ...prev, value: e.target.value }))
+}
+
 export const handlePasswordConfirm = (e, valueToMatch, inputSetter) => {
   if (v.val([e.target.value, valueToMatch], [v.isSame]) === true) {
     inputSetter(prev => ({ ...prev, style: validatedStyle, validated: true }))

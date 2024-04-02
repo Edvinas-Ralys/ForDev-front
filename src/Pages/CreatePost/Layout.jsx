@@ -16,7 +16,7 @@ function Layout() {
 
   return (
     <>
-    {preview && params[0] === `preview` ? <Preview /> :  <Create setPreview={setPreview} />}
+    {preview && params[0] === `preview` ? <Preview preview={preview} /> :  <Create setPreview={setPreview} />}
     </>
   )
 }

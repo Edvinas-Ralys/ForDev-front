@@ -1,0 +1,33 @@
+.preview-page{
+    height: 100vh;
+    width: 100vw;
+    background-color: $background;
+    display: flex;
+    justify-content: center;
+
+    .preview-content{
+        margin-top: 50px;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        .post-title{
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .view-image{
+            // height: 35vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            img{
+                width: 70%;
+            }
+        }
+        .creator{
+            font-size: 1.5rem;
+        }
+    }
+}

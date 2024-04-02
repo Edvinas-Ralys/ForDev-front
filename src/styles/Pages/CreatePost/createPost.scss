@@ -108,14 +108,16 @@
             border: 1px solid $accent;
             padding: 5px 14px;
             border-radius: 10rem;
-            background-color: $primary-transperant;
+            // background-color: $primary-transperant;
+            background-color: $background-dark;
             // background: linear-gradient(toLeft,$background-dark, $primary-transperant) ;
             color: $text;
             cursor: pointer;
             user-select: none;
             transition: 0.2s ease-in-out;
             &:hover {
-              background-color: $background-dark;
+              // background-color: $background-dark;
+              background-color: $primary-transperant;
               scale: 1.05;
               border: 1px solid $accent;
               color: $text;
@@ -123,7 +125,8 @@
             }
           }
           .selected-tag {
-            background-color: $background-dark;
+            background-color: $primary-transperant;
+            // background-color: $background-dark;
             scale: 1.05;
             border: 1px solid $accent;
             color: $text;

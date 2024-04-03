@@ -3,14 +3,14 @@ import useLogin from "../../Hooks/useLogin"
 import { useContext } from "react"
 import { Authorization } from "../../Contexts/Authorization"
 
-function NavigationUser() {
+function NavigationUser({offset, setComponentToScroll}) {
   const { logout } = useLogin()
   const { user } = useContext(Authorization)
 
   return (
-    <div className="navigation">
-      <nav>
-        <div className="left">
+    <div className={`navigation ${offset ? `scrolled` : ``}`}>
+      <nav className={`${offset ? `scrolled` : ``}`}>
+        <div onClick={_=>setComponentToScroll(`main`)} className="left">
           <Logo />
         </div>
         <div className="center"></div>
@@ -21,7 +21,7 @@ function NavigationUser() {
                 <a href="#create-post">Create a Post</a>
               </button>
             )}
-            <li>Explore</li>
+            <li onClick={_=>setComponentToScroll(`explore`)}>Explore</li>
             <li className="double">Search</li>
             <li className="double">My feed</li>
             <li>

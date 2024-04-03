@@ -7,44 +7,39 @@ textarea {
   font-family: "Futura PT", sans-serif;
   padding: 12px 17px;
   font-size: 1.2rem;
-  border-radius: 10px;
+  // border-radius: 10px;
   width: 100%;
-  padding-top: 35px;
+  padding-top: 20px;
   cursor: pointer;
   color: $text;
   background-color: $primary-transperant;
-  // background: linear-gradient($primary-transperant, $background-dark);
-  border: 2px solid $accent;
-  // border: none;
+  border: 1px solid #fff;
   transition: 0.2s ease-in-out;
   color: $text;
-  &:focus{
-      transition: 0.2s ease-in-out;
-      background-color: $background-dark;
-      color: #fff;
-      outline: none;
-      outline: 2px solid $primary;
+  &:focus {
+    transition: 0.2s ease-in-out;
+    background-color: $background-dark;
+    color: #fff;
+    outline: none;
+    outline: 2px solid $primary;
   }
-
 }
 
-.unselected{
+.unselected {
   color: gray;
 }
-
-
 
 .floating-label-group {
   position: relative;
   width: 100%;
-  .currency{
+  .currency {
     position: absolute;
     right: 10px;
     top: 20px;
   }
 
   .floating-label {
-    font-size: 20px;
+    font-size: 15px;
     color: $accent;
     position: absolute;
     pointer-events: none;
@@ -56,7 +51,7 @@ textarea {
   }
 }
 
-input.donate{
+input.donate {
   margin-top: 20px;
   height: 40px;
   padding: 4px 10px;

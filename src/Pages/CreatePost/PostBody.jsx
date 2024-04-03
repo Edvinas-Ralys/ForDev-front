@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { SERVER_URL } from "../../Data/main"
 import { Authorization } from "../../Contexts/Authorization"
+import parse from 'html-react-parser';
 
 function PostBody({ preview }) {
   const { user } = useContext(Authorization)
@@ -33,7 +34,7 @@ function PostBody({ preview }) {
         <span>{currFundrasier.type}</span> */}
       </div>
       <div className="story-container">
-      <div className="story">{preview.text}</div>
+      <div className="story">{parse(preview.text)}</div>
       </div>
 
     </>

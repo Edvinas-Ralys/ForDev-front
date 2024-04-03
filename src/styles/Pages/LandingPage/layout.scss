@@ -1,86 +1,105 @@
 .landing-page {
   position: relative;
-  height: 70vh;
+  // height: 85vh;
   width: 100vw;
   font-family: nunito;
   overflow-x: hidden;
   position: relative;
   // background-color: $background;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
-  .background{
-    position: absolute;
-    top: 0;
-    height: 70vh;
-    width: 100%;
+  overflow: hidden;
+  .banner{
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    z-index: 1;
-    img{
-      height: 70vh;
-      width: 100%;
+    // position: relative;
+    height: 100vh;
+    width: 100vw;
+    .background{
+      position: absolute;
       top: 0;
-      object-fit: cover;
-      // z-index: -10;
-      filter: brightness(0.4);
-    }
-  }
-
-
-  .landing-page-text {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 10;
-    // position: absolute;
-    // margin-top: 150px;
-    // width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-    .changing-letters {
-      gap: 1rem;
-      font-size: 1.5rem;
-      user-select: none;
+      height: 100vh;
+      width: 100%;
       display: flex;
-      justify-content: space-between;
-      margin-top: 30px;
-      width: 30%;
-      .changing-text{
-        width: 25%;
-        text-align: center;
-      }
-    }
-    .static-text {
-      font-size: 3rem;
-      font-weight: 500;
-      letter-spacing: -2px;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      .text {
-        width: fit-content;
-        padding: 0;
-          font-weight: 700;
+      flex-direction: column;
+      z-index: 1;
+
+      .image-container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+          height: auto;
+          width: 150%;
+          top: 0;
+          object-fit: cover;
+          scale: 0.85;
+          filter: brightness(0.2) saturate(2) blur(5px);
+
+        }
       }
-      .sub-text{
-        font-size: 1.8rem;
-        color: gray;
-        letter-spacing: -1px;
+
+    }
+    .landing-page-text {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      .changing-letters {
+        gap: 1rem;
+        font-size: 1.5rem;
+        user-select: none;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        width: 30%;
+        .changing-text{
+          width: 25%;
+          text-align: center;
+        }
+      }
+      .static-text {
+        font-size: 3rem;
+        font-weight: 500;
+        letter-spacing: -2px;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        .text {
+          width: fit-content;
+          padding: 0;
+            font-weight: 700;
+        }
+        .sub-text{
+          font-size: 1.8rem;
+          color: rgb(163, 163, 163);
+          letter-spacing: -1px;
+          font-weight: 600;
+        }
       }
     }
   }
-  .create-post{
-    position: absolute;
-    right: 200px;
-    top: 130px;
-  }
+
+}
+
+.explore{
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient( $background, $background-dark);
+  background-color: $grandient;
+  z-index: 1000;
 }

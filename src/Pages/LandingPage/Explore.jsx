@@ -1,9 +1,8 @@
 import React from "react"
 
-function Explore() {
+function Explore({explore}) {
   return (
-    <div className="explore-card">
-      <div className="card-content">Explore</div>
+    <div ref={explore} id="#explore" className="explore">
     </div>
   )
 }

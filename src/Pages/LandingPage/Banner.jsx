@@ -1,12 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback, useContext } from "react"
-import Navigation from "../Components/Navigation"
 import { Authorization } from "../../Contexts/Authorization"
-import NavigationUser from "../Components/NavigationUser"
 import { SERVER_URL } from "../../Data/main"
-import Explore from "./Explore"
 
 function Banner({imgStyles}) {
-    const { user } = useContext(Authorization)
     const [firstWord, setFirstWord] = useState([`UNITE`, `UNIFY`, `COLLAB`])
     const [secondWord, setSecondWord] = useState(["CODE", "LEARN", "ADAPT"])
     const [thirdWord, setThirdWord] = useState(["INSPIRE", "ENCOURAGE", "EMPOWER"])

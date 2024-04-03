@@ -5,6 +5,7 @@ import { CameraIcon } from "../../Icons/Icons"
 import { Editor } from "primereact/editor"
 import parse from "html-react-parser"
 import { InputText } from "primereact/inputtext"
+import { header } from "../../Functions/richText"
 
 function Create({ setPreview }) {
   const {
@@ -56,53 +57,43 @@ function Create({ setPreview }) {
   // useEffect(
   //   _ => {
   //     console.log(content)
-  //     console.log(text.current.props)
+  //     // console.log(text.current.props)
   //   },
   //   [content]
   // )
 
-  const renderCustomToolbar = _ => {
-    return (
-      <div id="toolbar-container">
-        <span className="ql-formats">
-          <button className="ql-bold" aria-label="Bold"></button>
-          <button className="ql-italic" aria-label="Italic"></button>
-          <button className="ql-code-block" aria-label="Code"></button>
-          <button className="ql-underline" aria-label="Underline"></button>
-        </span>
-        <select className="ql-size" aria-label="Size"></select>
-        <span className="ql-formats">
-          <select className="ql-color"></select>
-          <select className="ql-background"></select>
-        </span>
-      </div>
-    )
+  const handleTextContent = value =>{
+    if(value.includes(`<img src`)){
+      const image = value.substr(3, (value.length-7))
+      console.log(image)
+    }
   }
-  const header = renderCustomToolbar()
+
+
 
   return (
     <>
       <div className="create-post-page">
         <div className="create-content">
           <div className="title">Create A Post</div>
-          <div className="test-text">{parse(content)}</div>
+          {/* <div className="test-text">{parse(content)}</div> */}
           <div className="creation-form">
             <div className="form">
               <div className="form-top">
                 <div className="left">
                   <div className="form-element">
-                  <div className="floating-label-group">
-                    <label className="floating-label">Title</label>
-                    <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
+                    <div className="floating-label-group">
+                      <label className="floating-label">Title</label>
+                      <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
+                    </div>
                   </div>
-                </div>
                   <div className="form-element">
                     <div className="floating-label-group">
                       <Editor
-                        // headerTemplate={header}
                         ref={text}
-                        value={content}
-                        onTextChange={e => setContent(e.htmlValue)}
+                        value={content.text}
+                        // onTextChange={e => setContent(e.htmlValue)}
+                        onTextChange={e => handleTextContent(e.htmlValue)}
                         style={{ height: "35vh" }}
                       />
                     </div>

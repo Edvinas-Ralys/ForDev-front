@@ -29,20 +29,7 @@
   }
 }
 
-ul {
-  button {
-    a {
-      text-decoration: none;
-    }
-  }
-  li {
-    font-size: 1rem;
-    list-style: none;
-    a {
-      text-decoration: none;
-    }
-  }
-}
+
 
 nav {
   // display: flex;
@@ -84,10 +71,6 @@ nav {
     background-color: $background-transperent;
   }
 
-  .left,
-  .right > ul {
-    display: flex;
-  }
   .left {
     padding-left: 30px;
     .logo {
@@ -100,25 +83,39 @@ nav {
       }
     }
   }
-  .right > ul {
+  .right {
     gap: 1rem;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
     padding-right: 50px;
-  }
-  li {
-    cursor: pointer;
-    padding: 20px;
-    &:not(li:has(button)) {
-      // padding: 2px 4px;
-      border-radius: 4px;
-      transition: 0.2s ease-in-out background-color;
+    div {
+      cursor: pointer;
+      padding: 20px;
+      list-style: none;
+      font-size: 1rem;
+      // list-style-type: disc;
+      &:not(div:has(button)) {
+        // padding: 2px 4px;
+        border-radius: 4px;
+        transition: 0.2s ease-in-out background-color;
+      }
+      &:not(div:has(button)):hover {
+        background-color: $background-dark;
+        transition: 0.2s ease-in-out background-color;
+      }
+      a{
+        text-decoration: none;
+      }
+      .create-post{
+        text-decoration: none;
+        a{
+          text-decoration: none;
+        }
+      }
     }
-    &:not(li:has(button)):hover {
-      background-color: $background-dark;
-      transition: 0.2s ease-in-out background-color;
-    }
   }
+
   .right {
     width: fit-content;
     .nav-profile-card {
@@ -144,18 +141,18 @@ nav {
     }
   }
 
-  li {
-    text-align: center;
-    &.double {
-      display: flex;
-      align-items: center;
-      .magnify,
-      .chevron {
-        height: 24px;
-        transition: 0.4s transform;
-      }
-    }
-  }
+  // li {
+  //   text-align: center;
+  //   &.double {
+  //     display: flex;
+  //     align-items: center;
+  //     .magnify,
+  //     .chevron {
+  //       height: 24px;
+  //       transition: 0.4s transform;
+  //     }
+  //   }
+  // }
   .dropdown {
     position: relative;
   }

@@ -10,7 +10,10 @@ export const PostProvider = ({ children }) => {
   const { setStorePost } = usePost(dispatchPosts)
   const { image, setImage, readImage } = useImage()
   const [title, setTitle] = useState(``)
-  const [content, setContent] = useState(``)
+  const [content, setContent] = useState({
+    text:``,
+    images:[]
+  })
   const [categories, setCategories] = useState([])
   const [postImage, setPostImage] = useState(null)
 

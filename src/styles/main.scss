@@ -1,10 +1,9 @@
-@import "./Components/Quill/quill.bubble.scss";
-@import "./Components/Quill/quill.core.scss";
-@import "./Components/Quill/quill.snow.scss";
-@import "./Components/Quill/NoEdit/quill.bubble-no-edit.scss";
-@import "./Components/Quill/NoEdit/quill.core-no-edit.scss";
-@import "./Components/Quill/NoEdit/quill.snow-no-edit.scss";
-
+// @import "./Components/Quill/quill.bubble.scss";
+// @import "./Components/Quill/quill.core.scss";
+// @import "./Components/Quill/quill.snow.scss";
+// @import "./Components/Quill/NoEdit/quill.bubble-no-edit.scss";
+// @import "./Components/Quill/NoEdit/quill.core-no-edit.scss";
+// @import "./Components/Quill/NoEdit/quill.snow-no-edit.scss";
 
 @import "./variables.scss";
 @import "./Pages/LandingPage/layout.scss";
@@ -17,11 +16,17 @@
 @import "./Pages/CreatePost/createPost.scss";
 @import "./Pages/CreatePost/previewPost.scss";
 
+@import "./Components/Quill/quill.bubble.scss";
+@import "./Components/Quill/quill.core.scss";
+@import "./Components/Quill/quill.snow.scss";
+@import "./Components/Quill/NoEdit/quill.bubble-no-edit.scss";
+@import "./Components/Quill/NoEdit/quill.core-no-edit.scss";
+@import "./Components/Quill/NoEdit/quill.snow-no-edit.scss";
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: inherit;
   color: $text;
 }
 
@@ -32,8 +37,8 @@ body {
   background-color: black;
 }
 
-.ql-syntax{
-  background-color: rgba(128, 128, 128, 0.219)!important;
+.ql-syntax {
+  background-color: rgba(128, 128, 128, 0.219) !important;
   width: fit-content;
   padding: 10px;
   border-radius: 5px;
@@ -45,29 +50,8 @@ body {
   background-color: black !important;
 }
 
-.background {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  gap: 1px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: linear-gradient($background, $background-dark);
-  .square {
-    border: 1px solid rgba(128, 128, 128, 0.123);
-    border-radius: 2px;
-    opacity: 0.5;
-    transition: 0.05s ease-in-out;
-    top: 0;
-    &:hover {
-      transition: 0.05s ease-in-out;
-      background-color: $primary-transperant;
-    }
-  }
+button.ql-image {
+  display: none !important;
 }
 
 //Scrollbar

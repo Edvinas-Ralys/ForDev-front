@@ -8,7 +8,6 @@ function DeleteModal({ setDeletePost, currentItem, deletePost }) {
   const handleDeletePost = _ => {
     setDeletePost(null)
     setDestroyPost(deletePost)
-    console.log(deletePost)
   }
   return (
     <div className="delete-modal">

@@ -12,3 +12,17 @@ export function createPost(data) {
     payload: data,
   }
 }
+
+export function addComment(data){
+  return {
+    type: constants.ADD_COMMENT,
+    payload: data
+  }
+}
+
+export function deleteComment(data){
+  return {
+    type:constants.REMOVE_COMMENT,
+    payload:data
+  }
+}

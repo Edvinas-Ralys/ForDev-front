@@ -13,13 +13,18 @@ function usePost(dispatchPosts) {
   const [storePost, setStorePost] = useState(null)
   const [storeComment, setStoreComment] = useState(null)
   const [destroyPost, setDestroyPost] = useState(null)
+  const [destroyComment, setDestroyComment] = useState(null)
   const [loading, setLoading] = useState(false)
   const [getNumberOfPosts, setGetNumberOfPosts] = useState({
     limit: 10,
     skip: 0,
   })
-  let delConfig = {
-    data: { destroyPost },
+  let delPostConfig = {
+    data: { ...destroyPost, deleteType:`post` },
+    headers: { Authorization: `Bearer ${user?.token}` },
+  }
+  let delCommentConfig = {
+    data: { ...destroyComment, deleteType:`comment` },
     headers: { Authorization: `Bearer ${user?.token}` },
   }
 
@@ -79,19 +84,45 @@ function usePost(dispatchPosts) {
       if (storeComment === null) {
         return
       }
+      setLoading(true)
+      console.log(storeComment)
       const headers = { Authorization: `Bearer ${user.token}` }
       axios
         .patch(`${SERVER_URL}/posts`, storeComment, { headers: headers })
         .then(res => {
-          console.log(res.data)
+          dispatchPosts(a.addComment(res.data))
         })
         .catch(err => {
-          console.log(err)
+          // console.log(err)
+        })
+        .finally(_=>{
+          setStoreComment(null)
+          setLoading(false)
         })
       // console.log(storeComment)
     },
     [storeComment]
   )
+
+  //Delete comment
+  useEffect(_=>{
+    if(destroyComment === null) {
+      return
+    }
+    setLoading(true)
+    axios.delete(`${SERVER_URL}/posts`, delCommentConfig)
+    .then(res => {
+      dispatchPosts(a.deleteComment(destroyComment))
+      addMessage(res.data.message)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    .finally(_=>{
+      setLoading(false)
+    })
+
+  }, [destroyComment])
 
 
   //Delete a post
@@ -100,8 +131,9 @@ function usePost(dispatchPosts) {
       if (destroyPost === null) {
         return
       }
+      setLoading(true)
       axios
-        .delete(`${SERVER_URL}/posts`, delConfig)
+        .delete(`${SERVER_URL}/posts`, delPostConfig)
         .then(res => {
           console.log(res.data)
         })
@@ -110,13 +142,14 @@ function usePost(dispatchPosts) {
         })
         .finally(_ => {
           setDestroyPost(null)
+          setLoading(false)
         })
       console.log(destroyPost)
     },
     [destroyPost]
   )
 
-  return { setStorePost, setStoreComment, setDestroyPost, loading }
+  return { setStorePost, setStoreComment, setDestroyPost, loading, setDestroyComment }
 }
 
 export default usePost

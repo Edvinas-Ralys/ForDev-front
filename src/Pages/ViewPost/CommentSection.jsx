@@ -1,6 +1,14 @@
-import { ProfileIcon } from "../../Icons/Icons"
+import { useContext } from "react"
+import { ProfileIcon, TrashCan } from "../../Icons/Icons"
+import { Authorization } from "../../Contexts/Authorization"
+import { Post } from "../../Contexts/Post"
 
-function CommentSection({ currentItem }) {
+function CommentSection({ currentItem, setDeleteComment }) {
+  const { user } = useContext(Authorization)
+  const {setDestroyComment} = useContext(Post)
+  const handleDeletComment = commentId =>{
+    setDeleteComment({postId:currentItem._id ,commentId, userId:user.id})
+  }
   return (
     <div className="comment-section">
       <div className="comment-container">
@@ -15,6 +23,11 @@ function CommentSection({ currentItem }) {
                 <div className="right">
                   <div className="name">{comment.commenterUsername}</div>
                   <div className="date">{comment.commentPosted}</div>
+                  {Number(user.id) === currentItem.userId && (
+                    <div onClick={_=>handleDeletComment(comment.commentId)} className="trashcan-wrapper">
+                      <TrashCan />
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="bottom">{comment.commentText}</div>

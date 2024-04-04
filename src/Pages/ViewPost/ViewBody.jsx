@@ -5,15 +5,14 @@ import { useContext, useEffect, useState } from "react"
 import { Authorization } from "../../Contexts/Authorization"
 import DeleteModal from "./DeleteModal"
 
-function ViewBody({ currentItem }) {
+function ViewBody({ currentItem, setDeletePost }) {
   const { user } = useContext(Authorization)
-  const [deletePost, setDeletePost] = useState(null)
+  // const [deletePost, setDeletePost] = useState(null)
 
-  console.log(currentItem)
 
   return (
     <>
-      {deletePost && <DeleteModal setDeletePost={setDeletePost} currentItem={currentItem} deletePost={deletePost} />}
+      {/* {deletePost && <DeleteModal setDeletePost={setDeletePost} currentItem={currentItem} deletePost={deletePost} />} */}
 
       <div className="post-title">{currentItem.title}</div>
       <div className="creator">
@@ -32,7 +31,7 @@ function ViewBody({ currentItem }) {
 
         <div className="tags">
           {currentItem?.tags.map((tag, i) => (
-            <div className="post-tag">{tag}</div>
+            <div key={i} className="post-tag">{tag}</div>
           ))}
         </div>
       </div>

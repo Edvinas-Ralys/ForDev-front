@@ -3,6 +3,7 @@ import { PostProvider } from "./Contexts/Post"
 import { RouterProvider } from "./Contexts/Router"
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api"
 import "./styles/main.scss"
+import { LoadingContextProvider } from "./Contexts/LoadingCont"
 
 function App() {
   return (

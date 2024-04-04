@@ -15,7 +15,6 @@ function Layout() {
 
     useEffect(
         _ => {
-            console.log(`useEffect trigger`)
           if (posts.length !== 0) {
             const currPost = posts.find(f => f._id === params[0])
             if (!currPost) {

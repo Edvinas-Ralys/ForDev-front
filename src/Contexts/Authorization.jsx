@@ -1,5 +1,6 @@
 import { createContext, useState } from "react"
 import { MessagerProvider } from "./Messages"
+import { LoadingContextProvider } from "./LoadingCont"
 
 export const Authorization = createContext()
 
@@ -12,10 +13,10 @@ export const AuthorizationProvider = ({ children }) => {
     const token = window.localStorage.getItem(`token`)
     return username
       ? {
-        username,
+          username,
           role,
           id,
-          token
+          token,
         }
       : null
   })
@@ -28,7 +29,7 @@ export const AuthorizationProvider = ({ children }) => {
     window.localStorage.setItem(`role`, role)
     window.localStorage.setItem(`id`, id)
     window.localStorage.setItem(`token`, token)
-    setUser({ username,  role, id, token })
+    setUser({ username, role, id, token })
   }
 
   return (

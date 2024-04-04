@@ -4,6 +4,10 @@ import LoginIndex from "../Pages/Login/Index"
 import SignupIndex from "../Pages/Signup/Index"
 import CreatePostIndex from "../Pages/CreatePost/Index"
 import ViewIndex from "../Pages/ViewPost/Index"
+import Page500 from '../Pages/Err/Page500'
+import NetworkErr from '../Pages/Err/NetworkErr'
+import Page403 from '../Pages/Err/Page403'
+import Page401 from '../Pages/Err/Page401'
 
 export const Router = createContext()
 export const RouterProvider = ({ children }) => {
@@ -26,6 +30,13 @@ export const RouterProvider = ({ children }) => {
     { path: `#view`, component: <ViewIndex /> },
   ]
 
+  const errorPages = [
+    { type: 500, component: <Page500 /> },
+    { type: `network_err`, component: <NetworkErr /> },
+    {type: 403, component: <Page403 />},
+    {type: 401, component: <Page401 />},
+  ]
+
   const [errorPageType, setErrorPageType] = useState(null)
 
   const [loading, setLoading] = useState(false)
@@ -41,35 +52,14 @@ export const RouterProvider = ({ children }) => {
   }, [])
 
   const currentComponent = possibleRoutes.find(r => r.path === route)?.component || `Error page`
-  //   const errorComponent = errorPages.find(e => e.type === errorPageType)?.component || null
+  const errorComponent = errorPages.find(e => e.type === errorPageType)?.component || null
 
-  const windowWidth = 1920
-  const squareSize = 40
-  const [gridSize, setGrindSize] = useState(_ => {
-    return (
-      Math.floor(windowWidth / squareSize) * Math.floor((window.innerHeight - 250) / squareSize)
-    )
-  })
-
-  // const bgContainer = useRef()
-  // useEffect(
-  //   _ => {
-  //     for (let i = 0; i < gridSize; i++) {
-  //       const square = document.createElement(`div`)
-  //       square.className = `square`
-  //       square.style.width = `${windowWidth / squareSize}px`
-  //       square.style.height = `${windowWidth / squareSize}px`
-  //       bgContainer?.current.appendChild(square)
-  //     }
-  //   },
-  //   [bgContainer, window]
-  // )
 
   return (
     <Router.Provider
       value={{ params, route, setErrorPageType, setLoading, loading, setParams, setRoute }}
     >
-      <>{currentComponent}</>
+      <>{errorComponent || currentComponent}</>
     </Router.Provider>
   )
 }

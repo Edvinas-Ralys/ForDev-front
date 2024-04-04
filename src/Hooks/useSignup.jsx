@@ -14,7 +14,7 @@ function useSignup() {
       if (signUpInfo === null) {
         return
       }
-      // setLoading(true)
+      setLoading(true)
       axios
         .post(`${SERVER_URL}/users`, { ...signUpInfo, roles: [`user`] }, { withCredentials: true })
         .then(res => {

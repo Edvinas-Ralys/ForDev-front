@@ -34,9 +34,23 @@
       font-style: italic;
       border-bottom: 1px solid $primary;
       padding-bottom: 10px;
+      position: relative;
       a {
         text-decoration: underline;
         cursor: pointer;
+      }
+      .trash-can{
+        fill:rgba(255, 255, 255, 0.342);
+        height: 50px;
+        width: 50px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        &:hover{
+            fill: red;
+            transition: 0.2s ease-in-out;
+        }
       }
       .tags {
         margin-top: 1rem;
@@ -159,4 +173,45 @@
         margin-left: 60px;
     }
   }
+}
+
+
+.delete-modal{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(83, 83, 83, 0.527);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-content{
+        background-color: $background;
+        padding: 20px;
+        display: flex;
+        gap: 1.5rem;
+        flex-direction: column;
+        border-radius: 10px;
+        .title{
+            font-size: 2rem;
+            display: flex;
+            justify-content: space-between;
+            .close{
+                fill:$text;
+                height: 25px;
+                width: 25px;
+                cursor: pointer;
+            }
+        }
+        .modal-body{
+            max-width: 25vw;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-between;
+        }
+
+    }
 }

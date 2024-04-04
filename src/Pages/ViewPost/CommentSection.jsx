@@ -5,9 +5,9 @@ import { Post } from "../../Contexts/Post"
 
 function CommentSection({ currentItem, setDeleteComment }) {
   const { user } = useContext(Authorization)
-  const {setDestroyComment} = useContext(Post)
-  const handleDeletComment = commentId =>{
-    setDeleteComment({postId:currentItem._id ,commentId, userId:user.id})
+  const { setDestroyComment } = useContext(Post)
+  const handleDeletComment = commentId => {
+    setDeleteComment({ postId: currentItem._id, commentId, userId: user.id })
   }
   return (
     <div className="comment-section">
@@ -23,8 +23,11 @@ function CommentSection({ currentItem, setDeleteComment }) {
                 <div className="right">
                   <div className="name">{comment.commenterUsername}</div>
                   <div className="date">{comment.commentPosted}</div>
-                  {Number(user.id) === currentItem.userId && (
-                    <div onClick={_=>handleDeletComment(comment.commentId)} className="trashcan-wrapper">
+                  {user && user.id === comment.commenterId && (
+                    <div
+                      onClick={_ => handleDeletComment(comment.commentId)}
+                      className="trashcan-wrapper"
+                    >
                       <TrashCan />
                     </div>
                   )}

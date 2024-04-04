@@ -90,7 +90,8 @@ function usePost(dispatchPosts) {
       axios
         .patch(`${SERVER_URL}/posts`, storeComment, { headers: headers })
         .then(res => {
-          dispatchPosts(a.addComment(res.data))
+          dispatchPosts(a.addComment(res.data.commentObejct))
+          addMessage(res.data.message)
         })
         .catch(err => {
           // console.log(err)

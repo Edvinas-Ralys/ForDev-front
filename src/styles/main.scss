@@ -22,6 +22,9 @@
 @import "./Components/Quill/NoEdit/quill.bubble-no-edit.scss";
 @import "./Components/Quill/NoEdit/quill.core-no-edit.scss";
 @import "./Components/Quill/NoEdit/quill.snow-no-edit.scss";
+@import './Components/Navigation/side-navigation.scss';
+@import './Pages/LandingPage/explore.scss';
+@import './Pages/ViewPost/viewPost.scss';
 
 * {
   padding: 0;
@@ -52,6 +55,15 @@ body {
 
 button.ql-image {
   display: none !important;
+}
+
+div.p-editor-content.ql-container.ql-snow{
+background-color: $primary-transperant!important;
+  transition: 0.2s ease-in-out;
+  & >*:focus{
+    background-color: $background-dark;
+    transition: 0.2s ease-in-out;
+  }
 }
 
 //Scrollbar

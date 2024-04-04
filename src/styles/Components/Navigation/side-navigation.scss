@@ -1,0 +1,106 @@
+.side-navigation {
+    position: sticky;
+    top: 0;
+  top: 0;
+  border-radius: 0;
+  height: 100vh;
+  font-family: raleway;
+  background-color: $background;
+  nav {
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 0;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .left {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .logo {
+        height: 40px;
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      width: 100%;
+      // padding: 30px;
+      gap: 1.8rem;
+
+      div {
+        padding: 15px 15px;
+        width: 100%;
+        font-size: 1.25rem;
+      }
+      .drop-trigger {
+        padding-left: 5px;
+        // background-color: $background-dark;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .chevron-wrapper {
+            height: 25px;
+            width: 25px;
+            padding: 0;
+            transition: 0.2s ease-in-out;
+            .chevron{
+                fill: $text;
+                height: 25px;
+                transform: rotate(-90deg);
+
+            }
+
+        }
+      }
+      .create-post {
+        background-color: $background-transperent;
+        padding: 0;
+
+        &:hover {
+          background-color: none;
+        }
+        .create-post-dropdown {
+          height: 0px;
+          overflow: hidden;
+          padding: 0;
+          transition: 0.2s ease-in-out;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          &:hover {
+            background-color: inherit;
+          }
+          .preview, .edit {
+            padding: 8px 15px;
+            font-size: 1.2rem;
+            &:hover {
+              background-color: $accent;
+            }
+          }
+        }
+        .selected-dropdown {
+          height: 150px;
+          transition: 0.2s ease-in-out;
+        }
+        .selected-chevron {
+          transform: rotate(90deg);
+          transition: 0.2s ease-in-out;
+        }
+        .selected-trigger{
+            background-color: $background-dark;
+        }
+        .selected-tab{
+            background-color: $accent;
+        }
+      }
+    }
+  }
+}

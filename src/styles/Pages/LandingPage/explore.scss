@@ -1,0 +1,112 @@
+.slider-container{
+    // height: 200px;
+    width: 100vw;
+    // border: 2px solid white;
+    font-family: raleway;
+    padding-top: 150px;
+
+    .title{
+        font-size: 2rem;
+        font-weight: 600;
+        margin-left: 150px;
+        margin-bottom: 33px;
+    }
+    .slider{
+        height: 20vh;
+        width: 100%;
+        // border: 2px solid green;
+        display: flex;
+        gap: 1.5rem;
+
+    }
+}
+.slider-card{
+    height: 100%;
+    width: 20%;
+    // border: 2px solid purple;
+    box-shadow: 1px 1px 30px rgba(255, 255, 255, 0.151);
+    transition: 0.2s ease-in-out;
+    margin-left: 50px;
+    &:hover{
+        box-shadow: 1px 1px 50px rgba(255, 255, 255, 0.329);
+        transition: 0.2s ease-in-out;
+    }
+    &:hover img {
+        filter: brightness(1);
+        scale: 1.02;
+        transition: 0.2s ease-in-out;
+        opacity: 1;
+    }
+    &:hover .slider-title{
+        scale: 1.02;
+        transition: 0.2s ease-in-out;
+        background-color: $background-transperent-dark;
+    }
+
+    &:hover .slider-info{
+        scale: 1.02;
+        transition: 0.2s ease-in-out;
+    }
+    .slider-card-content{
+        height: 100%;
+        width: 100%;
+        .image-container{
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+            cursor: pointer;
+            position: relative;
+            img{
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                // border-radius: 15px;
+                filter: brightness(0.5);
+                // opacity: 0.8;
+                transition: 0.2s ease-in-out;
+                &:hover{
+                    filter: brightness(1);
+                }
+            }
+
+
+            .slider-title{
+                transition: 0.2s ease-in-out;
+                color: $text;
+                z-index: 10;
+                position: relative;
+                font-size: 1.4rem;
+                padding: 10px 10px;
+                font-weight: 600;
+                border-radius: 15px 15px 0 0;
+            }
+            .slider-info{
+                position: relative;
+                z-index: 10;
+                margin-top: 5px;
+                transition: 0.2s ease-in-out;
+                margin-left: 12px;
+                .comments-display{
+                    font-size: 25px;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.3rem;
+                    width: fit-content;
+                    // border: 1px solid green;
+                    padding: 4px 8px;
+                    border-radius: 10rem;
+                    background-color: $background-dark;
+                    .comments{
+                        fill: $text;
+                        height: 25px;
+                        width: 25px;
+
+                    }
+                }
+
+            }
+        }
+
+    }
+}

@@ -10,13 +10,13 @@
   // justify-content: center;
   align-items: center;
   overflow: hidden;
-  .banner{
+  .banner {
     display: flex;
     justify-content: center;
     // position: relative;
     height: 100vh;
     width: 100vw;
-    .background{
+    .background {
       position: absolute;
       top: 0;
       height: 100vh;
@@ -27,14 +27,14 @@
       flex-direction: column;
       z-index: 1;
 
-      .image-container{
+      .image-container {
         height: 100%;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        img{
+        transition: 0.5s cubic-bezier(.45,.76,.61,.87);
+        img {
           height: auto;
           width: 150%;
           top: 0;
@@ -44,7 +44,6 @@
 
         }
       }
-
     }
     .landing-page-text {
       display: flex;
@@ -64,7 +63,7 @@
         justify-content: space-between;
         margin-top: 30px;
         width: 30%;
-        .changing-text{
+        .changing-text {
           width: 25%;
           text-align: center;
         }
@@ -82,9 +81,9 @@
         .text {
           width: fit-content;
           padding: 0;
-            font-weight: 700;
+          font-weight: 700;
         }
-        .sub-text{
+        .sub-text {
           font-size: 1.8rem;
           color: rgb(163, 163, 163);
           letter-spacing: -1px;
@@ -93,13 +92,16 @@
       }
     }
   }
-
 }
 
-.explore{
+.explore {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient( $background, $background-dark);
-  background-color: $grandient;
-  z-index: 1000;
+  // background: linear-gradient( $background, $background-dark);
+  // background-color: $grandient;
+  // z-index: 1000;
+  background-image: linear-gradient(rgba(250, 250, 250, 0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(250, 250, 250, 0.04) 1px, transparent 1px);
+  background-size: 25px 25px;
+  background-color: #000000;
 }

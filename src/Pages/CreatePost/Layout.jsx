@@ -3,21 +3,26 @@ import Create from "./Create"
 import Preview from "./Preview"
 import { Authorization } from "../../Contexts/Authorization"
 import { Router } from "../../Contexts/Router"
+import SideNavUser from "../Components/SideNavUser"
 
 function Layout() {
   const { user } = useContext(Authorization)
   const [preview, setPreview] = useState(null)
-  const {params} = useContext(Router)
+  const { params } = useContext(Router)
 
-  console.log(params)
   if (!user) {
     return (window.location.href = `#login`)
   }
 
   return (
-    <>
-    {preview && params[0] === `preview` ? <Preview preview={preview} /> :  <Create setPreview={setPreview} />}
-    </>
+    <div className="create-main">
+      <SideNavUser preview={preview} setPreview={setPreview}/>
+      {preview && params[0] === `preview` ? (
+        <Preview preview={preview} setPreview={setPreview} />
+      ) : (
+        <Create setPreview={setPreview} />
+      )}
+    </div>
   )
 }
 

@@ -47,8 +47,25 @@ export const ProfileIcon = () => {
 
 export const Tag = () => {
   return (
-      <svg className="tag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M21.41 11.58L12.41 2.58A2 2 0 0 0 11 2H4A2 2 0 0 0 2 4V11A2 2 0 0 0 2.59 12.42L11.59 21.42A2 2 0 0 0 13 22A2 2 0 0 0 14.41 21.41L21.41 14.41A2 2 0 0 0 22 13A2 2 0 0 0 21.41 11.58M13 20L4 11V4H11L20 13M6.5 5A1.5 1.5 0 1 1 5 6.5A1.5 1.5 0 0 1 6.5 5Z" />
-      </svg>
+    <svg className="tag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M21.41 11.58L12.41 2.58A2 2 0 0 0 11 2H4A2 2 0 0 0 2 4V11A2 2 0 0 0 2.59 12.42L11.59 21.42A2 2 0 0 0 13 22A2 2 0 0 0 14.41 21.41L21.41 14.41A2 2 0 0 0 22 13A2 2 0 0 0 21.41 11.58M13 20L4 11V4H11L20 13M6.5 5A1.5 1.5 0 1 1 5 6.5A1.5 1.5 0 0 1 6.5 5Z" />
+    </svg>
   )
+}
+
+export const Chevron = () => {
+  return (
+    <svg className="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+    </svg>
+  )
+}
+
+export const Comments = () => {
+  return (
+<svg className="comments" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7C5,5.89 5.9,5 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C13,22.9 12.75,23 12.5,23V23H12M13,17V20.08L16.08,17H21V7H7V17H13M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z" />
+  </svg>
+  )
+
 }

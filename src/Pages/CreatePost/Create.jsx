@@ -21,6 +21,8 @@ function Create({ setPreview }) {
     setCategories,
     postImage,
     setPostImage,
+    previewPost,
+    setPreviewPost,
   } = useContext(Post)
 
   const selectCategory = category => {
@@ -30,7 +32,6 @@ function Create({ setPreview }) {
       setCategories(prev => [...prev, category])
     }
   }
-
   useEffect(
     _ => {
       setPostImage(image)
@@ -41,35 +42,17 @@ function Create({ setPreview }) {
   const create = _ => {
     setStorePost(prev => ({ ...prev, title: title, text: content, tags: categories, image: image }))
   }
-  const text = useRef()
-  const previewPost = _ => {
-    // setContent(prev => prev.replace(`\t`, `&#9;`))
-    console.log(content)
-    // console.log(content)
-    // setPreview({
-    //   title: title,
-    //   // text: content,
-    //   text:content,
-    //   tags: categories,
-    //   image: image,
-    // })
+  const handlePreviewPost = _ => {
+    setPreview({title: title, text: content, tags: categories, image: image })
+    // console.log(title)
   }
-  // useEffect(
-  //   _ => {
-  //     console.log(content)
-  //     // console.log(text.current.props)
-  //   },
-  //   [content]
-  // )
 
-  const handleTextContent = value =>{
-    if(value.includes(`<img src`)){
-      const image = value.substr(3, (value.length-7))
+  const handleTextContent = value => {
+    if (value.includes(`<img src`)) {
+      const image = value.substr(3, value.length - 7)
       console.log(image)
     }
   }
-
-
 
   return (
     <>
@@ -90,10 +73,9 @@ function Create({ setPreview }) {
                   <div className="form-element">
                     <div className="floating-label-group">
                       <Editor
-                        ref={text}
-                        value={content.text}
-                        // onTextChange={e => setContent(e.htmlValue)}
-                        onTextChange={e => handleTextContent(e.htmlValue)}
+                        value={content}
+                        onTextChange={e => setContent(e.htmlValue)}
+                        // onTextChange={e => handleTextContent(e.htmlValue)}
                         style={{ height: "35vh" }}
                       />
                     </div>
@@ -135,7 +117,7 @@ function Create({ setPreview }) {
             </div>
           </div>
           <div className="create-post">
-            <button onClick={previewPost}>
+            <button onClick={handlePreviewPost}>
               <a href="#create-post/preview">Preview post</a>
             </button>
             <a href="#home">Home</a>

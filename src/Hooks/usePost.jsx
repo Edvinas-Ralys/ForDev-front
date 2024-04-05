@@ -11,9 +11,7 @@ function usePost(dispatchPosts) {
   const { addMessage } = useContext(Messages)
   const setErrorPageType = useContext(Router)
   const [storePost, setStorePost] = useState(null)
-  const [storeComment, setStoreComment] = useState(null)
   const [destroyPost, setDestroyPost] = useState(null)
-  const [destroyComment, setDestroyComment] = useState(null)
   const [loading, setLoading] = useState(false)
   const [getNumberOfPosts, setGetNumberOfPosts] = useState({
     limit: 10,
@@ -21,10 +19,6 @@ function usePost(dispatchPosts) {
   })
   let delPostConfig = {
     data: { ...destroyPost, deleteType:`post` },
-    headers: { Authorization: `Bearer ${user?.token}` },
-  }
-  let delCommentConfig = {
-    data: { ...destroyComment, deleteType:`comment` },
     headers: { Authorization: `Bearer ${user?.token}` },
   }
 
@@ -37,7 +31,7 @@ function usePost(dispatchPosts) {
       .then(res => {
         dispatchPosts(a.getPosts(res.data.posts))
       })
-      .catch(err => {
+      .catch(_ => {
         window.location.href = `#network-error`
       })
       .finally(_ => {
@@ -78,52 +72,26 @@ function usePost(dispatchPosts) {
   )
 
 
-  //Leave a comment
-  useEffect(
-    _ => {
-      if (storeComment === null) {
-        return
-      }
-      setLoading(true)
-      console.log(storeComment)
-      const headers = { Authorization: `Bearer ${user.token}` }
-      axios
-        .patch(`${SERVER_URL}/posts`, storeComment, { headers: headers })
-        .then(res => {
-          dispatchPosts(a.addComment(res.data.commentObejct))
-          addMessage(res.data.message)
-        })
-        .catch(err => {
-          // console.log(err)
-        })
-        .finally(_=>{
-          setStoreComment(null)
-          setLoading(false)
-        })
-      // console.log(storeComment)
-    },
-    [storeComment]
-  )
 
   //Delete comment
-  useEffect(_=>{
-    if(destroyComment === null) {
-      return
-    }
-    setLoading(true)
-    axios.delete(`${SERVER_URL}/posts`, delCommentConfig)
-    .then(res => {
-      dispatchPosts(a.deleteComment(destroyComment))
-      addMessage(res.data.message)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    .finally(_=>{
-      setLoading(false)
-    })
+  // useEffect(_=>{
+  //   if(destroyComment === null) {
+  //     return
+  //   }
+  //   setLoading(true)
+  //   axios.delete(`${SERVER_URL}/posts`, delCommentConfig)
+  //   .then(res => {
+  //     dispatchPosts(a.deleteComment(destroyComment))
+  //     addMessage(res.data.message)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  //   .finally(_=>{
+  //     setLoading(false)
+  //   })
 
-  }, [destroyComment])
+  // }, [destroyComment])
 
 
   //Delete a post
@@ -150,7 +118,7 @@ function usePost(dispatchPosts) {
     [destroyPost]
   )
 
-  return { setStorePost, setStoreComment, setDestroyPost, loading, setDestroyComment }
+  return { setStorePost, setDestroyPost, loading, setLoading }
 }
 
 export default usePost

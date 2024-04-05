@@ -14,10 +14,16 @@ export function addComment(data){
   }
 }
 
-
 export function deleteComment(data){
   return {
     type:c.DELETE_COMMENT,
     payload:data
   }
+}
+
+export function updateComment(data){
+    return {
+        type:c.UPDATE_COMMENT,
+        payload:data
+    }
 }

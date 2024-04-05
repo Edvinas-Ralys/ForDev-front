@@ -9,18 +9,15 @@ function ViewBody({ currentItem, setDeletePost }) {
   const { user } = useContext(Authorization)
   // const [deletePost, setDeletePost] = useState(null)
 
-
   return (
     <>
-      {/* {deletePost && <DeleteModal setDeletePost={setDeletePost} currentItem={currentItem} deletePost={deletePost} />} */}
-
       <div className="post-title">{currentItem.title}</div>
       <div className="creator">
         <span>Written by</span>
         <span>
           <a href="/"> {currentItem.createdBy}</a>, {currentItem.createdAt.slice(0, 10)}
         </span>
-        {Number(user.id) === currentItem.userId && (
+        { user && Number(user.id) === currentItem.userId && (
           <div
             onClick={_ => setDeletePost({ postId: currentItem._id, userId: Number(user.id) })}
             className="trash-wrapper"
@@ -31,7 +28,9 @@ function ViewBody({ currentItem, setDeletePost }) {
 
         <div className="tags">
           {currentItem?.tags.map((tag, i) => (
-            <div key={i} className="post-tag">{tag}</div>
+            <div key={i} className="post-tag">
+              {tag}
+            </div>
           ))}
         </div>
       </div>

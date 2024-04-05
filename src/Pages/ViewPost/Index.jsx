@@ -11,9 +11,6 @@ const {route, params} = useContext(Router)
 const {setGetComments} = useContext(Comment)
 const {user} = useContext(Authorization)
 
-// useEffect(_=>{
-//   setGetComments({postId:params[0], userId:Number(user.id)})
-// }, [])
 
 
 

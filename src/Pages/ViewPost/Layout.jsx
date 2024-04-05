@@ -7,6 +7,7 @@ import { Router } from "../../Contexts/Router"
 import DeleteModal from "./DeleteModal"
 import DeleteCommentModal from "./DeleteCommentModal"
 import { Comment } from "../../Contexts/Comment"
+import EditCommentModal from "./EditCommentModal"
 
 function Layout() {
   const { user } = useContext(Authorization)
@@ -15,6 +16,7 @@ function Layout() {
   const [deletePost, setDeletePost] = useState(null)
   const [currentItem, setCurrentItem] = useState(null)
   const [deleteComment, setDeleteComment] = useState(null)
+  const [editComment, setEditComment] = useState(null)
   const {setGetComments} = useContext(Comment)
 
   useEffect(
@@ -53,6 +55,13 @@ function Layout() {
           deleteComment={deleteComment}
         />
       )}
+      {editComment && (
+        <EditCommentModal
+          setEditComment={setEditComment}
+          editComment={editComment}
+          currentItem={currentItem}
+        />
+      )}
       <SideNavUser />
       <div className="view-content">
         <ViewPostBody
@@ -61,6 +70,8 @@ function Layout() {
           deletePost={deletePost}
           setDeleteComment={setDeleteComment}
           deleteComment={deleteComment}
+          setEditComment={setEditComment}
+          editComment={editComment}
         />
       </div>
       {/* <SideNavUser /> */}

@@ -15,8 +15,8 @@ function WriteComment({ currentItem }) {
     setStoreComment({
       commentContent: writeComment,
       postId: currentItem._id,
-      commenterUsername: user.username,
-      commenterId: Number(user.id),
+      commenterUsername: user ? user.username : null,
+      commenterId: user ? Number(user.id) : null,
       id: uuidv4(),
     })
     setWriteComment(``)

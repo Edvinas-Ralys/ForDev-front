@@ -5,7 +5,7 @@ import parse from "html-react-parser"
 import { Post } from "../../Contexts/Post"
 
 function PostBody({ preview, setPreview }) {
-  const {setStorePost} = useContext(Post)
+  const { setStorePost, setImage, setTitle, setContent, setCategories } = useContext(Post)
   const { user } = useContext(Authorization)
   const date = new Date()
   let day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
@@ -13,8 +13,13 @@ function PostBody({ preview, setPreview }) {
   let year = date.getFullYear()
   let currentDate = `${day}-${month}-${year}`
 
-  const handlePublishPost = _ =>{
+  const handlePublishPost = _ => {
     setStorePost(preview)
+    setPreview(null)
+    setImage(null)
+    setTitle(``)
+    setContent(``)
+    setCategories([])
   }
 
   return (
@@ -27,10 +32,10 @@ function PostBody({ preview, setPreview }) {
           <a href="/"> {user.username}</a>, {currentDate}
         </span>
         <div className="tags">
-        {preview?.tags.map((tag, i) => (
-          <div className="post-tag">{tag}</div>
-        ))}
-      </div>
+          {preview?.tags.map((tag, i) => (
+            <div className="post-tag">{tag}</div>
+          ))}
+        </div>
       </div>
 
       {preview.image && (

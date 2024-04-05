@@ -1,15 +1,4 @@
-// .navigation {
-//   position: fixed;
-//   font-size: 1.3rem;
-//   font-weight: 400;
-//   width: 100vw;
 
-//   display: flex;
-//   justify-content: center;
-//   transition: 0.2s ease-in-out;
-//   z-index: 100;
-//   font-family: nunito;
-// }
 
 .navigation {
   position: fixed;
@@ -32,21 +21,6 @@
 
 
 nav {
-  // display: flex;
-  // justify-content: space-between;
-  // padding: 20px 3%;
-  // user-select: none;
-  // backdrop-filter: blur(5px);
-  // width: 100%;
-  // gap: 5rem;
-  // align-items: center;
-  // transition: 0.2s ease-in-out;
-  // box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.61);
-  // // background-color: $background-transperent;
-  // font-size: 1.4rem;
-  // font-weight: 600;
-  // background-color: rgba(0, 0, 0, 0.301);
-
   display: flex;
   justify-content: space-between;
   padding: 0.6rem 1.2rem;
@@ -59,9 +33,9 @@ nav {
   transition: 0.2s ease-in-out;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.61);
   background-color: #00000071;
-  // background-color: $background-transperent;
   background-color: $navigation-bg;
   color: $text;
+  height: 70px;
 
   &.scrolled {
     width: 100%;
@@ -84,26 +58,11 @@ nav {
     }
   }
   .right {
-    gap: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 50px;
+
     div {
       cursor: pointer;
-      padding: 20px;
       list-style: none;
       font-size: 1rem;
-      // list-style-type: disc;
-      &:not(div:has(button)) {
-        // padding: 2px 4px;
-        border-radius: 4px;
-        transition: 0.2s ease-in-out background-color;
-      }
-      &:not(div:has(button)):hover {
-        background-color: $background-dark;
-        transition: 0.2s ease-in-out background-color;
-      }
       a{
         text-decoration: none;
       }
@@ -117,9 +76,12 @@ nav {
   }
 
   .right {
-    width: fit-content;
+    gap: 4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 50px;
     .nav-profile-card {
-      // padding: 0;
       height: 100%;
       width: fit-content !important;
       display: flex;
@@ -129,30 +91,20 @@ nav {
       width: 100px;
       z-index: 1;
       .profile-icon {
-        height: 45px;
-        width: 50px;
-        // padding: 0;
+        height: 30px;
+        width: 35px;
         fill: $text;
       }
       .chevron {
         height: 20px;
         width: 20px;
+        fill: white;
+        transition: 0.4s transform;
       }
     }
   }
 
-  // li {
-  //   text-align: center;
-  //   &.double {
-  //     display: flex;
-  //     align-items: center;
-  //     .magnify,
-  //     .chevron {
-  //       height: 24px;
-  //       transition: 0.4s transform;
-  //     }
-  //   }
-  // }
+
   .dropdown {
     position: relative;
   }

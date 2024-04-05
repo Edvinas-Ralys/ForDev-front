@@ -1,7 +1,8 @@
-import { Logo } from "../../Icons/Icons"
+import { Chevron, Logo, ProfileIcon } from "../../Icons/Icons"
 import useLogin from "../../Hooks/useLogin"
 import { useContext } from "react"
 import { Authorization } from "../../Contexts/Authorization"
+import NavigationDropdown from "./NavigationDropdown"
 
 function NavigationUser({ offset, setComponentToScroll }) {
   const { logout } = useLogin()
@@ -14,22 +15,14 @@ function NavigationUser({ offset, setComponentToScroll }) {
           <Logo />
         </div>
         <div className="right">
-          {user && (
-            <div className="create-post">
-              <a href="#create-post">Create a Post</a>
-            </div>
-          )}
           <div onClick={_ => setComponentToScroll(`explore`)}>Explore</div>
           <div>Search</div>
-          <div>My feed</div>
-          <div>
-            <a href="#signup">Profile</a>
+          <div className="dropdown nav-profile-card">
+            <ProfileIcon />
+            {user.username}
+            <Chevron />
+            <NavigationDropdown />
           </div>
-
-          <div onClick={logout}>Log out</div>
-          <label htmlFor="hamburger-menu" className="hamburger-menu">
-            <input type="checkbox" name="" id="hamburger-menu" />
-          </label>
         </div>
       </nav>
     </div>

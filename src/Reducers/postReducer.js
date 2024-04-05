@@ -6,33 +6,17 @@ export default function postReducer(state, action) {
   switch (action.type) {
     case constants.GET_POSTS_FROM_SERVER:
       newState = action.payload
-      break
+    break
 
     case constants.CREATE_POST:
       newState.unshift(action.payload)
-      break
+    break
 
-    case constants.ADD_COMMENT:
-      newState.map(stateItem =>
-        stateItem._id === action.payload.postId
-          ? { ...stateItem, comments: stateItem.comments.unshift(action.payload) }
-          : stateItem
-      )
-      break
-
-    case constants.REMOVE_COMMENT:
-      newState = newState.map(item =>
-        item._id === action.payload.postId
-          ? {
-              ...item,
-              comments: item.comments.filter(
-                comment => comment.commentId !== action.payload.commentId
-              ),
-            }
-          : item
-      )
-
-      break
+    case constants.DELETE_POST:
+      console.log(action.payload)
+      newState = newState.filter(item => item._id !== action.payload.postId)
+    break
   }
+  console.log(newState)
   return newState
 }

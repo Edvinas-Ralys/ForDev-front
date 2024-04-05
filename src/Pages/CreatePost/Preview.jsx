@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 import PostBody from "./PostBody"
+import { Post } from "../../Contexts/Post"
 
 function Preview({ preview, setPreview }) {
+
   return (
     <div className="preview-page">
 

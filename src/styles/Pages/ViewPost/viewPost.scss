@@ -162,6 +162,8 @@
         width: 100%;
         .icons {
           display: flex;
+          position: absolute;
+          right: 0;
           .pen {
             fill: rgb(66, 66, 66);
             height: 30px;

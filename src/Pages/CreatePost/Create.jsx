@@ -9,7 +9,7 @@ import { header } from "../../Functions/richText"
 
 function Create({ setPreview }) {
   const {
-    setStorePost,
+
     image,
     setImage,
     readImage,
@@ -21,8 +21,6 @@ function Create({ setPreview }) {
     setCategories,
     postImage,
     setPostImage,
-    previewPost,
-    setPreviewPost,
   } = useContext(Post)
 
   const selectCategory = category => {
@@ -39,9 +37,6 @@ function Create({ setPreview }) {
     [image]
   )
 
-  const create = _ => {
-    setStorePost(prev => ({ ...prev, title: title, text: content, tags: categories, image: image }))
-  }
   const handlePreviewPost = _ => {
     setPreview({title: title, text: content, tags: categories, image: image })
     // console.log(title)

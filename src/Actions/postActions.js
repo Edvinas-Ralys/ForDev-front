@@ -13,16 +13,20 @@ export function createPost(data) {
   }
 }
 
-export function addComment(data){
+export function destroyPost(data){
   return {
-    type: constants.ADD_COMMENT,
-    payload: data
-  }
-}
-
-export function deleteComment(data){
-  return {
-    type:constants.REMOVE_COMMENT,
+    type: constants.DELETE_POST,
     payload:data
   }
 }
+
+export function updatePost(data){
+  return {
+    type:constants.UPDATE_POST,
+    payload:data
+  }
+}
+
+
+
+

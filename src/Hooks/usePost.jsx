@@ -18,12 +18,12 @@ function usePost(dispatchPosts) {
     skip: 0,
   })
   let delPostConfig = {
-    data: { ...destroyPost, deleteType:`post` },
+    data: destroyPost,
     headers: { Authorization: `Bearer ${user?.token}` },
   }
 
-  //Get all posts
-  //Finished
+  //!Get all posts
+  //!Finished
   useEffect(_ => {
     setLoading(true)
     axios
@@ -39,7 +39,8 @@ function usePost(dispatchPosts) {
       })
   }, [])
 
-  //Create post
+
+  //!Create post
   useEffect(
     _ => {
       if (storePost === null) {
@@ -54,13 +55,15 @@ function usePost(dispatchPosts) {
           { headers: headers }
         )
         .then(res => {
-          dispatchPosts(a.createPost(res.data))
-          window.location.href = `#view/${res.data._id}`
+          dispatchPosts(a.createPost(res.data.postResponse))
+          addMessage(res.data.message)
+          window.location.href = `#view/${res.data.postResponse._id}`
         })
         .catch(err => {
-          console.log(err)
-          if (err.response.status === 400) {
+          if (err.response.status) {
             addMessage(err.response.data.message)
+          } else {
+            window.location.href = `#network-error`
           }
         })
         .finally(_ => {
@@ -72,48 +75,32 @@ function usePost(dispatchPosts) {
   )
 
 
-
-  //Delete comment
-  // useEffect(_=>{
-  //   if(destroyComment === null) {
-  //     return
-  //   }
-  //   setLoading(true)
-  //   axios.delete(`${SERVER_URL}/posts`, delCommentConfig)
-  //   .then(res => {
-  //     dispatchPosts(a.deleteComment(destroyComment))
-  //     addMessage(res.data.message)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  //   .finally(_=>{
-  //     setLoading(false)
-  //   })
-
-  // }, [destroyComment])
-
-
   //Delete a post
   useEffect(
     _ => {
       if (destroyPost === null) {
         return
       }
+      console.log(destroyPost)
       setLoading(true)
       axios
         .delete(`${SERVER_URL}/posts`, delPostConfig)
         .then(res => {
-          console.log(res.data)
+          dispatchPosts(a.destroyPost(destroyPost))
+          window.location.href = `#home`
+          addMessage(res.data.message)
         })
         .catch(err => {
-          console.log(err)
+          if (err.response.status) {
+            addMessage(err.response.data.message)
+          } else {
+            window.location.href = `#network-error`
+          }
         })
         .finally(_ => {
           setDestroyPost(null)
           setLoading(false)
         })
-      console.log(destroyPost)
     },
     [destroyPost]
   )

@@ -10,7 +10,7 @@ function NavigationDropdown() {
       <div className="dropdown-container">
         <div className="dropdown-element">
           <div className="dropdown-selection">
-            <a href="#profile">Profile</a>
+            <a href={`#profile/${user.id}`}>Profile</a>
           </div>
           {user && (
             <div className="dropdown-selection">

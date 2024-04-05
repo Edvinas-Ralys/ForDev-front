@@ -6,4 +6,91 @@
   background-size: 25px 25px;
   background-color: #000000;
   font-family: raleway;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+}
+
+.profile-container{
+    // height: 100%;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1.5fr 5fr;
+    margin-top: 15vh;
+    gap: 3rem;
+    .user{
+        height: 80%;
+        width: 100%;
+        // border: 2px solid white;
+    }
+    .history{
+        height: 80%;
+        width: 100%;
+        // border: 2px solid green;
+    }
+}
+
+.user{
+    background-color: $primary-transperant;
+    border-radius: 15px;
+    padding: 10px 15px;
+    .user-container{
+        // border: 2px solid purple;
+        display: grid;
+        grid-template-rows: 1fr 0.2fr 0.8fr 0.5fr 0.5fr;
+        gap: 1rem;
+        .picture{
+            height: 25vh;
+            // width: 100%;
+            display: flex;
+            justify-content: center;
+            img{
+                height: 100%;
+                width: auto;
+                border-radius: 15px;
+            }
+        }
+        .username{
+            font-size: 2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center ;
+        }
+        .bio{
+            line-height: 23px;
+            // text-align: center;
+        }
+        .interests{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .bottom{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: underline;
+            .logout{
+                color: gray;
+                cursor:pointer ;
+                &:hover{
+                    color: white;
+                }
+
+            }
+
+            .cog{
+                fill:gray;
+                height: 40px;
+                width: 40px;
+                cursor: pointer;
+                &:hover{
+                    fill:white
+                }
+            }
+        }
+    }
 }

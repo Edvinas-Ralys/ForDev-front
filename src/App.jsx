@@ -4,13 +4,16 @@ import { RouterProvider } from "./Contexts/Router"
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api"
 import "./styles/main.scss"
 import { LoadingContextProvider } from "./Contexts/LoadingCont"
+import { CommentProvider } from "./Contexts/Comment"
 
 function App() {
   return (
     <AuthorizationProvider>
       <PrimeReactProvider>
         <PostProvider>
-          <RouterProvider></RouterProvider>
+          <CommentProvider>
+            <RouterProvider></RouterProvider>
+          </CommentProvider>
         </PostProvider>
       </PrimeReactProvider>
     </AuthorizationProvider>

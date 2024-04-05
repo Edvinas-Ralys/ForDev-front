@@ -2,10 +2,12 @@ import { useContext } from "react"
 import { ProfileIcon, TrashCan } from "../../Icons/Icons"
 import { Authorization } from "../../Contexts/Authorization"
 import { Post } from "../../Contexts/Post"
+import { Comment } from "../../Contexts/Comment"
 
 function CommentSection({ currentItem, setDeleteComment }) {
   const { user } = useContext(Authorization)
   const { setDestroyComment } = useContext(Post)
+  const {comments} = useContext(Comment)
   const handleDeletComment = commentId => {
     setDeleteComment({ postId: currentItem._id, commentId, userId: user.id })
   }
@@ -14,6 +16,14 @@ function CommentSection({ currentItem, setDeleteComment }) {
       <div className="comment-container">
         <div className="comment-section-title">Comment Section ({currentItem.comments.length})</div>
         <div className="comments">
+        {/* {comments.length !==0 && comments.map((comment, i) => (
+          <div className="comment">{comment.commentContent}</div>
+        ))} */}
+
+
+
+
+
           {currentItem.comments.map((comment, i) => (
             <div key={i} className="comment">
               <div className="top">

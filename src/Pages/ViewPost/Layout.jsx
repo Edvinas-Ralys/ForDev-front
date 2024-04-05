@@ -6,6 +6,7 @@ import ViewPostBody from "./ViewPostBody"
 import { Router } from "../../Contexts/Router"
 import DeleteModal from "./DeleteModal"
 import DeleteCommentModal from "./DeleteCommentModal"
+import { Comment } from "../../Contexts/Comment"
 
 function Layout() {
   const { user } = useContext(Authorization)
@@ -14,15 +15,18 @@ function Layout() {
   const [deletePost, setDeletePost] = useState(null)
   const [currentItem, setCurrentItem] = useState(null)
   const [deleteComment, setDeleteComment] = useState(null)
+  const {setGetComments} = useContext(Comment)
 
   useEffect(
     _ => {
       if (posts.length !== 0) {
         const currPost = posts.find(f => f._id === params[0])
+        console.log(currPost)
         if (!currPost) {
           setCurrentItem(null)
         } else {
           setCurrentItem(currPost)
+          setGetComments({postId:currPost._id})
         }
       }
     },

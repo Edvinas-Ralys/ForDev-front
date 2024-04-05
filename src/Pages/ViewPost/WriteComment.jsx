@@ -1,23 +1,23 @@
 import React, { useContext, useState } from "react"
 import { Post } from "../../Contexts/Post"
-import useSignup from "../../Hooks/useSignup"
 import { Authorization } from "../../Contexts/Authorization"
 import { v4 as uuidv4 } from "uuid"
+import { Comment } from "../../Contexts/Comment"
 
 function WriteComment({ currentItem }) {
-  const { setStoreComment } = useContext(Post)
+  const { setStoreComment } = useContext(Comment)
   const [writeComment, setWriteComment] = useState(``)
   const { user } = useContext(Authorization)
+  // console.log(typeof user.id)
 
   const handlePostComment = _ => {
     if (writeComment === ``) return
     setStoreComment({
-      comment: writeComment,
-      commenterUsername: user.username,
-      commenterId: user.id,
+      commentContent: writeComment,
       postId: currentItem._id,
-      updateType: `comment`,
-      commentId: uuidv4(),
+      commenterUsername: user.username,
+      commenterId: Number(user.id),
+      id: uuidv4(),
     })
     setWriteComment(``)
   }

@@ -5,11 +5,17 @@ import { Authorization } from "../../Contexts/Authorization"
 import { Router } from "../../Contexts/Router"
 import { Profile } from "../../Contexts/Profile"
 
-function UserCard() {
+function UserCard({ setCreateBio }) {
   const { params } = useContext(Router)
   const { user } = useContext(Authorization)
   const { profile } = useContext(Profile)
-  console.log(params[0] === user.id)
+  const handleCreateBio = _ => {
+    if (!profile?.userDetails?.bio || profile?.userDetails?.bio === ``) {
+      setCreateBio(``)
+    } else {
+      setCreateBio(profile?.userDetails?.bio)
+    }
+  }
 
   return (
     <div className="user">
@@ -22,11 +28,23 @@ function UserCard() {
           {user &&
           user.id === params[0] &&
           (!profile?.userDetails?.bio || profile?.userDetails?.bio === ``) ? (
-            <button>Create bio</button>
+            <button onClick={handleCreateBio}>Create bio</button>
           ) : user && (profile?.userDetails?.bio || profile?.userDetails?.bio !== ``) ? (
-            profile?.userDetails?.bio
+            <div className="bio-text">
+            {profile?.userDetails?.bio}
+            <div className="buttons">
+            <button onClick={handleCreateBio}>Update bio</button>
+            <button>Clear bio</button>
+            </div>
+
+            </div>
+
           ) : (
-            profile?.userDetails?.bio
+            <div className="bio-text">
+              <div className="bio-title">Bio</div>
+              {profile?.userDetails?.bio}
+
+            </div>
           )}
         </div>
         <div className="interests">

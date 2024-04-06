@@ -16,9 +16,8 @@ function useSignup() {
       }
       setLoading(true)
       axios
-        .post(`${SERVER_URL}/users`, { ...signUpInfo, roles: [`user`] }, { withCredentials: true })
+        .post(`${SERVER_URL}/user`, { ...signUpInfo, roles: [`user`] }, { withCredentials: true })
         .then(res => {
-          console.log(res)
           window.location.href = `#login`
           addMessage(res.data.message)
         })

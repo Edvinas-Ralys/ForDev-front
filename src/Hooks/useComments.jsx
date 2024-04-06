@@ -107,7 +107,6 @@ function useComments(dispatchComments) {
     if(updateComment === null){
       return
     }
-    console.log(updateComment)
     const headers = { Authorization: `Bearer ${user.token}` }
 
     if(updateComment.originalComment === updateComment.newComment){

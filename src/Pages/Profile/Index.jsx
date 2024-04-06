@@ -7,12 +7,13 @@ import Loading from "../Components/Loading"
 function Index() {
   const { params, route } = useContext(Router)
   const { setGetProfile, loading, profile } = useContext(Profile)
-  console.log(profile)
 
 
   useEffect(
     _ => {
+      console.log(`eff`, route === `#profile`)
       if (route === `#profile`) {
+
         setGetProfile({ userId: Number(params[0]) })
       } else return
     },

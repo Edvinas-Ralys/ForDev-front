@@ -15,7 +15,7 @@ function ViewBody({ currentItem, setDeletePost }) {
       <div className="creator">
         <span>Written by</span>
         <span>
-          <a href="/"> {currentItem.createdBy}</a>, {currentItem.createdAt.slice(0, 10)}
+          <a href={`#profile/${currentItem.userId}`}> {currentItem.createdBy}</a>, {currentItem.createdAt.slice(0, 10)}
         </span>
         { user && Number(user.id) === currentItem.userId && (
           <div

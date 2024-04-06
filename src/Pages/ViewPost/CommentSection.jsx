@@ -32,7 +32,9 @@ function CommentSection({ currentItem, setDeleteComment, setEditComment }) {
                     <ProfileIcon />
                   </div>
                   <div className="right">
-                    <div className="name">{comment.commenterUsername}</div>
+                    <div className="name">
+                      <a href={`#profile/${comment.commenterId}`}>{comment.commenterUsername}</a>
+                    </div>
                     <div className="date">
                       {comment.created}
                       {comment.originalComment && ` (edited)`}

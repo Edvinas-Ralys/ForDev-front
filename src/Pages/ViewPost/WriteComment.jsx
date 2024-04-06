@@ -18,6 +18,7 @@ function WriteComment({ currentItem }) {
       commenterUsername: user ? user.username : null,
       commenterId: user ? Number(user.id) : null,
       id: uuidv4(),
+      postTitle:currentItem.title
     })
     setWriteComment(``)
   }

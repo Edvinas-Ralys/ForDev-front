@@ -4,10 +4,10 @@ import LoginIndex from "../Pages/Login/Index"
 import SignupIndex from "../Pages/Signup/Index"
 import CreatePostIndex from "../Pages/CreatePost/Index"
 import ViewIndex from "../Pages/ViewPost/Index"
-import Page500 from '../Pages/Err/Page500'
-import NetworkErr from '../Pages/Err/NetworkErr'
-import Page403 from '../Pages/Err/Page403'
-import Page401 from '../Pages/Err/Page401'
+import Page500 from "../Pages/Err/Page500"
+import NetworkErr from "../Pages/Err/NetworkErr"
+import Page403 from "../Pages/Err/Page403"
+import Page401 from "../Pages/Err/Page401"
 import ProfileIndex from "../Pages/Profile/Index"
 
 export const Router = createContext()
@@ -29,14 +29,14 @@ export const RouterProvider = ({ children }) => {
     { path: `#signup`, component: <SignupIndex /> },
     { path: `#create-post`, component: <CreatePostIndex /> },
     { path: `#view`, component: <ViewIndex /> },
-    {path:`#profile`, component: <ProfileIndex />}
+    { path: `#profile`, component: <ProfileIndex /> },
   ]
 
   const errorPages = [
     { type: 500, component: <Page500 /> },
     { type: `network_err`, component: <NetworkErr /> },
-    {type: 403, component: <Page403 />},
-    {type: 401, component: <Page401 />},
+    { type: 403, component: <Page403 /> },
+    { type: 401, component: <Page401 /> },
   ]
 
   const [errorPageType, setErrorPageType] = useState(null)
@@ -55,7 +55,6 @@ export const RouterProvider = ({ children }) => {
 
   const currentComponent = possibleRoutes.find(r => r.path === route)?.component || `Error page`
   const errorComponent = errorPages.find(e => e.type === errorPageType)?.component || null
-
 
   return (
     <Router.Provider

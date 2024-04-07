@@ -14,12 +14,7 @@ function Layout() {
   const { params } = useContext(Router)
   const [createBio, setCreateBio] = useState(null)
   const [changePicture, setChangePicture] = useState(null)
-  // useEffect(
-  //   _ => {
-  //     console.log(changePicture)
-  //   },
-  //   [changePicture]
-  // )
+
   return (
     <div className="profile">
       {(createBio || createBio === ``) && (

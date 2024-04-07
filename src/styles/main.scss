@@ -1,9 +1,3 @@
-// @import "./Components/Quill/quill.bubble.scss";
-// @import "./Components/Quill/quill.core.scss";
-// @import "./Components/Quill/quill.snow.scss";
-// @import "./Components/Quill/NoEdit/quill.bubble-no-edit.scss";
-// @import "./Components/Quill/NoEdit/quill.core-no-edit.scss";
-// @import "./Components/Quill/NoEdit/quill.snow-no-edit.scss";
 
 @import "./variables.scss";
 @import "./Pages/LandingPage/layout.scss";
@@ -29,6 +23,7 @@
 @import './Components/Navigation/dropdown.scss';
 @import './Pages/Profile/profile.scss';
 @import './Components/Modal/modal.scss';
+@import './Pages/Profile/history.scss';
 
 * {
   padding: 0;

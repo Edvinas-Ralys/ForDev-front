@@ -40,15 +40,33 @@
         grid-template-rows: 1fr fit-content 0.8fr 0.5fr 0.5fr;
         gap: 1rem;
         .picture{
+
             height: 25vh;
-            // width: 100%;
+            width: 100%;
             display: flex;
             justify-content: center;
-            img{
-                height: 100%;
-                width: auto;
-                border-radius: 15px;
+            flex-direction: column;
+            margin-top: 30px;
+            align-items: center;
+            .image-wrapper{
+                height: 25vh;
+                img{
+                    height: 100%;
+                    width: auto;
+                    border-radius: 15px;
+                }
             }
+            .image-button{
+                text-align: center;
+                color: gray;
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 0.9rem;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
         }
         .username{
             font-size: 2rem;
@@ -58,6 +76,30 @@
         }
         .bio{
             line-height: 23px;
+            .bio-title{
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+            .bio-buttons{
+                .double{
+
+                    display: flex;
+                    gap: 2rem;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                    margin-top: 20px;
+                    .update-button, .clear-button{
+                        cursor: pointer;
+
+                        color: gray;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+            }
             // text-align: center;
         }
         .interests{

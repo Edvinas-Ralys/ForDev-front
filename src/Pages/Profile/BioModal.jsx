@@ -2,13 +2,15 @@ import React, { useContext } from "react"
 import { Close } from "../../Icons/Icons"
 import { Profile } from "../../Contexts/Profile"
 import { Authorization } from "../../Contexts/Authorization"
+import { Router } from "../../Contexts/Router"
 
 function BioModal({ setCreateBio, createBio }) {
   const { setUpdateProfile } = useContext(Profile)
   const { user } = useContext(Authorization)
+  const {params} = useContext(Router)
   const handleUpdateBio = _ => {
     setCreateBio(null)
-    setUpdateProfile({ bio: createBio, updateType: `bio`, userId: user.id })
+    setUpdateProfile({ bio: createBio, updateType: `bio`, userId: user.id, currentProfile:params[0] })
   }
   return (
     <div className="bio-modal">

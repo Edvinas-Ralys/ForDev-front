@@ -4,6 +4,7 @@ import { SERVER_URL } from "../Data/main"
 import axios from "axios"
 import { Authorization } from "../Contexts/Authorization"
 import { Messages } from "../Contexts/Messages"
+import usePost from "./usePost"
 
 function useProfile() {
   const [loading, setLoading] = useState(false)
@@ -12,6 +13,8 @@ function useProfile() {
   const { addMessage } = useContext(Messages)
   const [getProfile, setGetProfile] = useState(null)
   const { user } = useContext(Authorization)
+  const {destroyPost} = usePost
+
 
   useEffect(
     _ => {
@@ -21,7 +24,6 @@ function useProfile() {
           .get(`${SERVER_URL}/user`, { params: getProfile })
           .then(res => {
             setProfile(res.data)
-            console.log(res.data)
           })
           .catch(err => {
             addMessage(err.response.data.message)
@@ -56,7 +58,6 @@ function useProfile() {
               userDetails: { ...prev.userDetails, picture: res.data.newPicture },
             }))
           }
-          console.log(res.data)
         })
         .catch(err => {
           addMessage(err.response.data.message)

@@ -1,6 +1,5 @@
 .history {
   .tabs {
-    height: 10%;
     display: flex;
     gap: 4rem;
     align-items: flex-end;
@@ -94,5 +93,82 @@
     bottom: 0;
     left: 0;
     border-radius: 20px;
+  }
+}
+
+.post-tab{
+
+  .posts{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap:2rem ;
+    // margin-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    padding-top: 30px;
+    .post{
+      // border: 1px solid black;
+      background-color: $background-transperent;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 10px;
+      width: 100%;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+      &:hover{
+        box-shadow: 0 0 25px rgb(138, 138, 138);
+        scale: 1.01;
+        transition: 0.2s ease-in-out;
+      }
+      .post-title{
+        font-size: 1.3rem;
+        font-weight: 600;
+        width: fit-content;
+        &:hover{
+          text-decoration: underline;
+        }
+
+      }
+      .post-created{
+        font-size: 0.8rem;
+        color: gray;
+      }
+      .post-tags{
+        display: flex;
+        width: 80%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 10px;
+        .tag{
+          font-weight: 500;
+          border: 1px solid $primary-transperant;
+          padding: 5px;
+          border-radius: 10rem;
+          background-color: $background-transperent-dark;
+
+
+        }
+      }
+      .post-buttons{
+        // position: absolute;
+        display: flex;
+        gap: 1rem;
+        right: 30px;
+        transition: 0.2s ease-in-out;
+        .icon{
+          height: 50px;
+          width: 50px;
+          fill:$primary
+        }
+        .trash-can{
+          &:hover{
+            fill: rgb(196, 93, 93);
+          }
+        }
+      }
+    }
   }
 }

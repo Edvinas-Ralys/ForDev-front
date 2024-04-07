@@ -34,6 +34,10 @@
       }
       .modal-body {
         max-width: 30vw;
+        .post-title{
+          font-weight: 600;
+          text-decoration: underline;
+        }
         .form-element {
           width: 100%;
           display: flex;

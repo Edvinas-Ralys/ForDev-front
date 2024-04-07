@@ -21,6 +21,12 @@ function usePost(dispatchPosts) {
     data: destroyPost,
     headers: { Authorization: `Bearer ${user?.token}` },
   }
+  useEffect(
+    _ => {
+      console.log(destroyPost)
+    },
+    [destroyPost]
+  )
 
   //!Get all posts
   //!Finished
@@ -38,7 +44,6 @@ function usePost(dispatchPosts) {
         setLoading(false)
       })
   }, [])
-
 
   //!Create post
   useEffect(
@@ -74,7 +79,6 @@ function usePost(dispatchPosts) {
     [storePost]
   )
 
-
   //Delete a post
   useEffect(
     _ => {
@@ -87,7 +91,12 @@ function usePost(dispatchPosts) {
         .delete(`${SERVER_URL}/posts`, delPostConfig)
         .then(res => {
           dispatchPosts(a.destroyPost(destroyPost))
-          window.location.href = `#home`
+          if (window.location.hash.split(`/`).shift() === `#profile`) {
+            window.location.reload()
+          } else {
+            window.location.href = `#home`
+          }
+
           addMessage(res.data.message)
         })
         .catch(err => {

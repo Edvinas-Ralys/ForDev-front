@@ -102,7 +102,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap:2rem ;
+    gap:1rem ;
     padding: 20px;
     border-radius: 10px;
     padding-top: 30px;
@@ -233,51 +233,52 @@
     }
   }
 
-  .pagination{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 50px;
-    .page-numbers{
-      display: flex;
-      gap: 2rem;
 
-      font-size: 1.5rem;
-      .number{
-        cursor: pointer;
-        user-select: none;
-        color: gray;
-        width: 50px;
-        text-align: center;
-        .chevron{
-          fill:white;
-          height: 30px;
-        }
-      }
-      .prev-page .number{
-        display: flex;
-        align-self: center;
-        .chevron{
-          transform: rotate(90deg);
-          fill: gray;
-        }
-      }
-      .next-page .number{
-        display: flex;
-        align-self: center;
-        .chevron{
-          transform: rotate(-90deg);
-          fill: gray;
-        }
-      }
-      .curr-page{
-        font-size: 1.6rem;
-        text-decoration: underline;
-        color: $text;
+
+
+
+}
+.pagination{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+  .page-numbers{
+    display: flex;
+    gap: 2rem;
+
+    font-size: 1.5rem;
+    .number{
+      cursor: pointer;
+      user-select: none;
+      color: gray;
+      width: 50px;
+      text-align: center;
+      .chevron{
+        fill:white;
+        height: 30px;
       }
     }
-
+    .prev-page .number{
+      display: flex;
+      align-self: center;
+      .chevron{
+        transform: rotate(90deg);
+        fill: gray;
+      }
+    }
+    .next-page .number{
+      display: flex;
+      align-self: center;
+      .chevron{
+        transform: rotate(-90deg);
+        fill: gray;
+      }
+    }
+    .curr-page{
+      font-size: 1.6rem;
+      text-decoration: underline;
+      color: $text;
+    }
   }
-
-
 
 }

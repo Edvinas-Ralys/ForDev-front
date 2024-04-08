@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react"
 import { Profile } from "../../../Contexts/Profile"
 import { Authorization } from "../../../Contexts/Authorization"
+import { Router } from "../../../Contexts/Router"
 import { Pen, TrashCan } from "../../../Icons/Icons"
 import CommentPagiantion from "./CommentPagination"
 
-function CommentTab({ setEditComment }) {
+function CommentTab({ setEditComment, setDeleteComment }) {
   const { profile } = useContext(Profile)
   const { user } = useContext(Authorization)
   const [commentPages, setCommentPages] = useState({
@@ -12,6 +13,12 @@ function CommentTab({ setEditComment }) {
     pagesTo: 5,
     currentPage: 1,
   })
+  const { params } = useContext(Router)
+
+  const handleDeletComment = comment => {
+    setDeleteComment({ postId: comment.postId, commentId: comment.id, userId: Number(user.id) })
+  }
+
   const viewPost = id => {
     window.location.href = `#view/${id}`
   }
@@ -62,29 +69,47 @@ function CommentTab({ setEditComment }) {
                   <div className="comment-created">{comment.created}</div>
                   <div className="comment-post">{comment.postTitle}</div>
                 </div>
-                <div className="post-buttons">
-                  <div
-                    onClick={_ =>
-                      handleEditComment(
-                        comment.id,
-                        comment.commentContent,
-                        comment.postId,
-                        comment.postTitle
-                      )
-                    }
-                    className="pen-wrapper icon"
-                  >
-                    <Pen />
-                  </div>
-                  <div className="trashcan-wrapper icon">
-                    <TrashCan />
-                  </div>
-                </div>
+                {user ? (
+                  user.id === params[0] ? (
+                    <div className="post-buttons">
+                      <div
+                        onClick={_ =>
+                          handleEditComment(
+                            comment.id,
+                            comment.commentContent,
+                            comment.postId,
+                            comment.postTitle
+                          )
+                        }
+                        className="pen-wrapper icon"
+                      >
+                        <Pen />
+                      </div>
+                      <div
+                        onClick={_ => handleDeletComment(comment.id)}
+                        className="trashcan-wrapper icon"
+                      >
+                        <TrashCan />
+                      </div>
+                    </div>
+                  ) : (
+                    ``
+                  )
+                ) : (
+                  ``
+                )}
               </div>
             )
         )}
       </div>
-      <CommentPagiantion commentPages={commentPages} setCommentPages={setCommentPages} nextPage={nextPage} prePage={prePage} />
+      {profile.userComments.length > 5 && (
+        <CommentPagiantion
+          commentPages={commentPages}
+          setCommentPages={setCommentPages}
+          nextPage={nextPage}
+          prePage={prePage}
+        />
+      )}
     </div>
   )
 }

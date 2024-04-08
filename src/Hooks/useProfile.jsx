@@ -58,6 +58,11 @@ function useProfile() {
               ...prev,
               userDetails: { ...prev.userDetails, picture: res.data.newPicture },
             }))
+          } else if (updateProfile.updateType === `picture-remove`){
+            setProfile(prev => ({
+              ...prev,
+              userDetails: { ...prev.userDetails, picture: null },
+            }))
           }
         })
         .catch(err => {

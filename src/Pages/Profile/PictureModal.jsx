@@ -28,6 +28,18 @@ function PictureModal({ setChangePicture, changePicture }) {
     setImage(null)
   }
 
+  const handleRemovePicture = _ =>{
+    setUpdateProfile({
+      picture: changePicture.picture,
+      updateType: `picture-remove`,
+      userId: user.id,
+      currentProfile: params[0],
+      oldPicture: profile.userDetails.picture,
+    })
+    setChangePicture(null)
+    setImage(null)
+  }
+
   return (
     <div className="picture-modal">
       <div className="modal-content">
@@ -41,7 +53,10 @@ function PictureModal({ setChangePicture, changePicture }) {
           <div className="form-element">
             {changePicture.picture === null ? (
               <label className="add-file" htmlFor="addFile">
-                <img src={`${SERVER_URL}/images/${profile.userDetails.picture}`} />
+                {!profile.userDetails.picture ?
+                <img src={`${SERVER_URL}/images/avatr-placeholder.png`} />
+                : <img src={`${SERVER_URL}/images/${profile.userDetails.picture}`} />}
+
                 <CameraIcon />
                 <input type="file" id="addFile" onChange={readImage} />
               </label>
@@ -59,8 +74,8 @@ function PictureModal({ setChangePicture, changePicture }) {
         </div>
         <div className="buttons">
           <button onClick={_ => setChangePicture(null)}>Cancel</button>
+          {!image && <button onClick={handleRemovePicture}>Clear picture</button>}
           {image && <button onClick={handleChangePicture}>Save</button>}
-          {/* <button onClick={handleChangePicture}>Save</button> */}
         </div>
       </div>
     </div>

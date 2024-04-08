@@ -18,7 +18,6 @@ function UserCard({ setCreateBio, setChangePicture }) {
   }
 
   const handleChangePicture = _ => {
-    // console.log()
     setChangePicture({picture:profile.userDetails.picture})
   }
 

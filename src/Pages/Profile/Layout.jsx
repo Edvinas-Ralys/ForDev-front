@@ -25,7 +25,7 @@ function Layout() {
         {user && user.id === params[0] && (
           <UserCard setCreateBio={setCreateBio} setChangePicture={setChangePicture} />
         )}
-        {user.id !== params[0] && <ViewUserCard />}
+        {(!user || user.id !== params[0] )&& <ViewUserCard />}
         {changePicture && <PictureModal  setChangePicture={setChangePicture} changePicture={changePicture}/>}
         <History />
       </div>

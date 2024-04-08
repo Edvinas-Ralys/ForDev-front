@@ -24,6 +24,7 @@
 @import './Pages/Profile/profile.scss';
 @import './Components/Modal/modal.scss';
 @import './Pages/Profile/history.scss';
+@import './Pages/Search/search.scss';
 
 * {
   padding: 0;
@@ -70,6 +71,7 @@ background-color: $primary-transperant!important;
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
+  height: 0;
 }
 
 /* Track */

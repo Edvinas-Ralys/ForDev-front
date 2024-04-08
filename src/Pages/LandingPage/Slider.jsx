@@ -10,7 +10,7 @@ function Slider() {
       <div className="title">Explore trending posts</div>
       <div className="slider">
         {posts.map((postItem, i) => (
-          <SliderCard key={i} postItem={postItem} />
+          <SliderCard key={i} postItem={postItem} count={i} />
         ))}
       </div>
     </div>

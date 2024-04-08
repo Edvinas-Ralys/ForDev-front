@@ -5,7 +5,14 @@ export default function postReducer(state, action) {
   let post = null
   switch (action.type) {
     case constants.GET_POSTS_FROM_SERVER:
-      newState = action.payload
+      //TEMPORARY
+      let multiplePosts = []
+      for(let i = 0; i < 3; i++){
+        multiplePosts.push(...action.payload)
+      }
+      newState = multiplePosts
+       //TEMPORARY
+      //  newState = action.payload
     break
 
     case constants.CREATE_POST:

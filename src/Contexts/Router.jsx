@@ -9,6 +9,7 @@ import NetworkErr from "../Pages/Err/NetworkErr"
 import Page403 from "../Pages/Err/Page403"
 import Page401 from "../Pages/Err/Page401"
 import ProfileIndex from "../Pages/Profile/Index"
+import SearchIndex from "../Pages/Search/Index"
 
 export const Router = createContext()
 export const RouterProvider = ({ children }) => {
@@ -30,6 +31,7 @@ export const RouterProvider = ({ children }) => {
     { path: `#create-post`, component: <CreatePostIndex /> },
     { path: `#view`, component: <ViewIndex /> },
     { path: `#profile`, component: <ProfileIndex /> },
+    { path:`#search`, component:<SearchIndex />}
   ]
 
   const errorPages = [

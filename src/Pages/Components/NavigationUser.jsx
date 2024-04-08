@@ -32,7 +32,7 @@ function NavigationUser({ offset, setComponentToScroll }) {
         </div>
         <div className="right">
           <div onClick={handelScrollExplore}>Explore</div>
-          <div>Search</div>
+          <div><a href="#search">Search</a></div>
           <div className="dropdown nav-profile-card">
             <ProfileIcon />
             {user.username}

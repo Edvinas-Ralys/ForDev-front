@@ -1,11 +1,10 @@
 .create-main{
-    display: grid;
-grid-template-columns: 0.28fr 1.35fr;
-// gap: 1rem;
+// padding-top: 50px
 }
 
 .create-post-page {
   position: relative;
+  padding-top: 90px;
   // width: 90%;
   display: flex;
   justify-content: center;
@@ -24,8 +23,13 @@ grid-template-columns: 0.28fr 1.35fr;
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+    margin-bottom: 50px;
     button {
-      width: 30%;
+      width: 10%;
+      a{
+        text-decoration: none;
+      }
+
     }
   }
 }

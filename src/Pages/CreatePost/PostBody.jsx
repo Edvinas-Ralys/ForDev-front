@@ -46,8 +46,10 @@ function PostBody({ preview, setPreview }) {
       <div className="story-container">
         <div className="story">{parse(preview.text)}</div>
       </div>
-      <button onClick={_ => setPreview(null)}>Edit</button>
-      <button onClick={handlePublishPost}>Publish</button>
+      <div className="buttons">
+        <button onClick={_ => setPreview(null)}>Edit</button>
+        <button onClick={handlePublishPost}>Publish</button>
+      </div>
     </>
   )
 }

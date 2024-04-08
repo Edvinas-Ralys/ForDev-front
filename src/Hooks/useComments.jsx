@@ -118,6 +118,9 @@ function useComments(dispatchComments) {
       .then(res => {
         dispatchComments(a.updateComment(res.data.updatedComment))
         addMessage(res.data.message)
+        if(window.location.href === `#profile`){
+          window.location.reload()
+        }
       })
       .catch(err => {
         console.log(err)

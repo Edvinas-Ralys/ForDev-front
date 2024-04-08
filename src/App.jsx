@@ -12,11 +12,11 @@ function App() {
     <AuthorizationProvider>
       <PrimeReactProvider>
         <PostProvider>
-          <ProfileProvider>
-            <CommentProvider>
+          <CommentProvider>
+            <ProfileProvider>
               <RouterProvider></RouterProvider>
-            </CommentProvider>
-          </ProfileProvider>
+            </ProfileProvider>
+          </CommentProvider>
         </PostProvider>
       </PrimeReactProvider>
     </AuthorizationProvider>

@@ -13,41 +13,6 @@ function Banner({imgStyles}) {
     const third = useRef()
 
 
-    //   const changeLetter = useCallback(text => {
-    //     let iterations = 0
-    //     const interval = setInterval(_ => {
-    //       text.innerText = text.innerText
-    //         .split(``)
-    //         .map((letter, i) => {
-    //           if (i < iterations) {
-    //             return text.dataset.value[i]
-    //           } else {
-    //             return letters[Math.floor(Math.random() * 26)]
-    //           }
-    //         })
-    //         .join(``)
-    //       if (iterations >= text.dataset.value.length) clearInterval(interval)
-    //       iterations += 1 / 3
-    //     }, 120)
-    //   }, [])
-
-    //   useEffect(
-    //     _ => {
-    //       changeLetter(first.current)
-    //       changeLetter(second.current)
-    //       changeLetter(third.current)
-    //       const interval = setInterval(_ => {
-    //         if (iterationsCount === 2) {
-    //           setIterationCount(0)
-    //         } else {
-    //           setIterationCount(iterationsCount + 1)
-    //         }
-    //       }, 5000)
-    //       // clearInterval(interval)
-    //     },
-    //     [iterationsCount]
-    //   )
-
 
   return (
     <div className='banner'>

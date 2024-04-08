@@ -34,8 +34,6 @@ function PostTab({deletePost, setDeletePost}) {
               <div onClick={_=>setDeletePost({postId:post._id, userId: Number(user.id), postTitle:post.title})} className="trashcan-wrapper icon">
               <TrashCan />
               </div>
-
-
             </div>
           </div>
         ))}

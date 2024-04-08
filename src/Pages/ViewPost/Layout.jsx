@@ -1,13 +1,14 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Authorization } from "../../Contexts/Authorization"
 import { Post } from "../../Contexts/Post"
-import SideNavUser from "../Components/SideNavUser"
 import ViewPostBody from "./ViewPostBody"
 import { Router } from "../../Contexts/Router"
 import DeleteModal from "./DeleteModal"
 import DeleteCommentModal from "./DeleteCommentModal"
 import { Comment } from "../../Contexts/Comment"
 import EditCommentModal from "./EditCommentModal"
+import NavigationUser from "../Components/NavigationUser"
+import Navigation from "../Components/Navigation"
 
 function Layout() {
   const { user } = useContext(Authorization)
@@ -18,6 +19,7 @@ function Layout() {
   const [deleteComment, setDeleteComment] = useState(null)
   const [editComment, setEditComment] = useState(null)
   const {setGetComments} = useContext(Comment)
+  const [offset, setOffset] = useState(false)
 
   useEffect(
     _ => {
@@ -34,6 +36,15 @@ function Layout() {
     },
     [posts, params[0]]
   )
+  useEffect(_ => {
+    window.onscroll = _ => {
+      if (window.scrollY > 0) {
+        setOffset(true)
+      } else {
+        setOffset(false)
+      }
+    }
+  }, [])
 
   if (currentItem === null) {
     return null
@@ -62,7 +73,8 @@ function Layout() {
           currentItem={currentItem}
         />
       )}
-      <SideNavUser />
+      {/* <SideNavUser /> */}
+      {user ? <NavigationUser offset={offset}/> : <Navigation offset={offset}/>}
       <div className="view-content">
         <ViewPostBody
           currentItem={currentItem}

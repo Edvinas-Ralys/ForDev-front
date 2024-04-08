@@ -8,7 +8,6 @@ import Banner from "./Banner"
 
 function Layout() {
   const { user } = useContext(Authorization)
-  const letters = "QWERTYUIOPASDFGHJKLZXCVBNM"
   const [offset, setOffset] = useState(false)
   const [imgStyles, setImgStyles] = useState({
     backgroundParalax:0,

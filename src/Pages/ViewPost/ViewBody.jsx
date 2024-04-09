@@ -1,9 +1,8 @@
 import { SERVER_URL } from "../../Data/main"
 import parse from "html-react-parser"
 import { TrashCan } from "../../Icons/Icons"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { Authorization } from "../../Contexts/Authorization"
-import DeleteModal from "./DeleteModal"
 
 function ViewBody({ currentItem, setDeletePost }) {
   const { user } = useContext(Authorization)

@@ -1,27 +1,34 @@
 import { Logo } from "../../Icons/Icons"
+import { Router } from "../../Contexts/Router"
+import { useContext } from "react"
 
-function Navigation({offset}) {
+function Navigation({offset, setComponentToScroll}) {
+  const handleScrollLogo = _ =>{
+    if(route !== `#home`){
+      window.location.href = `#home`
+    } else {
+      setComponentToScroll(`main`)
+    }
+  }
+  const handelScrollExplore = _ =>{
+    if(route !== `#home`){
+      window.location.href = `#home`
+    } else {
+      setComponentToScroll(`explore`)
+    }
+  }
+
+  const {route} = useContext(Router)
   return (
     <div className={`navigation ${offset ? `scrolled` : ``}`}>
       <nav className={`${offset ? `scrolled` : ``}`}>
-        <div className="left">
+      <div onClick={handleScrollLogo} className="left">
           <Logo />
         </div>
-
         <div className="right">
-
-          <ul>
-          <li className="double">How it works</li>
-            <li>
-              <a href="#signup">Sign up</a>
-            </li>
-            <li>
-              <a href="#login">Log in</a>
-            </li>
-            {/* <label htmlFor="hamburger-menu" className="hamburger-menu">
-              <input type="checkbox" name="" id="hamburger-menu" />
-            </label> */}
-          </ul>
+          <div onClick={handelScrollExplore}>Explore</div>
+          <div><a href="#login">Login</a></div>
+          <div><a href="#signup">Sign up</a></div>
         </div>
       </nav>
     </div>

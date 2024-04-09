@@ -51,7 +51,7 @@ function Layout() {
     <>
 
       <div ref={main} className="landing-page">
-      {user ? <NavigationUser offset={offset} setComponentToScroll={setComponentToScroll} /> : <Navigation offset={offset}  />}
+      {user ? <NavigationUser offset={offset} setComponentToScroll={setComponentToScroll} /> : <Navigation offset={offset} setComponentToScroll={setComponentToScroll} />}
         <Banner imgStyles={imgStyles}  />
       </div>
       <Explore explore={explore}/>

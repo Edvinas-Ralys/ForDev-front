@@ -6,7 +6,7 @@ function TagDropdown({ tagSearch, setTags, tags, setTagSearch, displayDropdown }
     e.stopPropagation()
   }
   const handleTag = tag => {
-    setTagSearch(``)
+    tags.includes(tag)
       ? setTags(prev => prev.filter(item => item !== tag))
       : setTags(prev => [...prev, tag])
   }
@@ -20,10 +20,9 @@ function TagDropdown({ tagSearch, setTags, tags, setTagSearch, displayDropdown }
         <div
           onClick={e => addTag(e)}
           className="tag"
-          style={{ display: cat.title.includes(tagSearch) ? `block` : `none` }}
+          style={{ backgroundColor: tags.includes(cat.title) ? `green` : `` }}
           key={i}
         >
-          <input type="checkbox" id={`tag${cat.id}`} value={cat.title} key={cat.id} />
           <label onClick={_ => handleTag(cat.title)} htmlFor={`tag${cat.id}`}>
             {cat.title}
           </label>

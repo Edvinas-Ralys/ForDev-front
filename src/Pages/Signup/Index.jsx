@@ -14,6 +14,7 @@ import useSignup from "../../Hooks/useSignup"
 import { Authorization } from "../../Contexts/Authorization"
 import { Router } from "../../Contexts/Router"
 import Loading from "../Components/Loading"
+import { Logo } from "../../Icons/Icons"
 
 function Index() {
   const { user } = useContext(Authorization)
@@ -109,7 +110,7 @@ function Index() {
 
       <div className="sign-up-page">
         <div className="logo">
-          <a href="#home">LOGO</a>
+          <a href="#home"><Logo /></a>
         </div>
         <div className="right-content">
           <div className="right-top">

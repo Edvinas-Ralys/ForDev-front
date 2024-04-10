@@ -105,49 +105,48 @@
       justify-content: center;
       flex-direction: column;
       gap: 1rem;
-      .pagination{
+      .pagination {
         display: flex;
         justify-content: center;
         padding-bottom: 50px;
-        .page-numbers{
+        .page-numbers {
           display: flex;
           gap: 2rem;
 
           font-size: 1.5rem;
-          .number{
+          .number {
             cursor: pointer;
             user-select: none;
             color: gray;
             width: 50px;
             text-align: center;
-            .chevron{
-              fill:white;
+            .chevron {
+              fill: white;
               height: 30px;
             }
           }
-          .prev-page .number{
+          .prev-page .number {
             display: flex;
             align-self: center;
-            .chevron{
+            .chevron {
               transform: rotate(90deg);
               fill: gray;
             }
           }
-          .next-page .number{
+          .next-page .number {
             display: flex;
             align-self: center;
-            .chevron{
+            .chevron {
               transform: rotate(-90deg);
               fill: gray;
             }
           }
-          .curr-page{
+          .curr-page {
             font-size: 1.6rem;
             text-decoration: underline;
             color: $text;
           }
         }
-
       }
     }
     .comment-title,
@@ -253,7 +252,8 @@
   }
 }
 
-.delete-modal, .edit-modal {
+.delete-modal,
+.edit-modal {
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -286,12 +286,132 @@
         cursor: pointer;
       }
     }
-    .modal-body {
-      max-width: 25vw;
-    }
+
     .buttons {
       display: flex;
       justify-content: space-between;
+    }
+  }
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+  .view-page {
+    .profile-card {
+    }
+    .view-content {
+      .post-title {
+      }
+      .creator {
+        a {
+        }
+        .trash-can {
+          &:hover {
+          }
+        }
+        .tags {
+          width: 80vw;
+          .post-tag {
+          }
+        }
+      }
+      .view-image {
+        img {
+        }
+      }
+      .story-container {
+        width: 90vw;
+        .story {
+          width: 100%;
+        }
+      }
+    }
+    .write-comment,
+    .comment-section {
+      width: 90vw;
+      .write-container,
+      .comment-container {
+        width: 100%;
+        .pagination {
+          .page-numbers {
+            .number {
+              .chevron {
+              }
+            }
+            .prev-page .number {
+              .chevron {
+              }
+            }
+            .next-page .number {
+              .chevron {
+              }
+            }
+            .curr-page {
+            }
+          }
+        }
+      }
+      .comment-title,
+      .comment-section-title {
+      }
+      textarea {
+      }
+      button {
+      }
+    }
+    .comments {
+    }
+
+    .comment {
+      .top {
+        .left {
+          .profile-icon {
+          }
+        }
+        .right {
+          .icons {
+            .pen {
+              &:hover {
+              }
+            }
+
+            .trashcan-wrapper {
+              &:hover {
+              }
+            }
+          }
+          .name {
+          }
+          .date {
+          }
+        }
+      }
+      .bottom {
+      }
+    }
+  }
+
+  .delete-modal,
+  .edit-modal {
+    .modal-content {
+      textarea {
+      }
+      .title {
+        .close {
+        }
+      }
+      .modal-body {
+      }
+      .buttons {
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 .history {
+  height: fit-content;
   .tabs {
     display: flex;
     gap: 4rem;
@@ -87,17 +88,18 @@
     }
   }
   .post-tab, .comment-tab {
-    height: 90%;
+    // height: 90%;
     width: 100%;
     background: linear-gradient($primary-dark 1%, $primary-transperant 100%);
     bottom: 0;
     left: 0;
     border-radius: 20px;
+    // margin-bottom: 50px;
   }
 }
 
 .post-tab{
-
+padding-bottom: 20px;
   .posts{
     position: relative;
     display: flex;
@@ -106,6 +108,7 @@
     padding: 20px;
     border-radius: 10px;
     padding-top: 30px;
+    height: fit-content;
     .post{
       background-color: $background-transperent;
       display: flex;
@@ -173,6 +176,7 @@
 }
 
 .comment-tab{
+  padding-bottom: 20px;
   .comments{
     display: flex;
     flex-direction: column;
@@ -241,7 +245,7 @@
 .pagination{
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  // padding-bottom: 0px;
   .page-numbers{
     display: flex;
     gap: 2rem;
@@ -279,6 +283,296 @@
       text-decoration: underline;
       color: $text;
     }
+  }
+
+}
+
+
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+  .history {
+
+    .tabs {
+
+      .tab {
+
+        &:after {
+
+        }
+        &:before {
+
+        }
+      }
+      .inactive {
+
+        &:after {
+
+        }
+        &:before {
+
+        }
+      }
+    }
+    .post-tab, .comment-tab {
+
+    }
+  }
+
+  .post-tab{
+
+    .posts{
+
+      .post{
+
+        &:hover{
+
+        }
+        .post-title{
+
+          &:hover{
+
+          }
+
+        }
+        .post-created{
+
+        }
+        .post-tags{
+
+          .tag{
+
+
+
+          }
+        }
+        .post-buttons{
+
+          .icon{
+
+          }
+          .trash-can{
+            &:hover{
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .comment-tab{
+    .comments{
+
+      .comment{
+
+        &:hover{
+
+        }
+        .comment-title{
+
+          &:hover{
+
+          }
+
+
+        }
+        .comment-created{
+
+        }
+        .comment-post{
+
+        }
+        .post-buttons{
+
+          .icon{
+
+
+          }
+          .trash-can{
+            &:hover{
+
+            }
+          }
+        }
+      }
+    }
+  }
+  .pagination{
+
+    .page-numbers{
+
+      .number{
+
+
+        .chevron{
+
+        }
+      }
+      .prev-page .number{
+
+        .chevron{
+
+        }
+      }
+      .next-page .number{
+
+        .chevron{
+
+        }
+      }
+      .curr-page{
+
+      }
+    }
+
+  }
+
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+  .history {
+
+    .tabs {
+      gap: 2.2rem;
+      .tab {
+        width: fit-content;
+        padding: 5px 20px;
+
+        &:after {
+
+        }
+        &:before {
+
+        }
+      }
+      .inactive {
+
+        &:after {
+
+        }
+        &:before {
+
+        }
+      }
+    }
+    .post-tab, .comment-tab {
+
+    }
+  }
+
+  .post-tab{
+    height: fit-content;
+    .posts{
+      padding-bottom: 5px;
+      .post{
+
+        &:hover{
+
+        }
+        .post-title{
+
+          &:hover{
+
+          }
+
+        }
+        .post-created{
+
+        }
+        .post-tags{
+
+          .tag{
+
+
+
+          }
+        }
+        .post-buttons{
+
+          .icon{
+
+          }
+          .trash-can{
+            &:hover{
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .comment-tab{
+    .comments{
+
+      .comment{
+
+        &:hover{
+
+        }
+        .comment-title{
+
+          &:hover{
+
+          }
+
+
+        }
+        .comment-created{
+
+        }
+        .comment-post{
+
+        }
+        .post-buttons{
+
+          .icon{
+
+
+          }
+          .trash-can{
+            &:hover{
+
+            }
+          }
+        }
+      }
+    }
+  }
+  .pagination{
+padding: 0;
+    .page-numbers{
+
+      .number{
+
+
+        .chevron{
+
+        }
+      }
+      .prev-page .number{
+
+        .chevron{
+
+        }
+      }
+      .next-page .number{
+
+        .chevron{
+
+        }
+      }
+      .curr-page{
+
+      }
+    }
+
   }
 
 }

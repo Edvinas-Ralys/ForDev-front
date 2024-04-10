@@ -1,7 +1,5 @@
 .slider-container {
-  // height: 200px;
   width: 100vw;
-  // border: 2px solid white;
   font-family: raleway;
   padding-top: 80px;
 
@@ -33,7 +31,7 @@
           transform: 0.2s ease-in;
         }
       }
-      .disabled-cheveron{
+      .disabled-cheveron {
         opacity: 0.3;
         user-select: none;
         pointer-events: none;
@@ -48,7 +46,8 @@
     }
   }
   .slider {
-    height: 80vh;
+    // height: 80vh;
+    padding-bottom: 50px;
     width: 100%;
     // border: 2px solid green;
     padding-right: 100px;
@@ -162,4 +161,86 @@
       }
     }
   }
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+  .slider-container {
+    .title {
+      margin-left: 20px;
+      font-size: 1.4rem;
+      width: 90vw;
+      // gap: 25vw;
+      justify-content: space-between;
+      .buttons {
+        margin: 0;
+        .chevron-left-wrapper,
+        .chevron-right-wrapper {
+          &:hover {
+          }
+        }
+        .disabled-cheveron {
+        }
+        .chevron-left-wrapper {
+          height: 30px;
+          width: 30px;
+        }
+        .chevron-right-wrapper {
+          height: 30px;
+          width: 30px;
+        }
+      }
+    }
+    .slider {
+      display: flex;
+      flex-direction: column;
+    }
+    .slider-card-big-one {
+    }
+    .slider-card-big-two {
+    }
+    .slider-bottom-left-double {
+    }
+    .slider-bottom-middle-double {
+    }
+    .slider-bottom-right-double {
+    }
+    .slider-card {
+      &:hover {
+      }
+      &:hover img {
+      }
+      &:hover .slider-title {
+      }
+
+      &:hover .slider-info {
+      }
+      .slider-card-content {
+        .image-container {
+          display: flex;
+          align-items: center;
+          img {
+            filter: brightness(0.2);
+          }
+
+          .slider-title {
+            height: 100%;
+            width: 100%;
+          }
+          .slider-info {
+            .comments-display {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
 }

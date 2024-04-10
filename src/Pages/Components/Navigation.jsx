@@ -25,7 +25,7 @@ function Navigation({offset, setComponentToScroll}) {
       <div onClick={handleScrollLogo} className="left">
           <Logo />
         </div>
-        <div className="right">
+        <div className="right-no-user">
           <div onClick={handelScrollExplore}>Explore</div>
           <div><a href="#login">Login</a></div>
           <div><a href="#signup">Sign up</a></div>

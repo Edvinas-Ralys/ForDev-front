@@ -24,7 +24,7 @@ function useProfile() {
           .get(`${SERVER_URL}/user`, { params: getProfile })
           .then(res => {
             setProfile(res.data)
-            console.log(res.data)
+
           })
           .catch(err => {
             addMessage(err.response.data.message)

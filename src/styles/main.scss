@@ -25,6 +25,7 @@
 @import './Components/Modal/modal.scss';
 @import './Pages/Profile/history.scss';
 @import './Pages/Search/search.scss';
+@import './Components//Navigation/sidemenu.scss';
 
 * {
   padding: 0;
@@ -88,4 +89,54 @@ background-color: $primary-transperant!important;
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $primary-mid;
+}
+
+.pagination{
+  display: flex;
+  justify-content: center;
+  .page-numbers{
+    display: flex;
+    gap: 2rem;
+    font-size: 1.5rem;
+    .prev-page, .curr-page, .next-page{
+      width: 50px;
+      height: 30px;
+    }
+    .number{
+      cursor: pointer;
+      user-select: none;
+      color: gray;
+      width: 50px;
+      text-align: center;
+      .chevron{
+        fill:white;
+        height: 30px;
+      }
+    }
+    .prev-page .number{
+      display: flex;
+      align-self: center;
+      width: 50px;
+      .chevron{
+        transform: rotate(90deg);
+        fill: gray;
+      }
+    }
+    .next-page .number{
+      display: flex;
+      align-self: center;
+      width: 50px;
+      height: 30px;
+      .chevron{
+        transform: rotate(-90deg);
+        fill: gray;
+      }
+    }
+    .curr-page{
+      font-size: 1.6rem;
+      text-decoration: underline;
+      color: $text;
+    }
+  }
+
 }

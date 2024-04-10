@@ -1,7 +1,8 @@
-.profile{
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(rgba(250, 250, 250, 0.04) 1px, transparent 1px),
+.profile {
+  height: 100vh;
+  padding-bottom: 70px;
+  width: 100vw;
+  background-image: linear-gradient(rgba(250, 250, 250, 0.04) 1px, transparent 1px),
     linear-gradient(to right, rgba(250, 250, 250, 0.04) 1px, transparent 1px);
   background-size: 25px 25px;
   background-color: #000000;
@@ -11,128 +12,272 @@
   user-select: none;
 }
 
-.profile-container{
-    // height: 100%;
-    width: 90%;
+.profile-container {
+  // height: 100%;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1.5fr 5fr;
+  margin-top: 15vh;
+  gap: 3rem;
+  .user {
+    height: fit-content;
+    width: fit-content;
+    // border: 2px solid white;
+  }
+  .history {
+    // height: 80%;
+    width: 100%;
+    // border: 2px solid green;
+  }
+}
+
+.user {
+  background-color: $primary-transperant;
+  border-radius: 15px;
+  padding: 10px 15px;
+  .user-container {
+    // border: 2px solid purple;
     display: grid;
-    grid-template-columns: 1.5fr 5fr;
-    margin-top: 15vh;
-    gap: 3rem;
-    .user{
+    grid-template-rows: 1fr fit-content 0.8fr 0.5fr 0.5fr;
+    gap: 1rem;
+    .picture {
+      height: 25vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 30px;
+      align-items: center;
+      .image-wrapper {
+        height: 25vh;
+        img {
+          height: 100%;
+          width: auto;
+          border-radius: 15px;
+        }
+      }
+      .image-button {
+        text-align: center;
+        color: gray;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.9rem;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .username {
+      font-size: 2rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    .bio {
+      line-height: 23px;
+      .bio-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      .bio-buttons {
+        .double {
+          display: flex;
+          gap: 2rem;
+          font-weight: 700;
+          font-size: 0.9rem;
+          margin-top: 20px;
+          .update-button,
+          .clear-button {
+            cursor: pointer;
+
+            color: gray;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      // text-align: center;
+    }
+    .interests {
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      // text-decoration: underline;
+      .logout {
+        color: gray;
+        cursor: pointer;
+        &:hover {
+          color: white;
+        }
+      }
+
+      .cog {
+        fill: gray;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+        &:hover {
+          fill: white;
+        }
+      }
+    }
+  }
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+  .profile {
+    height: fit-content;
+  }
+
+  .profile-container {
+
+    display: flex;
+    flex-direction: column;
+    .user {
+    }
+    .history {
+    }
+  }
+
+  .user {
+    .user-container {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+
+      .picture {
+        margin: 0;
+        // padding-top: 20px;
+        height: 20vh;
+        display: flex;
+        align-items: center;
+        .image-wrapper {
+            height: 100%;
+          img {
+          }
+        }
+        .image-button {
+          &:hover {
+          }
+        }
+      }
+      .group{
+
+
+      .username {
+        // position: absolute;
+      }
+      .bio {
+        .bio-title {
+        }
+        .bio-buttons {
+          .double {
+            .update-button,
+            .clear-button {
+              &:hover {
+              }
+            }
+          }
+        }
+      }
+      .bottom {
+        display: flex;
+        justify-content: flex-end;
+    }
+    }
+
+
+    }
+  }
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+    .profile {
         height: fit-content;
-        width: fit-content;
-        // border: 2px solid white;
-    }
-    .history{
-        height: 80%;
-        width: 100%;
-        // border: 2px solid green;
-    }
+        min-height: 100vh;
+      }
+
+      .profile-container {
+
+
+        .user {
+        }
+        .history {
+        }
+      }
+
+      .user {
+        .user-container {
+
+
+          .picture {
+
+            .image-wrapper {
+
+              img {
+              }
+            }
+            .image-button {
+              &:hover {
+              }
+            }
+          }
+          .group{
+
+
+          .username {
+
+          }
+          .bio {
+            .bio-title {
+            }
+            .bio-buttons {
+              .double {
+                .update-button,
+                .clear-button {
+                  &:hover {
+                  }
+                }
+              }
+            }
+          }
+          .bottom {
+
+        }
+        }
+
+
+        }
+      }
 }
 
-.user{
-    background-color: $primary-transperant;
-    border-radius: 15px;
-    padding: 10px 15px;
-    .user-container{
-        // border: 2px solid purple;
-        display: grid;
-        grid-template-rows: 1fr fit-content 0.8fr 0.5fr 0.5fr;
-        gap: 1rem;
-        .picture{
+// //1200px
+// @media only screen and (max-width: $tablet-width) {
+// }
 
-            height: 25vh;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            margin-top: 30px;
-            align-items: center;
-            .image-wrapper{
-                height: 25vh;
-                img{
-                    height: 100%;
-                    width: auto;
-                    border-radius: 15px;
-                }
-            }
-            .image-button{
-                text-align: center;
-                color: gray;
-                cursor: pointer;
-                font-weight: 700;
-                font-size: 0.9rem;
-                &:hover{
-                    text-decoration: underline;
-                }
-            }
+// //1000px
+// @media only screen and (max-width: $tablet-small-width) {
 
-        }
-        .username{
-            font-size: 2rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center ;
-        }
-        .bio{
-            line-height: 23px;
-            .bio-title{
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-                font-weight: 500;
-            }
-            .bio-buttons{
-                .double{
+// }
 
-                    display: flex;
-                    gap: 2rem;
-                    font-weight: 700;
-                    font-size: 0.9rem;
-                    margin-top: 20px;
-                    .update-button, .clear-button{
-                        cursor: pointer;
+// //700px
+// @media only screen and (max-width: $phone-width) {
 
-                        color: gray;
-                        &:hover{
-                            text-decoration: underline;
-                        }
-                    }
-                }
-
-            }
-            // text-align: center;
-        }
-        .interests{
-            display: flex;
-            // justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .bottom{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            // text-decoration: underline;
-            .logout{
-                color: gray;
-                cursor:pointer ;
-                &:hover{
-                    color: white;
-                }
-
-            }
-
-            .cog{
-                fill:gray;
-                height: 40px;
-                width: 40px;
-                cursor: pointer;
-                &:hover{
-                    fill:white
-                }
-            }
-        }
-    }
-}
+// }

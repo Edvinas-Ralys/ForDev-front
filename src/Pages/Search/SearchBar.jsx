@@ -24,6 +24,9 @@ function SearchBar({ displayDropdown, openDropdown, setTags, tags }) {
   return (
     <div className="search-bar">
       <div className="inputs">
+        <div className="double">
+
+
         <div className="search-input">
           <input
             type="text"
@@ -52,6 +55,8 @@ function SearchBar({ displayDropdown, openDropdown, setTags, tags }) {
             />
           }
         </div>
+        </div>
+        <button onClick={handleSearch}>Search</button>
       </div>
       <div className="selected-tags">
         {tags.length !== 0 &&
@@ -61,7 +66,7 @@ function SearchBar({ displayDropdown, openDropdown, setTags, tags }) {
             </div>
           ))}
       </div>
-      <button onClick={handleSearch}>Search</button>
+
     </div>
   )
 }

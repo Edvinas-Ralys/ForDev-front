@@ -1,13 +1,13 @@
 .preview-page {
   font-family: raleway;
-//   width: 100%;
+  //   width: 100%;
   background-color: $background;
-//   display: flex;
-//   justify-content: center;
-// display: grid;
-// grid-template-columns: 1fr 0.35fr;
-gap: 1rem;
-padding-left: 4rem;
+  //   display: flex;
+  //   justify-content: center;
+  // display: grid;
+  // grid-template-columns: 1fr 0.35fr;
+  gap: 1rem;
+  padding-left: 4rem;
   //Background
   background-image: linear-gradient(rgba(250, 250, 250, 0.04) 1px, transparent 1px),
     linear-gradient(to right, rgba(250, 250, 250, 0.04) 1px, transparent 1px);
@@ -15,7 +15,7 @@ padding-left: 4rem;
   background-color: #000000;
   //background
 
-  .profile-card{
+  .profile-card {
     border: 2px solid white;
     margin-right: 50px;
   }
@@ -34,31 +34,29 @@ padding-left: 4rem;
       text-align: start;
     }
     .creator {
-        font-size: 1.2rem;
-        font-style: italic;
-        border-bottom: 1px solid $primary;
-        padding-bottom: 10px;
-        a{
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        .tags{
-            margin-top:1rem ;
-            display: flex;
-            gap: 1rem;
-            width: 70%;
-            flex-wrap: wrap;
-            .post-tag{
-                user-select: none;
-                padding: 5px 8px;
-                border-radius: 10rem;
-                background-color: $primary-dark;
-                border: 1px solid $accent;
-
-            }
-
+      font-size: 1.2rem;
+      font-style: italic;
+      border-bottom: 1px solid $primary;
+      padding-bottom: 10px;
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .tags {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+        width: 70%;
+        flex-wrap: wrap;
+        .post-tag {
+          user-select: none;
+          padding: 5px 8px;
+          border-radius: 10rem;
+          background-color: $primary-dark;
+          border: 1px solid $accent;
         }
       }
+    }
     .view-image {
       width: 100%;
       display: flex;
@@ -81,11 +79,55 @@ padding-left: 4rem;
         line-height: 2rem;
       }
     }
-    .buttons{
+    .buttons {
       display: flex;
       justify-content: center;
       gap: 5rem;
       margin-bottom: 100px;
+    }
+  }
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+  .preview-page {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    .profile-card {
+    }
+    .preview-content {
+      width: 95vw;
+      .post-title {
+      }
+      .creator {
+        a {
+        }
+        .tags {
+          width: 80%;
+          .post-tag {
+          }
+        }
+      }
+      .view-image {
+        img {
+        }
+      }
+      .story-container {
+        .story {
+          width: 95%;
+        }
+      }
+      .buttons {
+      }
     }
   }
 }

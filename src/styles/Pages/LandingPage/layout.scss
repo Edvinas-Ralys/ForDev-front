@@ -95,7 +95,7 @@
 }
 
 .explore {
-  height: 100vh;
+  height: fit-content;
   width: 100vw;
   // background: linear-gradient( $background, $background-dark);
   // background-color: $grandient;
@@ -104,4 +104,115 @@
     linear-gradient(to right, rgba(250, 250, 250, 0.04) 1px, transparent 1px);
   background-size: 25px 25px;
   background-color: #000000;
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+  .landing-page {
+    .banner {
+      .background {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        width: 100vw;
+        .image-container {
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+          width: 100vw;
+          margin: 0;
+          padding: 0;
+          img {
+            width: auto;
+            height: 100vh;
+          }
+        }
+      }
+      .landing-page-text {
+        width: 90vw;
+        display: flex;
+        justify-content: center;
+        .changing-letters {
+          width: 100%;
+          .changing-text {
+            width: 100%;
+          }
+        }
+        .static-text {
+          width: 80%;
+          text-align: center;
+          .text {
+          }
+          .sub-text {
+            text-wrap: wrap;
+            margin-right: 100px;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .static-text {
+    .static-text {
+      .sub-text {
+      }
+    }
+    .changing-letters {
+    }
+  }
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+  .landing-page {
+    .banner {
+      .background {
+        .image-container {
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+          img {
+            width: auto;
+            height: 100vh;
+          }
+        }
+      }
+      .landing-page-text {
+        width: 90vw;
+        display: flex;
+        justify-content: center;
+        .changing-letters {
+          width: 100%;
+          .changing-text {
+            width: 100%;
+          }
+        }
+        .static-text {
+          width: 80%;
+          text-align: center;
+          .text {
+          }
+          .sub-text {
+            text-wrap: wrap;
+            margin-right: 100px;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .static-text {
+    .static-text {
+      .sub-text {
+      }
+    }
+    .changing-letters {
+    }
+  }
 }

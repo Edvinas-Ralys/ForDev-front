@@ -88,62 +88,74 @@
   animation-fill-mode: forwards;
 }
 
-//   @media only screen and (max-width: $tablet-width) {
-//     .sign-up-page {
-//       height: 100vh;
-//       display: flex;
-//       .left-back {
-//         position: relative;
-//         z-index: 100;
-//         width: 100vw;
-//         height: 5vh;
-//         background-color: inherit;
-//         display: flex;
-//         justify-content: center;
-//         text-align: center;
-//         margin-top: 45px;
-//         .left-content {
-//           margin-top: 0;
-//           gap: 0;
-//           width: max-content;
-//           .logo {
-//             font-size: 1.2rem;
-//             padding: 0;
-//           }
-//           .left-text {
-//             gap: 0;
-//             .left-text-small {
-//               font-size: 1rem;
-//             }
-//             .left-text-big {
-//               font-size: 1.7rem;
-//             }
-//           }
-//         }
-//       }
-//       .right-front {
-//         width: 100vw;
-//         height: fit-content;
-//         padding-bottom: 20px;
-//         border-radius: 0;
-//         box-shadow: none;
-//         .right-content {
-//           width: 80vw;
-//           padding-top: 1vh;
-//           gap: 6rem;
-//           .signup-form {
-//             width: 100%;
-//             .form {
-//               gap: 1rem;
-//               .form-element input {
-//                 font-size: 1.2rem;
-//               }
-//               .double {
-//                 gap: 0.8rem;
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+  .sign-up-page {
+    .right-content {
+      width: 80vw;
+      .right-top {
+        span {
+        }
+      }
+      .signup-form {
+        .form-title {
+        }
+        .form {
+          .double {
+          }
+
+          .password-req {
+            .pass-req-title {
+            }
+            ul {
+              li {
+              }
+            }
+          }
+          .sign-up-confirm {
+            span {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+  .sign-up-page {
+    .right-content {
+      width: 95vw;
+      .right-top {
+        span {
+        }
+      }
+      .signup-form {
+        .form-title {
+        }
+        .form {
+          .double {
+          }
+
+          .password-req {
+            .pass-req-title {
+            }
+            ul {
+              li {
+              }
+            }
+          }
+          .sign-up-confirm {
+            span {
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -34,6 +34,9 @@ function UserCard({ setCreateBio, setChangePicture }) {
             Change picture
           </div>
         </div>
+        <div className="group">
+
+
         <div className="username">{profile?.userDetails?.username}</div>
         <div className="bio">
           {profile.userDetails.bio ? (
@@ -80,22 +83,14 @@ function UserCard({ setCreateBio, setChangePicture }) {
             </div>
           )} */}
         </div>
-        <div className="interests">
-          {/* {user &&
-          profile?.userDetails?.interests?.length === 0 &&
-          profile?.userDetails?.userId === Number(user.id) ? (
-            <button>Add interests</button>
-          ) : !user ? (
-            profile?.userDetails?.interests
-          ) : (
-            ``
-          )} */}
-        </div>
+
+
         {user && params[0] === user.id && (
           <div className="bottom">
             <div className="logout">Logout</div>
           </div>
         )}
+         </div>
       </div>
     </div>
   )

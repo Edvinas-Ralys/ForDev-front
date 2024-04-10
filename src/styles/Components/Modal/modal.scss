@@ -1,101 +1,153 @@
-.delete-modal, .edit-modal, .bio-modal, .picture-modal {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(83, 83, 83, 0.527);
-    z-index: 1000;
+.delete-modal,
+.edit-modal,
+.bio-modal,
+.picture-modal {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(83, 83, 83, 0.527);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal-content {
+    background-color: $background;
+    padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    .modal-content {
-      background-color: $background;
-      padding: 20px;
+    gap: 1.5rem;
+    flex-direction: column;
+    border-radius: 10px;
+    textarea {
+      height: 80%;
+      width: 100%;
+      resize: none;
+    }
+    .title {
+      font-size: 2rem;
       display: flex;
-      gap: 1.5rem;
-      flex-direction: column;
-      border-radius: 10px;
+      justify-content: space-between;
+      .close {
+        fill: $text;
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+      }
+    }
+    .modal-body {
+      width: 30vw;
+      .post-title {
+        font-weight: 600;
+        text-decoration: underline;
+      }
+      .form-element {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .add-file {
+          width: 90%;
+          // aspect-ratio: 2;
+          border: 2px solid rgb(121, 120, 120);
+          background-color: rgba(185, 185, 185, 0.411);
+          border-radius: 10px;
+          // overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          cursor: pointer;
+          .camera-icon {
+            height: 50%;
+            width: 50%;
+            fill: rgb(212, 212, 212);
+            position: absolute;
+            z-index: 100;
+          }
+          img {
+            height: auto;
+            width: 100%;
+            border-radius: 10px;
+            filter: brightness(0.4);
+          }
+        }
+        input[type="file"] {
+          display: none;
+        }
+        .image-container {
+          display: flex;
+          flex-direction: column;
+          height: fit-content;
+          align-items: center;
+          gap: 1rem;
+          .image-buttons {
+            display: flex;
+            justify-content: center;
+            width: 70%;
+          }
+          img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+  .delete-modal,
+  .edit-modal,
+  .bio-modal,
+  .picture-modal {
+    .modal-content {
+      width: 90vw;
+
       textarea {
-        height: 200px;
-        width: 400px;
-        resize: none;
+        width: 100%;
       }
       .title {
-        font-size: 2rem;
-        display: flex;
-        justify-content: space-between;
         .close {
-          fill: $text;
-          height: 25px;
-          width: 25px;
-          cursor: pointer;
         }
       }
       .modal-body {
-        max-width: 30vw;
-        .post-title{
-          font-weight: 600;
-          text-decoration: underline;
+        width: 100%;
+        .post-title {
         }
         .form-element {
-          width: 100%;
-          display: flex;
-          justify-content: center;
           .add-file {
-            width: 90%;
-            // aspect-ratio: 2;
-            border: 2px solid rgb(121, 120, 120);
-            background-color: rgba(185, 185, 185, 0.411);
-            border-radius: 10px;
-            // overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            cursor: pointer;
             .camera-icon {
-              height: 50%;
-              width: 50%;
-              fill: rgb(212, 212, 212);
-              position: absolute;
-              z-index: 100;
             }
-            img{
-              height: auto;
-              width: 100%;
-              border-radius: 10px;
-              filter: brightness(0.4);
+            img {
             }
           }
           input[type="file"] {
             display: none;
           }
           .image-container {
-            display: flex;
-            flex-direction: column;
-            height: fit-content;
-            align-items: center;
-            gap: 1rem;
             .image-buttons {
-              display: flex;
-              justify-content: center;
-              width: 70%;
             }
             img {
-              width: 100%;
-              max-height: 350px;
-              object-fit: contain;
             }
           }
         }
-
-
-
       }
       .buttons {
-        display: flex;
-        justify-content: space-between;
       }
     }
   }
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+}

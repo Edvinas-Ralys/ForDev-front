@@ -12,7 +12,7 @@ function ViewUserCard({setChangePicture}) {
 
       <div className="picture">
           <div className="image-wrapper">
-            {!profile.userDetails.picture ? (
+            {!profile.userDetails.picture || profile.userDetails.picture === null ? (
               <img src={`${SERVER_URL}/images/avatr-placeholder.png`} alt="" />
             ) : <img src={`${SERVER_URL}/images/${profile.userDetails.picture}`} alt="" />}
           </div>

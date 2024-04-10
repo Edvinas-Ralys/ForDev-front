@@ -24,12 +24,6 @@ const openDropdown = e =>{
     setDisplayDropdown(true)
 }
 
-useEffect(_=>{
-    console.log(tags)
-}, [tags])
-
-
-
   useEffect(_ => {
     window.onscroll = _ => {
       if (window.scrollY > 0) {

@@ -48,3 +48,44 @@
         }
     }
 }
+
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+    .login-page{
+        .login-content{
+            width: 80vw;
+
+            .top{
+
+            }
+            .form{
+
+                .login-confirm{
+
+                }
+
+            };
+
+        }
+        .fineprint{
+
+            .sign-up{
+                span{
+
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
+
+}

@@ -1,5 +1,5 @@
-.create-main{
-// padding-top: 50px
+.create-main {
+  // padding-top: 50px
 }
 
 .create-post-page {
@@ -25,11 +25,10 @@
     align-items: center;
     margin-bottom: 50px;
     button {
-      width: 10%;
-      a{
+      // width: 10%;
+      a {
         text-decoration: none;
       }
-
     }
   }
 }
@@ -159,4 +158,90 @@
       }
     }
   }
+}
+
+//1200px
+@media only screen and (max-width: $tablet-width) {
+  .create-main {
+  }
+
+  .create-post-page {
+    .create-post {
+
+      button {
+        a {
+        }
+      }
+    }
+  }
+
+  .create-content {
+    width: 90vw;
+    .title {
+    }
+    .creation-form {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      .form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        .form-top {
+          width: 100%;
+          .left,
+          .right {
+            width: 100%;
+          }
+          .left {
+            width: 100%;
+            .form-element{
+              // width: 90%;
+            }
+          }
+          .right {
+            .form-element {
+
+              .add-file {
+                width: 100%;
+                .camera-icon {
+                }
+              }
+              input[type="file"] {
+                display: none;
+              }
+              .image-container {
+                .image-buttons {
+                }
+                img {
+                }
+              }
+            }
+          }
+        }
+        textarea {
+        }
+        .form-element {
+          width: 100%;
+          .tags-pool {
+            width: 100%;
+            .tag {
+              &:hover {
+              }
+            }
+            .selected-tag {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//1000px
+@media only screen and (max-width: $tablet-small-width) {
+}
+
+//700px
+@media only screen and (max-width: $phone-width) {
 }

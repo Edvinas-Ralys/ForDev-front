@@ -1,5 +1,6 @@
 import React, { useContext, useEffect} from "react"
 import { Post } from "../../Contexts/Post"
+import { Authorization } from "../../Contexts/Authorization"
 import { postCategories } from "../../Data/postCategories"
 import { CameraIcon } from "../../Icons/Icons"
 import { Editor } from "primereact/editor"
@@ -10,17 +11,12 @@ function Edit({setPreview}) {
         image,
         setImage,
         readImage,
-        title,
-        setTitle,
-        content,
-        setContent,
-        categories,
-        setCategories,
-        postImage,
         setPostImage,
         editPost,
         setEditPost
       } = useContext(Post)
+      const {user} = useContext(Authorization)
+
 
       const selectCategory = category => {
         if (editPost.tags.includes(category)) {
@@ -37,7 +33,7 @@ function Edit({setPreview}) {
       )
 
       const handlePreviewPost = _ => {
-        setPreview({title: editPost.title, text: editPost.text, tags: editPost.tags, image: editPost.image, type:`edit` })
+        setPreview({title: editPost.title, text: editPost.text, tags: editPost.tags, image: editPost.image, type:`edit`, postId:editPost.postId, userId:user.id })
       }
 
       const handleTextContent = value => {

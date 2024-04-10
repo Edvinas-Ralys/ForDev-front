@@ -16,6 +16,7 @@ function PostBody({ preview, setPreview }) {
   const handleSaveChanges = _ => {
     console.log(preview)
     if(preview.type === `edit`){
+      console.log(preview)
       setUpdatePost(preview)
     } else {
       setStorePost(preview)
@@ -39,7 +40,7 @@ function PostBody({ preview, setPreview }) {
         </span>
         <div className="tags">
           {preview?.tags.map((tag, i) => (
-            <div className="post-tag">{tag}</div>
+            <div key={i} className="post-tag">{tag}</div>
           ))}
         </div>
       </div>

@@ -26,7 +26,6 @@ function usePost(dispatchPosts) {
   useEffect(
     _ => {
       if (editPost !== null && window.location.href !== `#edit-post`) {
-        console.log(editPost)
         window.location.href = `#edit-post`
       }
     },
@@ -124,17 +123,33 @@ function usePost(dispatchPosts) {
     [destroyPost]
   )
 
+
+  //Update Post
   useEffect(_=>{
     if(updatePost === null){
       return
     }
     const headers = { Authorization: `Bearer ${user.token}` }
+    setLoading(true)
     axios.patch(`${SERVER_URL}/posts`, updatePost, {headers:headers} )
       .then(res => {
         console.log(res.data)
+        dispatchPosts(a.updatePost(res.data.post))
+        addMessage(res.data.message)
+        window.location.href = `#profile/${user.id}`
       })
       .catch(err => {
         console.log(err)
+        if(err.response.status){
+          addMessage(err.response.data.message)
+        } else {
+          window.location.href = `#network-error`
+        }
+
+      })
+      .finally(_=>{
+        setLoading(false)
+        setUpdatePost(null)
       })
   }, [updatePost])
 

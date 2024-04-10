@@ -10,7 +10,7 @@ function Preview({ preview, setPreview }) {
       <div className="preview-content">
         <PostBody preview={preview} setPreview={setPreview} />
       </div>
-      {/* <div className="profile-card"></div> */}
+
     </div>
   )
 }

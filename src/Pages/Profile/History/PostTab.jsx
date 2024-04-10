@@ -39,6 +39,7 @@ function PostTab({ deletePost, setDeletePost }) {
 
   const handleEditPost = currentPost =>{
     setEditPost(currentPost)
+    console.log(currentPost)
   }
 
 

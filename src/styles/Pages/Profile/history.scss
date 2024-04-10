@@ -17,8 +17,8 @@
       width: 200px;
       text-align: center;
       z-index: 25;
-        cursor: pointer;
-        transition: 0.2s ease-in-out;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
       &:after {
         position: absolute;
         z-index: 1;
@@ -87,7 +87,8 @@
       }
     }
   }
-  .post-tab, .comment-tab {
+  .post-tab,
+  .comment-tab {
     // height: 90%;
     width: 100%;
     background: linear-gradient($primary-dark 1%, $primary-transperant 100%);
@@ -98,18 +99,18 @@
   }
 }
 
-.post-tab{
-padding-bottom: 20px;
-  .posts{
+.post-tab {
+  padding-bottom: 20px;
+  .posts {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap:1rem ;
+    gap: 1rem;
     padding: 20px;
     border-radius: 10px;
     padding-top: 30px;
     height: fit-content;
-    .post{
+    .post {
       background-color: $background-transperent;
       display: flex;
       flex-direction: row;
@@ -119,55 +120,57 @@ padding-bottom: 20px;
       border-radius: 15px;
       transition: 0.2s ease-in-out;
       user-select: none;
-      &:hover{
+      &:hover {
         box-shadow: 0 0 25px rgb(138, 138, 138);
         scale: 1.01;
         transition: 0.2s ease-in-out;
       }
-      .post-title{
+      .post-title {
         font-size: 1.3rem;
         font-weight: 600;
         width: fit-content;
         cursor: pointer;
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
-
       }
-      .post-created{
+      .post-created {
         font-size: 0.8rem;
         color: gray;
       }
-      .post-tags{
+      .post-tags {
         display: flex;
         width: 80%;
         flex-wrap: wrap;
         gap: 0.5rem;
         margin-top: 10px;
-        .tag{
+        .tag {
           font-weight: 500;
           border: 1px solid $primary-transperant;
           padding: 5px;
           border-radius: 10rem;
           background-color: $background-transperent-dark;
-
-
         }
       }
-      .post-buttons{
+      .post-buttons {
         // position: absolute;
         display: flex;
         gap: 1rem;
         right: 30px;
         transition: 0.2s ease-in-out;
-        .icon{
+        .icon {
           height: 30px;
           width: 30px;
-          fill:$primary
+          fill: $primary;
         }
-        .trash-can{
-          &:hover{
+        .trash-can {
+          &:hover {
             fill: rgb(196, 93, 93);
+          }
+        }
+        .pen {
+          &:hover {
+            fill: green;
           }
         }
       }
@@ -175,15 +178,15 @@ padding-bottom: 20px;
   }
 }
 
-.comment-tab{
+.comment-tab {
   padding-bottom: 20px;
-  .comments{
+  .comments {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding-top: 20px;
     padding: 10px 10px;
-    .comment{
+    .comment {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -192,102 +195,91 @@ padding-bottom: 20px;
       padding: 10px;
       border-radius: 10px;
       transition: 0.2s ease-in-out;
-      &:hover{
+      &:hover {
         box-shadow: 0 0 25px rgb(138, 138, 138);
         scale: 1.01;
         transition: 0.2s ease-in-out;
       }
-      .comment-title{
+      .comment-title {
         font-size: 1.4rem;
         font-weight: 600;
         cursor: pointer;
         width: fit-content;
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
-
-
       }
-      .comment-created{
+      .comment-created {
         font-size: 0.8rem;
         color: gray;
       }
-      .comment-post{
+      .comment-post {
         font-size: 1rem;
       }
-      .post-buttons{
+      .post-buttons {
         // position: absolute;
         display: flex;
         gap: 1rem;
         right: 30px;
         transition: 0.2s ease-in-out;
-        .icon{
+        .icon {
           height: 30px;
           width: 30px;
-          fill:$primary;
+          fill: $primary;
           cursor: pointer;
-
         }
-        .trash-can{
-          &:hover{
+        .trash-can {
+          &:hover {
             fill: rgb(196, 93, 93);
           }
         }
       }
     }
   }
-
-
-
-
-
 }
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
   // padding-bottom: 0px;
-  .page-numbers{
+  .page-numbers {
     display: flex;
     gap: 2rem;
 
     font-size: 1.5rem;
-    .number{
+    .number {
       cursor: pointer;
       user-select: none;
       color: gray;
       width: 50px;
       text-align: center;
-      .chevron{
-        fill:white;
+      .chevron {
+        fill: white;
         height: 30px;
       }
     }
-    .prev-page .number{
+    .prev-page .number {
       display: flex;
       align-self: center;
-      .chevron{
+      .chevron {
         transform: rotate(90deg);
         fill: gray;
       }
     }
-    .next-page .number{
+    .next-page .number {
       display: flex;
       align-self: center;
-      .chevron{
+      .chevron {
         transform: rotate(-90deg);
         fill: gray;
       }
     }
-    .curr-page{
+    .curr-page {
       font-size: 1.6rem;
       text-decoration: underline;
       color: $text;
     }
   }
-
 }
-
-
 
 //1200px
 @media only screen and (max-width: $tablet-width) {
@@ -296,68 +288,45 @@ padding-bottom: 20px;
 //1000px
 @media only screen and (max-width: $tablet-small-width) {
   .history {
-
     .tabs {
-
       .tab {
-
         &:after {
-
         }
         &:before {
-
         }
       }
       .inactive {
-
         &:after {
-
         }
         &:before {
-
         }
       }
     }
-    .post-tab, .comment-tab {
-
+    .post-tab,
+    .comment-tab {
     }
   }
 
-  .post-tab{
-
-    .posts{
-
-      .post{
-
-        &:hover{
-
+  .post-tab {
+    .posts {
+      .post {
+        &:hover {
         }
-        .post-title{
-
-          &:hover{
-
-          }
-
-        }
-        .post-created{
-
-        }
-        .post-tags{
-
-          .tag{
-
-
-
+        .post-title {
+          &:hover {
           }
         }
-        .post-buttons{
-
-          .icon{
-
+        .post-created {
+        }
+        .post-tags {
+          .tag {
           }
-          .trash-can{
-            &:hover{
-
+        }
+        .post-buttons {
+          .icon {
+          }
+          .trash-can {
+            &:hover {
             }
           }
         }
@@ -365,79 +334,53 @@ padding-bottom: 20px;
     }
   }
 
-  .comment-tab{
-    .comments{
-
-      .comment{
-
-        &:hover{
-
+  .comment-tab {
+    .comments {
+      .comment {
+        &:hover {
         }
-        .comment-title{
-
-          &:hover{
-
+        .comment-title {
+          &:hover {
           }
-
-
         }
-        .comment-created{
-
+        .comment-created {
         }
-        .comment-post{
-
+        .comment-post {
         }
-        .post-buttons{
-
-          .icon{
-
-
+        .post-buttons {
+          .icon {
           }
-          .trash-can{
-            &:hover{
-
+          .trash-can {
+            &:hover {
             }
           }
         }
       }
     }
   }
-  .pagination{
-
-    .page-numbers{
-
-      .number{
-
-
-        .chevron{
-
+  .pagination {
+    .page-numbers {
+      .number {
+        .chevron {
         }
       }
-      .prev-page .number{
-
-        .chevron{
-
+      .prev-page .number {
+        .chevron {
         }
       }
-      .next-page .number{
-
-        .chevron{
-
+      .next-page .number {
+        .chevron {
         }
       }
-      .curr-page{
-
+      .curr-page {
       }
     }
-
   }
-
 }
 
 //700px
 @media only screen and (max-width: $phone-width) {
   .history {
-
     .tabs {
       gap: 2.2rem;
       .tab {
@@ -445,62 +388,44 @@ padding-bottom: 20px;
         padding: 5px 20px;
 
         &:after {
-
         }
         &:before {
-
         }
       }
       .inactive {
-
         &:after {
-
         }
         &:before {
-
         }
       }
     }
-    .post-tab, .comment-tab {
-
+    .post-tab,
+    .comment-tab {
     }
   }
 
-  .post-tab{
+  .post-tab {
     height: fit-content;
-    .posts{
+    .posts {
       padding-bottom: 5px;
-      .post{
-
-        &:hover{
-
+      .post {
+        &:hover {
         }
-        .post-title{
-
-          &:hover{
-
-          }
-
-        }
-        .post-created{
-
-        }
-        .post-tags{
-
-          .tag{
-
-
-
+        .post-title {
+          &:hover {
           }
         }
-        .post-buttons{
-
-          .icon{
-
+        .post-created {
+        }
+        .post-tags {
+          .tag {
           }
-          .trash-can{
-            &:hover{
-
+        }
+        .post-buttons {
+          .icon {
+          }
+          .trash-can {
+            &:hover {
             }
           }
         }
@@ -508,71 +433,47 @@ padding-bottom: 20px;
     }
   }
 
-  .comment-tab{
-    .comments{
-
-      .comment{
-
-        &:hover{
-
+  .comment-tab {
+    .comments {
+      .comment {
+        &:hover {
         }
-        .comment-title{
-
-          &:hover{
-
+        .comment-title {
+          &:hover {
           }
-
-
         }
-        .comment-created{
-
+        .comment-created {
         }
-        .comment-post{
-
+        .comment-post {
         }
-        .post-buttons{
-
-          .icon{
-
-
+        .post-buttons {
+          .icon {
           }
-          .trash-can{
-            &:hover{
-
+          .trash-can {
+            &:hover {
             }
           }
         }
       }
     }
   }
-  .pagination{
-padding: 0;
-    .page-numbers{
-
-      .number{
-
-
-        .chevron{
-
+  .pagination {
+    padding: 0;
+    .page-numbers {
+      .number {
+        .chevron {
         }
       }
-      .prev-page .number{
-
-        .chevron{
-
+      .prev-page .number {
+        .chevron {
         }
       }
-      .next-page .number{
-
-        .chevron{
-
+      .next-page .number {
+        .chevron {
         }
       }
-      .curr-page{
-
+      .curr-page {
       }
     }
-
   }
-
 }

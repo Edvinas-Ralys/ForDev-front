@@ -23,10 +23,8 @@ export default function commentReducer(state, action) {
       break
 
     case c.UPDATE_COMMENT:
-      console.log(action.payload)
-      newState = newState.map(item => item.id === action.payload.id ? action.payload : item)
-    break
+      newState = newState.map(item => (item.id === action.payload.id ? action.payload : item))
+      break
   }
-  console.log(newState)
   return newState
 }

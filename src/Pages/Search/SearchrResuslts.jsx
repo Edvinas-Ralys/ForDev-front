@@ -6,7 +6,7 @@ function SeaarchrResuslts() {
   const { searchResults } = useContext(Search)
   return (
     <div className="search-results">
-      {searchResults &&
+      {searchResults && searchResults.length !== 0 &&
         searchResults.map((result, i) => (
           <div key={i} className="result">
             <div className="left">
@@ -30,7 +30,9 @@ function SeaarchrResuslts() {
               ))}
             </div>
           </div>
+
         ))}
+        {searchResults && searchResults.length === 0 && <h1>No search results found</h1>}
     </div>
   )
 }

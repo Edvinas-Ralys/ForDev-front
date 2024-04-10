@@ -7,7 +7,7 @@ export const Post = createContext()
 export const PostProvider = ({ children }) => {
   const [posts, dispatchPosts] = useReducer(postReducer, [])
 
-  const { setStorePost, setDestroyPost, loading, setLoading } =
+  const { setStorePost, setDestroyPost, loading, setLoading, setGetNumberOfPosts, getNumberOfPosts, totalCount } =
     usePost(dispatchPosts)
   const { image, setImage, readImage } = useImage()
   const [title, setTitle] = useState(``)
@@ -37,6 +37,7 @@ export const PostProvider = ({ children }) => {
         setDestroyPost,
         loading,
         setLoading,
+        setGetNumberOfPosts, getNumberOfPosts, totalCount
       }}
     >
       {children}

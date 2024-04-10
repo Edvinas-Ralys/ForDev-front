@@ -13,8 +13,9 @@ function usePost(dispatchPosts) {
   const [storePost, setStorePost] = useState(null)
   const [destroyPost, setDestroyPost] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [totalCount, setTotalCount] = useState(null)
   const [getNumberOfPosts, setGetNumberOfPosts] = useState({
-    limit: 10,
+    limit: 7,
     skip: 0,
   })
   let delPostConfig = {
@@ -36,6 +37,8 @@ function usePost(dispatchPosts) {
       .get(`${SERVER_URL}/posts`, { params: getNumberOfPosts })
       .then(res => {
         dispatchPosts(a.getPosts(res.data.posts))
+        setTotalCount(res.data.totalCount)
+        console.log(res.data)
       })
       .catch(_ => {
         window.location.href = `#network-error`
@@ -43,7 +46,7 @@ function usePost(dispatchPosts) {
       .finally(_ => {
         setLoading(false)
       })
-  }, [])
+  }, [getNumberOfPosts])
 
   //!Create post
   useEffect(
@@ -114,7 +117,7 @@ function usePost(dispatchPosts) {
     [destroyPost]
   )
 
-  return { setStorePost, setDestroyPost, loading, setLoading }
+  return { setStorePost, setDestroyPost, loading, setLoading, setGetNumberOfPosts, getNumberOfPosts, totalCount }
 }
 
 export default usePost

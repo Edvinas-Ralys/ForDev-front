@@ -3,54 +3,76 @@ import { Post } from "../../Contexts/Post"
 import { postCategories } from "../../Data/postCategories"
 import { CameraIcon } from "../../Icons/Icons"
 import { Editor } from "primereact/editor"
+import {SERVER_URL} from '../../Data/main'
 
+function Edit({setPreview}) {
+    const {
+        image,
+        setImage,
+        readImage,
+        title,
+        setTitle,
+        content,
+        setContent,
+        categories,
+        setCategories,
+        postImage,
+        setPostImage,
+        editPost,
+        setEditPost
+      } = useContext(Post)
 
-function Create({ setPreview }) {
-  const {
-    image,
-    setImage,
-    readImage,
-    title,
-    setTitle,
-    content,
-    setContent,
-    categories,
-    setCategories,
-    postImage,
-    setPostImage,
-  } = useContext(Post)
+      const selectCategory = category => {
+        if (editPost.tags.includes(category)) {
+            setEditPost(prev => ({...prev, tags:prev.tags.filter(cat => cat !== category)}))
+        } else {
+            setEditPost(prev => ({...prev, tags:[...prev.tags, category]}))
+        }
+      }
+      useEffect(
+        _ => {
+          setPostImage(image)
+        },
+        [image]
+      )
 
-  const selectCategory = category => {
-    if (categories.includes(category)) {
-      setCategories(prev => prev.filter(cat => cat !== category))
-    } else {
-      setCategories(prev => [...prev, category])
-    }
-  }
-  useEffect(
-    _ => {
-      setPostImage(image)
-    },
-    [image]
-  )
+      const handlePreviewPost = _ => {
+        setPreview({title: editPost.title, text: editPost.text, tags: editPost.tags, image: editPost.image, type:`edit` })
+      }
 
-  const handlePreviewPost = _ => {
-    setPreview({title: title, text: content, tags: categories, image: image })
-    // console.log(title)
-  }
+      const handleTextContent = value => {
+        if (value.includes(`<img src`)) {
+          const image = value.substr(3, value.length - 7)
+          console.log(image)
+        }
+      }
+      const handleTitleInput = e =>{
+        setEditPost(prev => ({...prev, title:e.target.value}))
+      }
 
-  const handleTextContent = value => {
-    if (value.includes(`<img src`)) {
-      const image = value.substr(3, value.length - 7)
-      console.log(image)
-    }
-  }
+      const handleTextInput = e =>{
+        setEditPost(prev => ({...prev, text:e}))
+      }
 
+      const handleRemoveImage = _ =>{
+        console.log()
+        if(editPost.image){
+            setEditPost(prev => ({...prev, image:null}))
+        } else {
+            setImage(null)
+        }
+      }
+
+      useEffect(_=>{
+        if(image !== null){
+            setEditPost(prev => ({...prev, image:image}))
+        }
+      }, [image])
   return (
     <>
       <div className="create-post-page">
         <div className="create-content">
-          <div className="title">Create A Post</div>
+          <div className="title">Edit A Post</div>
           {/* <div className="test-text">{parse(content)}</div> */}
           <div className="creation-form">
             <div className="form">
@@ -59,15 +81,14 @@ function Create({ setPreview }) {
                   <div className="form-element">
                     <div className="floating-label-group">
                       <label className="floating-label">Title</label>
-                      <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
+                      <input type="text" value={editPost.title} onChange={e => handleTitleInput(e)} />
                     </div>
                   </div>
                   <div className="form-element">
                     <div className="floating-label-group">
                       <Editor
-                        value={content}
-                        onTextChange={e => setContent(e.htmlValue)}
-                        // onTextChange={e => handleTextContent(e.htmlValue)}
+                        value={editPost.text}
+                        onTextChange={e => handleTextInput(e.htmlValue)}
                         style={{ height: "35vh" }}
                       />
                     </div>
@@ -75,16 +96,17 @@ function Create({ setPreview }) {
                 </div>
                 <div className="right">
                   <div className="form-element">
-                    {postImage === null ? (
+                    {editPost.image === null ? (
                       <label className="add-file" htmlFor="addFile">
                         <CameraIcon />
                         <input type="file" id="addFile" onChange={readImage} />
                       </label>
                     ) : (
                       <div className="image-container">
-                        <img src={postImage} />
+                        {editPost.image.includes(`data`) ? <img src={editPost.image} /> : <img src={`${SERVER_URL}/images/${editPost.image}`} />}
+
                         <div className="image-buttons">
-                          <button onClick={_ => setImage(null)} className="clear">
+                          <button onClick={handleRemoveImage} className="clear">
                             Delete Image
                           </button>
                         </div>
@@ -99,7 +121,7 @@ function Create({ setPreview }) {
                     <div
                       key={cat.id}
                       onClick={_ => selectCategory(cat.title)}
-                      className={`tag ${categories.includes(cat.title) ? `selected-tag` : ``}`}
+                      className={`tag ${editPost.tags.includes(cat.title) ? `selected-tag` : ``}`}
                     >
                       {cat.title}
                     </div>
@@ -110,7 +132,7 @@ function Create({ setPreview }) {
           </div>
           <div className="create-post">
             <button onClick={handlePreviewPost}>
-              <a href="#create-post/preview">Preview post</a>
+              <a href="#edit-post/preview">Preview post</a>
             </button>
             <a href="#home">Home</a>
           </div>
@@ -120,4 +142,4 @@ function Create({ setPreview }) {
   )
 }
 
-export default Create
+export default Edit

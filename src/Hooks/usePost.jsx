@@ -4,16 +4,16 @@ import { Messages } from "../Contexts/Messages"
 import axios from "axios"
 import { SERVER_URL } from "../Data/main"
 import * as a from "../Actions/postActions"
-import { Router } from "../Contexts/Router"
 
 function usePost(dispatchPosts) {
   const { user } = useContext(Authorization)
   const { addMessage } = useContext(Messages)
-  const setErrorPageType = useContext(Router)
   const [storePost, setStorePost] = useState(null)
   const [destroyPost, setDestroyPost] = useState(null)
   const [loading, setLoading] = useState(false)
   const [totalCount, setTotalCount] = useState(null)
+  const [editPost, setEditPost] = useState(null)
+  const [updatePost, setUpdatePost] = useState(null)
   const [getNumberOfPosts, setGetNumberOfPosts] = useState({
     limit: 7,
     skip: 0,
@@ -22,31 +22,38 @@ function usePost(dispatchPosts) {
     data: destroyPost,
     headers: { Authorization: `Bearer ${user?.token}` },
   }
+
   useEffect(
     _ => {
-      console.log(destroyPost)
+      if (editPost !== null && window.location.href !== `#edit-post`) {
+        console.log(editPost)
+        window.location.href = `#edit-post`
+      }
     },
-    [destroyPost]
+    [editPost]
   )
 
   //!Get all posts
   //!Finished
-  useEffect(_ => {
-    setLoading(true)
-    axios
-      .get(`${SERVER_URL}/posts`, { params: getNumberOfPosts })
-      .then(res => {
-        dispatchPosts(a.getPosts(res.data.posts))
-        setTotalCount(res.data.totalCount)
-        console.log(res.data)
-      })
-      .catch(_ => {
-        window.location.href = `#network-error`
-      })
-      .finally(_ => {
-        setLoading(false)
-      })
-  }, [getNumberOfPosts])
+  useEffect(
+    _ => {
+      setLoading(true)
+      axios
+        .get(`${SERVER_URL}/posts`, { params: getNumberOfPosts })
+        .then(res => {
+          dispatchPosts(a.getPosts(res.data.posts))
+          setTotalCount(res.data.totalCount)
+          console.log(res.data)
+        })
+        .catch(_ => {
+          window.location.href = `#network-error`
+        })
+        .finally(_ => {
+          setLoading(false)
+        })
+    },
+    [getNumberOfPosts]
+  )
 
   //!Create post
   useEffect(
@@ -117,7 +124,32 @@ function usePost(dispatchPosts) {
     [destroyPost]
   )
 
-  return { setStorePost, setDestroyPost, loading, setLoading, setGetNumberOfPosts, getNumberOfPosts, totalCount }
+  useEffect(_=>{
+    if(updatePost === null){
+      return
+    }
+    const headers = { Authorization: `Bearer ${user.token}` }
+    axios.patch(`${SERVER_URL}/posts`, updatePost, {headers:headers} )
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [updatePost])
+
+  return {
+    setStorePost,
+    setDestroyPost,
+    loading,
+    setLoading,
+    setGetNumberOfPosts,
+    getNumberOfPosts,
+    totalCount,
+    setEditPost,
+    editPost,
+    setUpdatePost
+  }
 }
 
 export default usePost

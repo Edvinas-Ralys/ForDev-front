@@ -18,7 +18,7 @@ function UserCard({ setCreateBio, setChangePicture }) {
   }
 
   const handleChangePicture = _ => {
-    setChangePicture({picture:profile.userDetails.picture})
+    setChangePicture({ picture: profile.userDetails.picture })
   }
 
   return (
@@ -28,43 +28,43 @@ function UserCard({ setCreateBio, setChangePicture }) {
           <div className="image-wrapper">
             {!profile.userDetails.picture ? (
               <img src={`${SERVER_URL}/images/avatr-placeholder.png`} alt="" />
-            ) : <img src={`${SERVER_URL}/images/${profile.userDetails.picture}`} alt="" />}
+            ) : (
+              <img src={`${SERVER_URL}/images/${profile.userDetails.picture}`} alt="" />
+            )}
           </div>
           <div onClick={handleChangePicture} className="image-button">
             Change picture
           </div>
         </div>
         <div className="group">
-
-
-        <div className="username">{profile?.userDetails?.username}</div>
-        <div className="bio">
-          {profile.userDetails.bio ? (
-            <>
-              <div className="bio-title">About</div>
-              <div className="bio-text">{profile.userDetails.bio}</div>
-            </>
-          ) : (
-            ``
-          )}
-          {
-            <div className="bio-buttons">
-              {typeof profile.userDetails.bio === `string` ? (
-                <div className="double">
-                  <div className="update-button" onClick={handleCreateBio}>
-                    Update
+          <div className="username">{profile?.userDetails?.username}</div>
+          <div className="bio">
+            {profile.userDetails.bio ? (
+              <>
+                <div className="bio-title">About</div>
+                <div className="bio-text">{profile.userDetails.bio}</div>
+              </>
+            ) : (
+              ``
+            )}
+            {
+              <div className="bio-buttons">
+                {typeof profile.userDetails.bio === `string` ? (
+                  <div className="double">
+                    <div className="update-button" onClick={handleCreateBio}>
+                      Update
+                    </div>
+                    <div className="clear-button">Clear</div>
                   </div>
-                  <div className="clear-button">Clear</div>
-                </div>
-              ) : profile.userDetails.bio === undefined ? (
-                <button onClick={handleCreateBio}>Add about</button>
-              ) : (
-                `nothng`
-              )}
-            </div>
-          }
+                ) : profile.userDetails.bio === undefined ? (
+                  <button onClick={handleCreateBio}>Add about</button>
+                ) : (
+                  `nothng`
+                )}
+              </div>
+            }
 
-          {/* {user &&
+            {/* {user &&
           user.id === params[0] &&
           (!profile?.userDetails?.bio || profile?.userDetails?.bio === ``) ? (
             <button onClick={handleCreateBio}>Create bio</button>
@@ -82,15 +82,14 @@ function UserCard({ setCreateBio, setChangePicture }) {
               {profile?.userDetails?.bio}
             </div>
           )} */}
-        </div>
-
-
-        {user && params[0] === user.id && (
-          <div className="bottom">
-            <div className="logout">Logout</div>
           </div>
-        )}
-         </div>
+
+          {user && params[0] === user.id && (
+            <div className="bottom">
+              <div className="logout">Logout</div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

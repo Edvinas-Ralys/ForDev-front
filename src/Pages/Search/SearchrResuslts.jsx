@@ -26,6 +26,7 @@ function SeaarchrResuslts() {
 
           {searchResults && searchResults.length !== 0 &&  <span> Search Results{" "}({searchResults.length})</span>}
         </div>
+        {searchResults && (searchResults.length === 0 && <h1>No search results found</h1>)}
         {searchResults &&
           searchResults.length !== 0 &&
           searchResults.map(
@@ -59,7 +60,7 @@ function SeaarchrResuslts() {
           )}
       </div>
 
-      {searchResults && (searchResults.length === 0 && <h1>No search results found</h1>)}
+
       {searchResults && resultPage.displayPerPage < searchResults.length && (
         <div className="search-pagination">
           <SearchPagination setResultPage={setResultPage} resultPage={resultPage} />

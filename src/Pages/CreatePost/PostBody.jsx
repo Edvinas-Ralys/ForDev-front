@@ -5,7 +5,7 @@ import parse from "html-react-parser"
 import { Post } from "../../Contexts/Post"
 
 function PostBody({ preview, setPreview }) {
-  const { setStorePost, setImage, setTitle, setContent, setCategories } = useContext(Post)
+  const { setStorePost, setImage, setTitle, setContent, setCategories, setUpdatePost } = useContext(Post)
   const { user } = useContext(Authorization)
   const date = new Date()
   let day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate()
@@ -13,13 +13,19 @@ function PostBody({ preview, setPreview }) {
   let year = date.getFullYear()
   let currentDate = `${day}-${month}-${year}`
 
-  const handlePublishPost = _ => {
-    setStorePost(preview)
-    setPreview(null)
-    setImage(null)
-    setTitle(``)
-    setContent(``)
-    setCategories([])
+  const handleSaveChanges = _ => {
+    console.log(preview)
+    if(preview.type === `edit`){
+      setUpdatePost(preview)
+    } else {
+      setStorePost(preview)
+      setPreview(null)
+      setImage(null)
+      setTitle(``)
+      setContent(``)
+      setCategories([])
+    }
+
   }
 
   return (
@@ -39,16 +45,19 @@ function PostBody({ preview, setPreview }) {
       </div>
 
       {preview.image && (
+
         <div className="view-image">
-          <img src={preview.image} alt="" />
+          {preview.image.includes(`data`) ? <img src={preview.image} alt="" />
+          :<img src={`${SERVER_URL}/images/${preview.image}`} alt="" /> }
+
         </div>
       )}
       <div className="story-container">
         <div className="story">{parse(preview.text)}</div>
       </div>
       <div className="buttons">
-        <button onClick={_ => setPreview(null)}>Edit</button>
-        <button onClick={handlePublishPost}>Publish</button>
+        <button onClick={_ => setPreview(null)}>Back to Edit</button>
+        <button onClick={handleSaveChanges}>{preview.type === `edit` ? `Save Changes` : `Publish`}</button>
       </div>
     </>
   )

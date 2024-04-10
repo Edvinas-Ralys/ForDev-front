@@ -28,7 +28,6 @@ function ViewUserCard({setChangePicture}) {
           ) : (
             ``
           )}
-          <div className="interests"></div>
         </div>
       </div>
     </div>

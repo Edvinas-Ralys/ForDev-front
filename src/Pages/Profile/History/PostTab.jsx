@@ -1,5 +1,6 @@
 import React, { Profiler, useContext, useState } from "react"
 import { Profile } from "../../../Contexts/Profile"
+import { Post } from "../../../Contexts/Post"
 import { Pen, TrashCan } from "../../../Icons/Icons"
 import { Authorization } from "../../../Contexts/Authorization"
 import { Router } from "../../../Contexts/Router"
@@ -7,6 +8,7 @@ import PostsPagination from "./PostsPagination"
 
 function PostTab({ deletePost, setDeletePost }) {
   const { profile } = useContext(Profile)
+  const { setEditPost } = useContext(Post)
   const { user } = useContext(Authorization)
   const { params } = useContext(Router)
   const [postPages, setPostPages] = useState({
@@ -14,6 +16,8 @@ function PostTab({ deletePost, setDeletePost }) {
     pagesTo: 3,
     currentPage: 1,
   })
+
+
   const nextPage = _ => {
     setPostPages(prev => ({
       ...prev,
@@ -32,6 +36,12 @@ function PostTab({ deletePost, setDeletePost }) {
       }))
     }
   }
+
+  const handleEditPost = currentPost =>{
+    setEditPost(currentPost)
+  }
+
+
 
   const viewPost = id => {
     window.location.href = `#view/${id}`
@@ -61,7 +71,7 @@ function PostTab({ deletePost, setDeletePost }) {
                 {user ? (
                   user.id === params[0] ? (
                     <div className="post-buttons">
-                      <div className="pen-wrapper icon">
+                      <div onClick={_=>handleEditPost(post)} className="pen-wrapper icon">
                         <Pen />
                       </div>
                       <div

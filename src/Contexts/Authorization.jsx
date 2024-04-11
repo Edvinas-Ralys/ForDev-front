@@ -1,6 +1,5 @@
-import { createContext, useState } from "react"
+import { createContext, useCallback, useState } from "react"
 import { MessagerProvider } from "./Messages"
-import { LoadingContextProvider } from "./LoadingCont"
 
 export const Authorization = createContext()
 
@@ -24,13 +23,13 @@ export const AuthorizationProvider = ({ children }) => {
   const [doLogout, setDoLogout] = useState(false)
 
   //*Sets user and token to lacal storage
-  const login = (username, role, id, token) => {
+  const login = useCallback((username, role, id, token) => {
     window.localStorage.setItem(`username`, username)
     window.localStorage.setItem(`role`, role)
     window.localStorage.setItem(`id`, id)
     window.localStorage.setItem(`token`, token)
     setUser({ username, role, id, token })
-  }
+  }, [])
 
   return (
     <Authorization.Provider value={{ user, setUser, login, doLogout, setDoLogout }}>

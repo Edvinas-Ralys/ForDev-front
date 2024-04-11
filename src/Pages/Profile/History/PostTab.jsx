@@ -1,4 +1,4 @@
-import React, { Profiler, useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { Profile } from "../../../Contexts/Profile"
 import { Post } from "../../../Contexts/Post"
 import { Pen, TrashCan } from "../../../Icons/Icons"
@@ -39,7 +39,6 @@ function PostTab({ deletePost, setDeletePost }) {
 
   const handleEditPost = currentPost =>{
     setEditPost(currentPost)
-    console.log(currentPost)
   }
 
 

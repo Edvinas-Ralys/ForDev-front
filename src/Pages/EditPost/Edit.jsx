@@ -1,6 +1,7 @@
 import React, { useContext, useEffect} from "react"
 import { Post } from "../../Contexts/Post"
 import { Authorization } from "../../Contexts/Authorization"
+import { Messages } from "../../Contexts/Messages"
 import { postCategories } from "../../Data/postCategories"
 import { CameraIcon } from "../../Icons/Icons"
 import { Editor } from "primereact/editor"
@@ -16,6 +17,7 @@ function Edit({setPreview}) {
         setEditPost
       } = useContext(Post)
       const {user} = useContext(Authorization)
+      const {addMessage} = useContext(Messages)
 
 
       const selectCategory = category => {
@@ -29,19 +31,18 @@ function Edit({setPreview}) {
         _ => {
           setPostImage(image)
         },
-        [image]
+        [image, setPostImage]
       )
 
       const handlePreviewPost = _ => {
-        setPreview({title: editPost.title, text: editPost.text, tags: editPost.tags, image: editPost.image, type:`edit`, postId:editPost.postId, userId:user.id })
+        if(!editPost.title || !editPost.text || !editPost.tags || editPost.tags.length === 0){
+          addMessage({text:`All fields are required`, type:`error`})
+        } else {
+          setPreview({title: editPost.title, text: editPost.text, tags: editPost.tags, image: editPost.image, type:`edit`, postId:editPost.postId, userId:user.id })
+        }
+
       }
 
-      const handleTextContent = value => {
-        if (value.includes(`<img src`)) {
-          const image = value.substr(3, value.length - 7)
-          console.log(image)
-        }
-      }
       const handleTitleInput = e =>{
         setEditPost(prev => ({...prev, title:e.target.value}))
       }
@@ -51,7 +52,6 @@ function Edit({setPreview}) {
       }
 
       const handleRemoveImage = _ =>{
-        console.log()
         if(editPost.image){
             setEditPost(prev => ({...prev, image:null}))
         } else {
@@ -63,13 +63,12 @@ function Edit({setPreview}) {
         if(image !== null){
             setEditPost(prev => ({...prev, image:image}))
         }
-      }, [image])
+      }, [image, setEditPost])
   return (
     <>
       <div className="create-post-page">
         <div className="create-content">
           <div className="title">Edit A Post</div>
-          {/* <div className="test-text">{parse(content)}</div> */}
           <div className="creation-form">
             <div className="form">
               <div className="form-top">
@@ -99,7 +98,7 @@ function Edit({setPreview}) {
                       </label>
                     ) : (
                       <div className="image-container">
-                        {editPost.image.includes(`data`) ? <img src={editPost.image} /> : <img src={`${SERVER_URL}/images/${editPost.image}`} />}
+                        {editPost.image.includes(`data`) ? <img src={editPost.image} alt={`${editPost.title}`} /> : <img src={`${SERVER_URL}/images/${editPost.image}`} alt={`${editPost.title}`} />}
 
                         <div className="image-buttons">
                           <button onClick={handleRemoveImage} className="clear">

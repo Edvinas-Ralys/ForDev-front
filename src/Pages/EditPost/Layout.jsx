@@ -29,7 +29,6 @@ function Layout() {
   return (
     <div className="create-main">
       {user ? <NavigationUser offset={offset}/> : <Navigation offset={offset} />}
-      {/* <SideNavUser preview={preview} setPreview={setPreview}/> */}
       {preview && params[0] === `preview` ? (
         <Preview preview={preview} setPreview={setPreview} />
       ) : (

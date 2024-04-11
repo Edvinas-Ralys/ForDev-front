@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { SERVER_URL } from "../Data/main"
 import { Router } from "../Contexts/Router"
@@ -6,7 +6,7 @@ import { Messages } from "../Contexts/Messages"
 
 function useSignup() {
   const [signUpInfo, setSignUpInfo] = useState(null)
-  const { setErrorPageType, setLoading } = useContext(Router)
+  const { setLoading } = useContext(Router)
   const { addMessage } = useContext(Messages)
 
   useEffect(
@@ -22,9 +22,8 @@ function useSignup() {
           addMessage(res.data.message)
         })
         .catch(err => {
-          console.log(err)
           if (err.code === `ERR_NETWORK`) {
-            setErrorPageType(`network_err`)
+            window.location.href = `#network-error`
           } else if (err?.response?.status === 403 && err?.response?.data.type === `validation`) {
             addMessage(`Validation error`)
           } else if (err?.response?.status === 500 && err?.response?.data.type === `databse`) {
@@ -40,7 +39,7 @@ function useSignup() {
           setSignUpInfo(null)
         })
     },
-    [signUpInfo]
+    [signUpInfo, setLoading, addMessage, setSignUpInfo]
   )
 
   return { setSignUpInfo }

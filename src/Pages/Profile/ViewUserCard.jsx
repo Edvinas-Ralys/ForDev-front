@@ -17,6 +17,8 @@ function ViewUserCard({setChangePicture}) {
             ) : <img src={`${SERVER_URL}/images/${profile.userDetails.picture}`} alt="" />}
           </div>
         </div>
+            <div className="group">
+
 
         <div className="username">{profile?.userDetails?.username}</div>
         <div className="bio">
@@ -28,6 +30,7 @@ function ViewUserCard({setChangePicture}) {
           ) : (
             ``
           )}
+        </div>
         </div>
       </div>
     </div>

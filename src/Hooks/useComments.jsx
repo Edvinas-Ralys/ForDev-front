@@ -4,7 +4,6 @@ import { Messages } from "../Contexts/Messages"
 import axios from "axios"
 import { SERVER_URL } from "../Data/main"
 import * as a from "../Actions/commentActions"
-import { Router } from "../Contexts/Router"
 import { Post } from "../Contexts/Post"
 
 function useComments(dispatchComments) {
@@ -16,10 +15,6 @@ function useComments(dispatchComments) {
   const [getComments, setGetComments] = useState(null)
   const [updateComment, setUpdateComment] = useState(null)
 
-  let delCommentConfig = {
-    data: { ...destroyComment },
-    headers: { Authorization: `${user ? `Bearer ${user.token}` : null}` },
-  }
 
   //Create a comment
   useEffect(
@@ -32,7 +27,6 @@ function useComments(dispatchComments) {
       axios
         .post(`${SERVER_URL}/comment`, storeComment, { headers: headers })
         .then(res => {
-          console.log(res.data)
           dispatchComments(a.addComment(res.data.commentObject))
           addMessage(res.data.message)
         })
@@ -48,7 +42,7 @@ function useComments(dispatchComments) {
           setLoading(false)
         })
     },
-    [storeComment]
+    [storeComment, addMessage, setStoreComment, setLoading, dispatchComments, user]
   )
 
   //Get comments for a post
@@ -70,19 +64,25 @@ function useComments(dispatchComments) {
           }
         })
     },
-    [getComments]
+    [getComments, dispatchComments, addMessage]
   )
+
+  useEffect(_=>{
+    if(destroyComment !== null && destroyComment.headers === undefined){
+      setDestroyComment(prev => ({data: {...prev}, headers:{ Authorization: `${user ? `Bearer ${user.token}` : null}` }}))
+    }
+
+  }, [destroyComment, user, setDestroyComment])
 
   //Delete comment
   useEffect(
     _ => {
-      if (destroyComment === null) {
+      if (destroyComment === null || !destroyComment.headers) {
         return
       }
-      console.log(destroyComment)
       setLoading(true)
       axios
-        .delete(`${SERVER_URL}/comment`, delCommentConfig)
+        .delete(`${SERVER_URL}/comment`, destroyComment)
         .then(res => {
           dispatchComments(a.deleteComment(res.data.deletedId))
           addMessage(res.data.message)
@@ -99,43 +99,51 @@ function useComments(dispatchComments) {
           setDestroyComment(null)
         })
     },
-    [destroyComment]
+    [destroyComment, setLoading, dispatchComments, addMessage, setDestroyComment]
   )
 
-  //Update comment
+
   useEffect(_=>{
-    if(updateComment === null){
-      return
+    if(updateComment !== null && updateComment.headers === undefined){
+      setUpdateComment(prev => ({...prev, headers:{ Authorization: `${user ? `Bearer ${user.token}` : null}` }}))
     }
-    const headers = { Authorization: `Bearer ${user.token}` }
 
-    if(updateComment.originalComment === updateComment.newComment){
-      addMessage({text:`Can not repost original comment`, type:`error`})
-      return
-    }
-    setLoading(true)
-    axios.patch(`${SERVER_URL}/comment`, updateComment, {headers:headers})
-      .then(res => {
-        dispatchComments(a.updateComment(res.data.updatedComment))
-        addMessage(res.data.message)
-        if(window.location.href === `#profile`){
-          window.location.reload()
-        }
-      })
-      .catch(err => {
-        console.log(err)
-        if (err.response.status) {
-          addMessage(err.response.data.message)
-        } else if (err.code === `ERR_NETWORK`) {
-          window.location.href = `#network-error`
-        }
-      })
-      .finally(_=>{
-        setLoading(false)
-        setUpdateComment(null)
-      })
+  }, [updateComment, user, setUpdateComment])
 
-  }, [updateComment])
+  //Update comment
+  useEffect(
+    _ => {
+      if (updateComment === null || !updateComment.headers) {
+        return
+      }
+      if (updateComment.originalComment === updateComment.newComment) {
+        addMessage({ text: `Can not repost original comment`, type: `error` })
+        return
+      }
+      setLoading(true)
+      axios
+        .patch(`${SERVER_URL}/comment`, updateComment, { headers: updateComment.headers })
+        .then(res => {
+          dispatchComments(a.updateComment(res.data.updatedComment))
+          addMessage(res.data.message)
+          if (window.location.href === `#profile`) {
+            window.location.reload()
+          }
+        })
+        .catch(err => {
+          if (err.response.status) {
+            addMessage(err.response.data.message)
+          } else if (err.code === `ERR_NETWORK`) {
+            window.location.href = `#network-error`
+          }
+        })
+        .finally(_ => {
+          setLoading(false)
+          setUpdateComment(null)
+        })
+    },
+    [updateComment, addMessage, dispatchComments, setLoading, setUpdateComment, user]
+  )
 
   return { setStoreComment, setDestroyComment, setGetComments, setUpdateComment }
 }

@@ -2,7 +2,6 @@ import * as constants from "../Data/postConstans"
 
 export default function postReducer(state, action) {
   let newState = structuredClone(state ? state : [])
-  let post = null
   switch (action.type) {
     case constants.GET_POSTS_FROM_SERVER:
       newState = action.payload
@@ -10,6 +9,7 @@ export default function postReducer(state, action) {
 
     case constants.CREATE_POST:
       newState.unshift(action.payload)
+      newState.pop()
       break
 
     case constants.DELETE_POST:
@@ -17,10 +17,12 @@ export default function postReducer(state, action) {
       break
 
     case constants.UPDATE_POST:
-      console.log(action.payload)
-      newState = newState.map(item => item._id === action.payload._id ? action.payload : item)
+      newState = newState.map(item => (item._id === action.payload._id ? action.payload : item))
+      break
+
+    default:
+      newState = action.payload
       break
   }
-  console.log(newState)
   return newState
 }

@@ -1,11 +1,9 @@
-.create-main {
-  // padding-top: 50px
-}
+
 
 .create-post-page {
   position: relative;
   padding-top: 90px;
-  // width: 90%;
+
   display: flex;
   justify-content: center;
   background-color: $background;
@@ -25,7 +23,7 @@
     align-items: center;
     margin-bottom: 50px;
     button {
-      // width: 10%;
+
       a {
         text-decoration: none;
       }
@@ -131,15 +129,12 @@
             border: 1px solid $accent;
             padding: 5px 14px;
             border-radius: 10rem;
-            // background-color: $primary-transperant;
             background-color: $background-dark;
-            // background: linear-gradient(toLeft,$background-dark, $primary-transperant) ;
             color: $text;
             cursor: pointer;
             user-select: none;
             transition: 0.2s ease-in-out;
             &:hover {
-              // background-color: $background-dark;
               background-color: $primary-transperant;
               scale: 1.05;
               border: 1px solid $accent;
@@ -149,7 +144,6 @@
           }
           .selected-tag {
             background-color: $primary-transperant;
-            // background-color: $background-dark;
             scale: 1.05;
             border: 1px solid $accent;
             color: $text;
@@ -196,7 +190,6 @@
           .left {
             width: 100%;
             .form-element{
-              // width: 90%;
             }
           }
           .right {

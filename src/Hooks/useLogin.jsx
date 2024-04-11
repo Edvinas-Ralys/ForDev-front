@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 import { SERVER_URL } from "../Data/main"
 import { Authorization } from "../Contexts/Authorization"
@@ -32,7 +32,7 @@ function useLogin() {
         })
         .catch(err => {
           if (err.code === `ERR_NETWORK`) {
-            setErrorPageType(`network_err`)
+            window.location.href = `#network-error`
           } else if (err?.response?.status === 400) {
             //All fields required
             addMessage(err.response.data.message)
@@ -66,7 +66,7 @@ function useLogin() {
           setloginInfo(null)
         })
     },
-    [loginInfo]
+    [loginInfo, addMessage, setLoading, setloginInfo, login]
   )
 
   const logout = _ => {
@@ -91,7 +91,6 @@ function useLogin() {
         } else if (err?.response?.status === 500 && err?.response?.data.type === `databse`) {
           addMessage(`Database error`)
         }
-        console.log(err)
       })
       .finally(_ => {
         setLoading(false)

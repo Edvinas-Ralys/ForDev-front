@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import PostTab from "./History/PostTab"
 import CommentTab from "./History/CommentTab"
 import DeleteModal from "./History/DeleteModal"
@@ -13,12 +13,7 @@ function History() {
   const [deleteComment, setDeleteComment] = useState(null)
   const { profile } = useContext(Profile)
 
-  useEffect(
-    _ => {
-      console.log(deletePost)
-    },
-    [deletePost]
-  )
+
 
   return (
     <div className="history">
@@ -27,13 +22,13 @@ function History() {
           onClick={_ => setActiveTab(`posts`)}
           className={`tab ${activeTab !== `posts` ? `inactive` : ``}`}
         >
-          Posts({profile.userPosts.length})
+          Posts <span>({profile.userPosts.length})</span>
         </div>
         <div
           onClick={_ => setActiveTab(`comments`)}
           className={`tab ${activeTab !== `comments` ? `inactive` : ``}`}
         >
-          Comments({profile.userComments.length})
+          Comments <span>({profile.userComments.length})</span>
         </div>
       </div>
       {activeTab === `posts` ? (

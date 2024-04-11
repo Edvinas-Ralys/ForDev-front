@@ -1,11 +1,9 @@
 import { useContext } from "react"
 import { Close } from "../../Icons/Icons"
-import { Post } from "../../Contexts/Post"
 import { Comment } from "../../Contexts/Comment"
 
 function DeleteCommentModal({setDeleteComment, deleteComment}) {
     const {setDestroyComment} = useContext(Comment)
-    // console.log(deleteComment)
     const handleDestroyComment = _ =>{
         setDestroyComment(deleteComment)
         setDeleteComment(null)
@@ -21,7 +19,7 @@ function DeleteCommentModal({setDeleteComment, deleteComment}) {
             <Close />
           </div>
         </div>
-        <div className="modal-body">
+        <div className="modal-body-delete">
           Are you sure you want to delete the comment?
         </div>
         <div className="buttons">

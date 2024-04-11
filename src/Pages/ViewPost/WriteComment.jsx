@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react"
-import { Post } from "../../Contexts/Post"
 import { Authorization } from "../../Contexts/Authorization"
 import { v4 as uuidv4 } from "uuid"
 import { Comment } from "../../Contexts/Comment"
@@ -8,7 +7,6 @@ function WriteComment({ currentItem }) {
   const { setStoreComment } = useContext(Comment)
   const [writeComment, setWriteComment] = useState(``)
   const { user } = useContext(Authorization)
-  // console.log(typeof user.id)
 
   const handlePostComment = _ => {
     if (writeComment === ``) return

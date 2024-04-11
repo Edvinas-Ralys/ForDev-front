@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Authorization } from "../Contexts/Authorization"
 import { Messages } from "../Contexts/Messages"
 import axios from "axios"
@@ -18,10 +18,6 @@ function usePost(dispatchPosts) {
     limit: 7,
     skip: 0,
   })
-  let delPostConfig = {
-    data: destroyPost,
-    headers: { Authorization: `Bearer ${user?.token}` },
-  }
 
   useEffect(
     _ => {
@@ -42,7 +38,6 @@ function usePost(dispatchPosts) {
         .then(res => {
           dispatchPosts(a.getPosts(res.data.posts))
           setTotalCount(res.data.totalCount)
-          console.log(res.data)
         })
         .catch(_ => {
           window.location.href = `#network-error`
@@ -51,13 +46,13 @@ function usePost(dispatchPosts) {
           setLoading(false)
         })
     },
-    [getNumberOfPosts]
+    [getNumberOfPosts, setLoading, dispatchPosts, setTotalCount]
   )
 
   //!Create post
   useEffect(
     _ => {
-      if (storePost === null) {
+      if (storePost === null || user === null) {
         return
       }
       setLoading(true)
@@ -74,7 +69,7 @@ function usePost(dispatchPosts) {
           window.location.href = `#view/${res.data.postResponse._id}`
         })
         .catch(err => {
-          if (err.response.status) {
+          if (err.response?.status) {
             addMessage(err.response.data.message)
           } else {
             window.location.href = `#network-error`
@@ -85,21 +80,32 @@ function usePost(dispatchPosts) {
           setStorePost(null)
         })
     },
-    [storePost]
+    [storePost, setLoading, dispatchPosts, addMessage, setStorePost, user]
+  )
+
+  useEffect(
+    _ => {
+      if (destroyPost !== null && destroyPost.headers === undefined) {
+        setDestroyPost(prev => ({
+          data: { ...prev },
+          headers: { Authorization: `${user ? `Bearer ${user.token}` : null}` },
+        }))
+      }
+    },
+    [setDestroyPost, destroyPost, user]
   )
 
   //Delete a post
   useEffect(
     _ => {
-      if (destroyPost === null) {
+      if (destroyPost === null || !destroyPost.headers) {
         return
       }
-      console.log(destroyPost)
       setLoading(true)
       axios
-        .delete(`${SERVER_URL}/posts`, delPostConfig)
+        .delete(`${SERVER_URL}/posts`, destroyPost)
         .then(res => {
-          dispatchPosts(a.destroyPost(destroyPost))
+          dispatchPosts(a.destroyPost(destroyPost.data))
           if (window.location.hash.split(`/`).shift() === `#profile`) {
             window.location.reload()
           } else {
@@ -109,7 +115,7 @@ function usePost(dispatchPosts) {
           addMessage(res.data.message)
         })
         .catch(err => {
-          if (err.response.status) {
+          if (err.response?.status) {
             addMessage(err.response.data.message)
           } else {
             window.location.href = `#network-error`
@@ -120,38 +126,38 @@ function usePost(dispatchPosts) {
           setLoading(false)
         })
     },
-    [destroyPost]
+    [destroyPost, setLoading, dispatchPosts, addMessage, setDestroyPost]
   )
 
-
   //Update Post
-  useEffect(_=>{
-    if(updatePost === null){
-      return
-    }
-    const headers = { Authorization: `Bearer ${user.token}` }
-    setLoading(true)
-    axios.patch(`${SERVER_URL}/posts`, updatePost, {headers:headers} )
-      .then(res => {
-        console.log(res.data)
-        dispatchPosts(a.updatePost(res.data.post))
-        addMessage(res.data.message)
-        window.location.href = `#profile/${user.id}`
-      })
-      .catch(err => {
-        console.log(err)
-        if(err.response.status){
-          addMessage(err.response.data.message)
-        } else {
-          window.location.href = `#network-error`
-        }
-
-      })
-      .finally(_=>{
-        setLoading(false)
-        setUpdatePost(null)
-      })
-  }, [updatePost])
+  useEffect(
+    _ => {
+      if (updatePost === null) {
+        return
+      }
+      const headers = { Authorization: `Bearer ${user.token}` }
+      setLoading(true)
+      axios
+        .patch(`${SERVER_URL}/posts`, updatePost, { headers: headers })
+        .then(res => {
+          dispatchPosts(a.updatePost(res.data.post))
+          addMessage(res.data.message)
+          window.location.href = `#view/${res.data.post._id}`
+        })
+        .catch(err => {
+          if (err.response?.status) {
+            addMessage(err.response.data.message)
+          } else {
+            window.location.href = `#network-error`
+          }
+        })
+        .finally(_ => {
+          setLoading(false)
+          setUpdatePost(null)
+        })
+    },
+    [updatePost, setLoading, dispatchPosts, addMessage, setUpdatePost, user]
+  )
 
   return {
     setStorePost,
@@ -163,7 +169,7 @@ function usePost(dispatchPosts) {
     totalCount,
     setEditPost,
     editPost,
-    setUpdatePost
+    setUpdatePost,
   }
 }
 

@@ -6,7 +6,10 @@ export default function profileReducer(state, action){
         case constants.GET_PROFILE:
             newState = action.payload
         break
+
+        default:
+            newState = action.payload
+        break
     }
-    console.log(newState)
     return newState
 }

@@ -14,9 +14,7 @@ function PostBody({ preview, setPreview }) {
   let currentDate = `${day}-${month}-${year}`
 
   const handleSaveChanges = _ => {
-    console.log(preview)
     if(preview.type === `edit`){
-      console.log(preview)
       setUpdatePost(preview)
     } else {
       setStorePost(preview)
@@ -33,7 +31,6 @@ function PostBody({ preview, setPreview }) {
     <>
       <div className="post-title">{preview.title}</div>
       <div className="creator">
-        {/* <ProfileIcon /> */}
         Written by
         <span>
           <a href="/"> {user.username}</a>, {currentDate}

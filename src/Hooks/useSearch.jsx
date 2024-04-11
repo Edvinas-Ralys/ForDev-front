@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 import { SERVER_URL } from "../Data/main"
 import { Authorization } from "../Contexts/Authorization"
 import { Messages } from "../Contexts/Messages"
@@ -10,14 +10,25 @@ function useSearch() {
   const [searchResults, setSearchResults] = useState(null)
   const { addMessage } = useContext(Messages)
   const [loading, setLoading] = useState(false)
-  const getConfig = {
+  const [getConfig, setGetConfig] = useState({
     headers: { Authorization: `Bearer ${user?.token}` },
-    params: searchParams,
-  }
+    params: null,
+  })
 
   useEffect(
     _ => {
-      if (searchParams === null) return
+      if (searchParams !== null) {
+        setGetConfig(prev => ({ ...prev, params: searchParams }))
+      }
+    },
+    [searchParams, setGetConfig]
+  )
+
+  useEffect(
+    _ => {
+      if (searchParams === null || !getConfig.params || getConfig.params === null  ){
+        return
+      }
       setLoading(true)
       axios
         .get(`${SERVER_URL}/search`, getConfig)
@@ -25,13 +36,19 @@ function useSearch() {
           setSearchResults(res.data)
         })
         .catch(err => {
-          addMessage(err.response.data.message)
+          if (err.response?.status) {
+            addMessage(err.response.data.message)
+          } else {
+            window.location.href = `#network-error`
+          }
         })
         .finally(_ => {
           setLoading(false)
+          setGetConfig(prev => ({...prev, params:null}))
+          setSearchParams(null)
         })
     },
-    [searchParams]
+    [searchParams, setLoading, setSearchResults, addMessage, getConfig]
   )
 
   return { setSearchParams, searchResults, loading }

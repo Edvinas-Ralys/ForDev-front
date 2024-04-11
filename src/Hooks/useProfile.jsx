@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from "react"
-import { Router } from "../Contexts/Router"
+import { useContext, useEffect, useState } from "react"
 import { SERVER_URL } from "../Data/main"
 import axios from "axios"
 import { Authorization } from "../Contexts/Authorization"
 import { Messages } from "../Contexts/Messages"
-import usePost from "./usePost"
 
 function useProfile() {
   const [loading, setLoading] = useState(false)
@@ -13,8 +11,15 @@ function useProfile() {
   const { addMessage } = useContext(Messages)
   const [getProfile, setGetProfile] = useState(null)
   const { user } = useContext(Authorization)
-  const {destroyPost} = usePost
 
+  useEffect(
+    _ => {
+      if (updateProfile !== null && !updateProfile.headers) {
+        setUpdateProfile(prev => ({ ...prev, headers: { Authorization: `Bearer ${user.token}` } }))
+      }
+    },
+    [updateProfile, setUpdateProfile, user]
+  )
 
   useEffect(
     _ => {
@@ -24,28 +29,31 @@ function useProfile() {
           .get(`${SERVER_URL}/user`, { params: getProfile })
           .then(res => {
             setProfile(res.data)
-
           })
           .catch(err => {
-            addMessage(err.response.data.message)
+            if(err.response?.status){
+              addMessage(err.response.data.message)
+            } else {
+              window.location.href = `#network-error`
+            }
+
           })
           .finally(_ => {
             setLoading(false)
           })
       }
     },
-    [getProfile]
+    [getProfile, setLoading, setProfile, addMessage]
   )
 
   useEffect(
     _ => {
-      if (updateProfile === null) {
+      if (updateProfile === null || !updateProfile.headers) {
         return
       }
       setLoading(true)
-      const headers = { Authorization: `Bearer ${user.token}` }
       axios
-        .patch(`${SERVER_URL}/user`, updateProfile, headers)
+        .patch(`${SERVER_URL}/user`, updateProfile, updateProfile.headers)
         .then(res => {
           addMessage(res.data.message)
           if (updateProfile.updateType === `bio`) {
@@ -58,22 +66,31 @@ function useProfile() {
               ...prev,
               userDetails: { ...prev.userDetails, picture: res.data.newPicture },
             }))
-          } else if (updateProfile.updateType === `picture-remove`){
+          } else if (updateProfile.updateType === `picture-remove`) {
             setProfile(prev => ({
               ...prev,
               userDetails: { ...prev.userDetails, picture: null },
             }))
+          } else if (updateProfile.updateType === `remove-bio`) {
+            setProfile(prev => ({
+              ...prev,
+              userDetails: { ...prev.userDetails, bio: null },
+            }))
           }
         })
         .catch(err => {
-          addMessage(err.response.data.message)
+          if(err.response?.status){
+            addMessage(err.response.data.message)
+          } else {
+            window.location.href = `#network-error`
+          }
         })
         .finally(_ => {
           setLoading(false)
           setUpdateProfile(null)
         })
     },
-    [updateProfile]
+    [updateProfile, setLoading, addMessage, setProfile]
   )
 
   return {

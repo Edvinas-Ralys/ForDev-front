@@ -31,27 +31,20 @@ function Create({ setPreview }) {
     _ => {
       setPostImage(image)
     },
-    [image]
+    [image, setPostImage]
   )
 
   const handlePreviewPost = _ => {
     setPreview({title: title, text: content, tags: categories, image: image })
-    // console.log(title)
   }
 
-  const handleTextContent = value => {
-    if (value.includes(`<img src`)) {
-      const image = value.substr(3, value.length - 7)
-      console.log(image)
-    }
-  }
+
 
   return (
     <>
       <div className="create-post-page">
         <div className="create-content">
           <div className="title">Create A Post</div>
-          {/* <div className="test-text">{parse(content)}</div> */}
           <div className="creation-form">
             <div className="form">
               <div className="form-top">
@@ -67,7 +60,6 @@ function Create({ setPreview }) {
                       <Editor
                         value={content}
                         onTextChange={e => setContent(e.htmlValue)}
-                        // onTextChange={e => handleTextContent(e.htmlValue)}
                         style={{ height: "35vh" }}
                       />
                     </div>
@@ -82,7 +74,7 @@ function Create({ setPreview }) {
                       </label>
                     ) : (
                       <div className="image-container">
-                        <img src={postImage} />
+                        <img src={postImage} alt="Banner" />
                         <div className="image-buttons">
                           <button onClick={_ => setImage(null)} className="clear">
                             Delete Image

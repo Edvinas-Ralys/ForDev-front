@@ -18,7 +18,7 @@ function DeleteModal({ setDeletePost, currentItem, deletePost }) {
             <Close />
           </div>
         </div>
-        <div className="modal-body">
+        <div className="modal-body-post">
           Are you sure you want to delete post "{currentItem.title}"?
         </div>
         <div className="buttons">

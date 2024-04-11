@@ -85,11 +85,14 @@
         -ms-transform: skewX(-10deg);
         transform: skewX(-10deg);
       }
+      span{
+        color: gray;
+      }
     }
   }
   .post-tab,
   .comment-tab {
-    // height: 90%;
+    min-height: 30vh;
     width: 100%;
     background: linear-gradient($primary-dark 1%, $primary-transperant 100%);
     bottom: 0;
@@ -283,6 +286,101 @@
 
 //1200px
 @media only screen and (max-width: $tablet-width) {
+  .history {
+    .tabs {
+      margin-left: 0;
+      display: flex;
+      justify-content: center;
+      .tab {
+        width: fit-content;
+        padding-left: 20px;
+        padding-right: 20px;
+        &:after {
+        }
+        &:before {
+        }
+      }
+      .inactive {
+        &:after {
+        }
+        &:before {
+        }
+      }
+    }
+    .post-tab,
+    .comment-tab {
+    }
+  }
+
+  .post-tab {
+    .posts {
+      .post {
+        &:hover {
+        }
+        .post-title {
+          &:hover {
+          }
+        }
+        .post-created {
+        }
+        .post-tags {
+          .tag {
+          }
+        }
+        .post-buttons {
+          .icon {
+          }
+          .trash-can {
+            &:hover {
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .comment-tab {
+    .comments {
+      .comment {
+        &:hover {
+        }
+        .comment-title {
+          &:hover {
+          }
+        }
+        .comment-created {
+        }
+        .comment-post {
+        }
+        .post-buttons {
+          .icon {
+          }
+          .trash-can {
+            &:hover {
+            }
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    .page-numbers {
+      .number {
+        .chevron {
+        }
+      }
+      .prev-page .number {
+        .chevron {
+        }
+      }
+      .next-page .number {
+        .chevron {
+        }
+      }
+      .curr-page {
+      }
+    }
+  }
 }
 
 //1000px
@@ -385,7 +483,10 @@
       gap: 2.2rem;
       .tab {
         width: fit-content;
-        padding: 5px 20px;
+        padding: 5px 15px;
+        span{
+          display: none;
+        }
 
         &:after {
         }

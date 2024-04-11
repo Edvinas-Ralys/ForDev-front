@@ -1,5 +1,5 @@
 .profile {
-  height: 100vh;
+  min-height: 100vh;
   padding-bottom: 70px;
   width: 100vw;
   background-image: linear-gradient(rgba(250, 250, 250, 0.04) 1px, transparent 1px),
@@ -71,7 +71,8 @@
       font-size: 2rem;
       font-weight: 600;
       display: flex;
-      align-items: center;
+      // align-items: center;
+      width: 100%;
     }
     .bio {
       line-height: 23px;
@@ -136,6 +137,67 @@
 
 //1200px
 @media only screen and (max-width: $tablet-width) {
+  .profile {
+    height: fit-content;
+  }
+
+  .profile-container {
+
+    .user {
+      padding: 20px;
+    }
+    .history {
+    }
+  }
+
+  .user {
+    // width: 100%;
+    .user-container {
+
+
+      .picture {
+
+        .image-wrapper {
+
+          img {
+          }
+        }
+        .image-button {
+          &:hover {
+          }
+        }
+      }
+      .group {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        justify-content: flex-start;
+        height: 100%;
+        .username {
+        }
+        .bio {
+          .bio-title {
+          }
+          .bio-buttons {
+            button{
+              width: max-content;
+            }
+            .double {
+              .update-button,
+              .clear-button {
+                &:hover {
+                }
+              }
+            }
+          }
+        }
+        .bottom {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
 }
 
 //1000px
@@ -147,6 +209,7 @@
   .profile-container {
     display: flex;
     flex-direction: column;
+        align-items: center;
     .user {
     }
     .history {
@@ -159,6 +222,7 @@
       position: relative;
       justify-content: center;
       align-items: center;
+
 
       .picture {
         margin: 0;
@@ -177,6 +241,8 @@
         }
       }
       .group {
+        width: 100%;
+        align-items: flex-start;
         .username {
         }
         .bio {
@@ -210,6 +276,7 @@
 
   .profile-container {
     .user {
+      width: 100%;
     }
     .history {
     }
@@ -217,6 +284,7 @@
 
   .user {
     .user-container {
+      flex-direction: column;
       .picture {
         .image-wrapper {
           img {

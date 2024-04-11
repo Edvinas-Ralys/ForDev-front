@@ -25,7 +25,6 @@ function Layout() {
     _ => {
       if (posts.length !== 0) {
         const currPost = posts.find(f => f._id === params[0])
-        console.log(currPost)
         if (!currPost) {
           setCurrentItem(null)
         } else {
@@ -34,7 +33,7 @@ function Layout() {
         }
       }
     },
-    [posts, params[0]]
+    [posts, params, setGetComments]
   )
   useEffect(_ => {
     window.onscroll = _ => {

@@ -11,20 +11,19 @@ function Index() {
 
   useEffect(
     _ => {
-      console.log(`eff`, route === `#profile`)
       if (route === `#profile`) {
 
         setGetProfile({ userId: Number(params[0]) })
       } else return
     },
-    [params]
+    [params, setGetProfile, route]
   )
 
 
   return (
     <>
-    {loading || !profile && <Loading />}
-    {profile !== null && <Layout />}
+    {(loading || !profile) && <Loading />}
+    {(profile !== null) && <Layout />}
 
     </>
   )

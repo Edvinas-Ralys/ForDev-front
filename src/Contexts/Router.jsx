@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useRef } from "react"
+import { createContext, useEffect, useState } from "react"
 import HomeIndex from "../Pages/LandingPage/Index"
 import LoginIndex from "../Pages/Login/Index"
 import SignupIndex from "../Pages/Signup/Index"
@@ -34,6 +34,7 @@ export const RouterProvider = ({ children }) => {
     { path: `#profile`, component: <ProfileIndex /> },
     { path: `#search`, component: <SearchIndex /> },
     { path: `#edit-post`, component: <EditIndex /> },
+    { path: `#network-err`, component: <NetworkErr /> },
   ]
 
   const errorPages = [
@@ -57,7 +58,7 @@ export const RouterProvider = ({ children }) => {
     return _ => window.removeEventListener(`hashchange`, handleRouteChange)
   }, [])
 
-  const currentComponent = possibleRoutes.find(r => r.path === route)?.component || `Error page`
+  const currentComponent = possibleRoutes.find(r => r.path === route)?.component || <NetworkErr />
   const errorComponent = errorPages.find(e => e.type === errorPageType)?.component || null
 
   return (
